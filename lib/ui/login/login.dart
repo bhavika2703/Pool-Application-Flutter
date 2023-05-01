@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:boilerplate/constants/assets.dart';
+import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/data/sharedpref/constants/preferences.dart';
 import 'package:boilerplate/stores/form/form_store.dart';
 import 'package:boilerplate/stores/theme/theme_store.dart';
@@ -115,8 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: <Widget>[
             AppIconWidget(image: 'assets/icons/ic_app_icon.png'),
             SizedBox(height: 10.0),
-            Text('간편로그인',
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+            Text('간편로그인', style: Styles.body1TextStyle()),
             _buildUserIdField(),
             _buildPasswordField(),
             _buildForgotPasswordButton(),
