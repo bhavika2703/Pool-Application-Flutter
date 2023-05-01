@@ -21,9 +21,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    return Material(
-      child: Center(child: AppIconWidget(image: Assets.appLogo)),
+    return Scaffold(
+      body: Container(
+        margin: EdgeInsets.only(left: 35, top: 150),
+        child: AppIconWidget(
+          image: Assets.appLogo,
+          isFromSplash: true,
+        ),
+      ),
     );
   }
 
