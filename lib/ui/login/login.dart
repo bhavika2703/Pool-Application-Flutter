@@ -14,6 +14,7 @@ import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -130,21 +131,21 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildUserIdField() {
     return Observer(
       builder: (context) {
-        return TextFieldWidget(
-          hint: AppLocalizations.of(context).translate('login_et_user_email'),
-          inputType: TextInputType.emailAddress,
-          icon: Icons.person,
-          iconColor: _themeStore.darkMode ? Colors.white70 : Colors.black54,
-          textController: _userEmailController,
-          inputAction: TextInputAction.next,
-          autoFocus: false,
-          onChanged: (value) {
-            _store.setUserId(_userEmailController.text);
-          },
-          onFieldSubmitted: (value) {
-            FocusScope.of(context).requestFocus(_passwordFocusNode);
-          },
-          errorText: _store.formErrorStore.userEmail,
+        var _controller;
+        return Neumorphic(
+          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+          style: NeumorphicStyle(
+            depth: NeumorphicTheme.embossDepth(context),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
+          ),
+          padding: EdgeInsets.symmetric(vertical: 14, horizontal: 18),
+          child:  TextField(
+            onChanged: (value) {
+
+            },
+            controller: _controller,
+            decoration: InputDecoration.collapsed(hintText: 'Login'),
+          ),
         );
       },
     );
