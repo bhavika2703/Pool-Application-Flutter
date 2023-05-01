@@ -17,4 +17,7 @@ class AppColors {
   };
   static const themeColor = Color(0xFF0BA5EC);
   static const black = Color(0xFF000000);
+  static const lightGrayColor = Color(0xFF6D7984);
+  static const darkGrayColor = Color(0xFF4A525C);
+  static const textHintColor = Color(0xFFB6C6D0);
 }
