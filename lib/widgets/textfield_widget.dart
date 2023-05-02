@@ -4,15 +4,18 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 class CommonTextField extends StatefulWidget {
   final String label;
   final String hint;
-
+  final TextInputType? textInputType;
   final ValueChanged<String> onChanged;
   final TextEditingController controller;
-
-  CommonTextField(
-      {required this.label,
-      required this.hint,
-      required this.onChanged,
-      required this.controller});
+  final bool isObSecure;
+  CommonTextField({
+    required this.label,
+    required this.hint,
+    required this.onChanged,
+    this.isObSecure=false,
+    this.textInputType,
+    required this.controller,
+  });
 
   @override
   _CommonTextFieldState createState() => _CommonTextFieldState();
@@ -45,13 +48,13 @@ class _CommonTextFieldState extends State<CommonTextField> {
             child: TextField(
               onChanged: this.widget.onChanged,
               controller: widget.controller,
-              cursorColor: Colors.black,
-              decoration: InputDecoration.collapsed(
+              keyboardType: widget.textInputType ?? TextInputType.text,cursorColor: Colors.black,
+              obscureText: widget.isObSecure,decoration: InputDecoration.collapsed(
                   hintText: this.widget.hint,
-                  hintStyle: Styles.body2MediumTextStyle()),
+                  hintStyle: Styles.body2MediumTextStyle(),
             ),
-          )
-        ],
+          ),
+        )],
       ),
     );
   }

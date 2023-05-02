@@ -2,7 +2,7 @@ import 'package:boilerplate/widgets/header_title_widget.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatefulWidget {
+class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final VoidCallback onPressed;
   final String title;
 
@@ -14,6 +14,10 @@ class CustomAppBar extends StatefulWidget {
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size(double.infinity, 55);
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {

@@ -1,3 +1,5 @@
+import 'package:boilerplate/ui/findPassword/find_password.dart';
+import 'package:boilerplate/ui/findPassword/password_reset.dart';
 import 'package:boilerplate/ui/home/home.dart';
 import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
@@ -10,13 +12,14 @@ class Routes {
   static const String splash = '/splash';
   static const String login = '/login';
   static const String home = '/home';
+  static const String findPassword = '/findPassword';
+  static const String passwordReset = '/passwordReset';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
     login: (BuildContext context) => LoginScreen(),
     home: (BuildContext context) => HomeScreen(),
+    findPassword: (BuildContext context) => FindPassword(),
+    passwordReset: (BuildContext context) => PasswordReset(),
   };
 }
-
-
-
