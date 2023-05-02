@@ -30,12 +30,16 @@ class _PasswordResetState extends State<PasswordReset> {
               CommonTextField(
                 label: '새 비밀번호',
                 hint: '영문 대소문자,숫자,특수문자 포함 8자리 이상',
+                textInputType: TextInputType.visiblePassword,
+                isObSecure: true,
                 onChanged: (value) {},
                 controller: newPasswordController,
               ),
               CommonTextField(
                 label: '새 비밀번호 확인',
                 hint: '비밀번호 재 입력',
+                textInputType: TextInputType.visiblePassword,
+                isObSecure: true,
                 onChanged: (value) {},
                 controller: confirmPasswordController,
               ),
@@ -44,9 +48,7 @@ class _PasswordResetState extends State<PasswordReset> {
                   alignment: Alignment.bottomCenter,
                   child: AppThemeButton(
                     text: '확인',
-                    onTap: () {
-
-                    },
+                    onTap: () {},
                   ),
                 ),
               )
