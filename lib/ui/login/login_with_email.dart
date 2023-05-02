@@ -48,6 +48,7 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                   onChanged: (value) {
                     changedBottomColor();
                   },
+                  isObSecure: true,
                   controller: passwordController),
               Expanded(
                 child: Container(
