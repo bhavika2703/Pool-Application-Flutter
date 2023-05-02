@@ -30,7 +30,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         width: 45,
         child: RoundedButtonWidget(
           buttonIcon: Icons.arrow_back_ios_outlined,
-          onPressed: () {},
+          onPressed: widget.onPressed,
         ),
       ),
       title: Padding(

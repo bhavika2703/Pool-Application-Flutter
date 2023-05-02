@@ -34,7 +34,9 @@ class _JoinMemberShipState extends State<JoinMemberShip> {
             children: [
               CustomAppBar(
                 title: '회원가입',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).popAndPushNamed(Routes.login);
+                },
               ),
               SizedBox(
                 height: 12,

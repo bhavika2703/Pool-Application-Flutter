@@ -41,13 +41,17 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 25),
               buildBottomButtonView(
                 title: "이메일로 로그인",
-                onButtonPressed: () {},
+                onLoginWithEmailButtonPressed: () {
+                  Navigator.of(context).pushReplacementNamed(
+                    Routes.loginWithEmail,
+                  );
+                },
               ),
               SizedBox(height: 16),
               buildBottomButtonView(
                 title: "회원가입",
                 isMembershipButton: true,
-                onButtonPressed: () {
+                onMemberShipButtonPressed: () {
                   Navigator.of(context).pushReplacementNamed(
                     Routes.joinMemberShip,
                   );
@@ -94,7 +98,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Row buildBottomButtonView({
     required String title,
     bool isMembershipButton = false,
-    required VoidCallback onButtonPressed,
+    VoidCallback? onMemberShipButtonPressed,
+    VoidCallback? onLoginWithEmailButtonPressed,
   }) {
     return Row(
       children: [
@@ -118,7 +123,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       buildButtonTextView(title),
                     ],
                   ),
-            onPressed: onButtonPressed,
+            onPressed: isMembershipButton
+                ? onMemberShipButtonPressed
+                : onLoginWithEmailButtonPressed,
           ),
         ),
       ],
