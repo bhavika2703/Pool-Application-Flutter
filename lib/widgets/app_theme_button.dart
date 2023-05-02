@@ -1,19 +1,23 @@
 import 'package:boilerplate/constants/colors.dart';
+import 'package:boilerplate/constants/text_style.dart';
 import 'package:flutter/material.dart';
 
 class AppThemeButton extends StatelessWidget {
   final double width;
   final double height;
   final String text;
+  final Color? backgroundColor;
+
   final void Function() onTap;
 
-  const AppThemeButton(
-      {this.width = double.infinity,
-      this.height = 50,
-      required this.text,
-      required this.onTap,
-      Key? key})
-      : super(key: key);
+  AppThemeButton({
+    this.width = double.infinity,
+    this.height = 55,
+    required this.text,
+    required this.onTap,
+    this.backgroundColor,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +28,16 @@ class AppThemeButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all<Color>(AppColors.themeColor),
+          backgroundColor: MaterialStateProperty.all<Color>(
+              backgroundColor ?? AppColors.themeColor),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           ),
         ),
         child: Text(
           text,
-          style: const TextStyle(
+          style: Styles.body1TextStyle().copyWith(
             color: AppColors.whiteColor,
-            fontSize: 16.0,
           ),
         ),
       ),

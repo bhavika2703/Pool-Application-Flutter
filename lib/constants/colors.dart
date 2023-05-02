@@ -16,10 +16,14 @@ class AppColors {
     900: const Color(0xFFD56217)
   };
   static const themeColor = Color(0xFF0BA5EC);
+  static const themeColorTransparent = Color(0xFFB9E6FE);
   static const black = Color(0xFF000000);
   static const lightGrayColor = Color(0xFF6D7984);
   static const darkGrayColor = Color(0xFF4A525C);
   static const textHintColor = Color(0xFFB6C6D0);
+  static const infoBgColor = Color.fromRGBO(225, 231, 236, 1);
+  static const checkButtonInActiveColor = Color(0xFFC5D1D9);
+  static const checkButtonActiveColor = Color(0xFF8195A0);
   static const toastBackgroundColor = Color.fromRGBO(0, 0, 0, 0.5);
   static const toastTextColor = Colors.white;
   static const whiteColor = Colors.white;
