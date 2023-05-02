@@ -4,15 +4,12 @@ import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/data/sharedpref/constants/preferences.dart';
 import 'package:boilerplate/stores/form/form_store.dart';
 import 'package:boilerplate/stores/theme/theme_store.dart';
-import 'package:boilerplate/utils/device/device_utils.dart';
 import 'package:boilerplate/utils/locale/app_localization.dart';
 import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/app_icon_widget.dart';
-import 'package:boilerplate/widgets/empty_app_bar_widget.dart';
+import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
 import 'package:boilerplate/widgets/progress_indicator_widget.dart';
-import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/textfield_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +50,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       primary: true,
-      appBar: EmptyAppBar(),
       body: _buildBody(),
     );
   }
@@ -115,12 +111,22 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            CustomAppBar(
+              onPressed: () {},
+              title: '날짜 선택',
+            ),
+            // RoundedButtonWidget(onPressed: () {},buttonIcon: Icons.arrow_back_ios_new_rounded,),
             AppIconWidget(image: 'assets/icons/ic_app_icon.png'),
             SizedBox(height: 10.0),
             Text('간편로그인', style: Styles.body1TextStyle()),
             _buildUserIdField(),
-            _buildPasswordField(),
-            _buildForgotPasswordButton(),
+            //_buildPasswordField(),
+            CommonTextField(
+              label: '이메일 주소',
+              hint: '비밀번호 재 입력',
+              controller: _passwordController,
+              onChanged: (value) {},
+            ),
             _buildSignInButton()
           ],
         ),
@@ -138,23 +144,48 @@ class _LoginScreenState extends State<LoginScreen> {
             depth: NeumorphicTheme.embossDepth(context),
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
           ),
-          padding: EdgeInsets.symmetric(vertical: 14, horizontal: 18),
-          child:  TextField(
-            onChanged: (value) {
-
-            },
+          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 19),
+          child: TextFormField(
+            onChanged: (value) {},
             controller: _controller,
-            decoration: InputDecoration.collapsed(hintText: 'Login'),
+            decoration: InputDecoration.collapsed(
+                hintText: 'Login', hintStyle: Styles.body2MediumTextStyle()),
           ),
         );
       },
     );
   }
 
-  Widget _buildPasswordField() {
+  NeumorphicButton buildNeumorphicRoundButton(BuildContext context) {
+    return NeumorphicButton(
+      margin: const EdgeInsets.only(top: 8, bottom: 6),
+      padding: const EdgeInsets.all(12),
+      style: const NeumorphicStyle(
+        boxShape: NeumorphicBoxShape.circle(),
+        shape: NeumorphicShape.concave,
+        depth: 12,
+      ),
+      child: buildBackIcon(context),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+  }
+
+  Icon buildBackIcon(BuildContext context) {
+    return Icon(
+      Icons.arrow_back_ios_new_outlined,
+      size: 20,
+      color: NeumorphicTheme.isUsingDark(context)
+          ? Colors.white70
+          : const Color.fromRGBO(74, 82, 92, 1),
+    );
+  }
+
+  /*Widget _buildPasswordField() {
     return Observer(
       builder: (context) {
-        return TextFieldWidget(
+        return TextField(
           hint:
               AppLocalizations.of(context).translate('login_et_user_password'),
           isObscure: true,
@@ -170,13 +201,13 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       },
     );
-  }
+  }*/
 
   Widget _buildForgotPasswordButton() {
     return Align(
       alignment: FractionalOffset.centerRight,
       child: TextButton(
-       // padding: EdgeInsets.all(0.0),
+        // padding: EdgeInsets.all(0.0),
         child: Text(
           AppLocalizations.of(context).translate('login_btn_forgot_password'),
           style: Theme.of(context)
@@ -190,18 +221,16 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildSignInButton() {
-    return RoundedButtonWidget(
-      buttonText: AppLocalizations.of(context).translate('login_btn_sign_in'),
-      buttonColor: Colors.orangeAccent,
-      textColor: Colors.white,
-      onPressed: () async {
-        if (_store.canLogin) {
-          DeviceUtils.hideKeyboard(context);
-          _store.login();
-        } else {
-          _showErrorMessage('Please fill in all fields');
-        }
-      },
+    return Align(
+      alignment: Alignment.centerRight,
+      child: NeumorphicButton(
+        onPressed: () {},
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        child: Text(
+          "Sign Up",
+          style: TextStyle(fontWeight: FontWeight.w800),
+        ),
+      ),
     );
   }
 

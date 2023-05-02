@@ -34,7 +34,7 @@ class Styles {
         fontFamily: FontFamily.pretenDard,
         fontWeight: FontWeight.w600,
         color: AppColors.lightGrayColor,
-        fontSize: 14,
+        fontSize: 15,
       );
 
   static TextStyle subHeadSemiBoldTextStyle() => TextStyle(
@@ -45,9 +45,9 @@ class Styles {
       );
 
   static TextStyle cap2MediumTextStyle() => TextStyle(
-        fontFamily: FontFamily.pretenDard,
-        fontWeight: FontWeight.w500,
-        color: AppColors.darkGrayColor,
-        fontSize: 12,
+    fontFamily: FontFamily.pretenDard,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkGrayColor,
+    fontSize: 14,
       );
 }

@@ -35,4 +35,7 @@ class DeviceUtils {
   ///
   static double getScaledHeight(BuildContext context, double scale) =>
       scale * MediaQuery.of(context).size.height;
+
+  static double getDeviceWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width;
 }

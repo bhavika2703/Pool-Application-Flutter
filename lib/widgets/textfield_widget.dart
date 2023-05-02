@@ -1,65 +1,55 @@
-import 'package:flutter/material.dart';
+import 'package:boilerplate/constants/text_style.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-class TextFieldWidget extends StatelessWidget {
-  final IconData icon;
-  final String? hint;
-  final String? errorText;
-  final bool isObscure;
-  final bool isIcon;
-  final TextInputType? inputType;
-  final TextEditingController textController;
-  final EdgeInsets padding;
-  final Color hintColor;
-  final Color iconColor;
-  final FocusNode? focusNode;
-  final ValueChanged? onFieldSubmitted;
-  final ValueChanged? onChanged;
-  final bool autoFocus;
-  final TextInputAction? inputAction;
+class CommonTextField extends StatefulWidget {
+  final String label;
+  final String hint;
+
+  final ValueChanged<String> onChanged;
+  final TextEditingController controller;
+
+  CommonTextField(
+      {required this.label,
+      required this.hint,
+      required this.onChanged,
+      required this.controller});
+
+  @override
+  _CommonTextFieldState createState() => _CommonTextFieldState();
+}
+
+class _CommonTextFieldState extends State<CommonTextField> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: padding,
-      child: TextFormField(
-        controller: textController,
-        focusNode: focusNode,
-        onFieldSubmitted: onFieldSubmitted,
-        onChanged: onChanged,
-        autofocus: autoFocus,
-        textInputAction: inputAction,
-        obscureText: this.isObscure,
-        maxLength: 25,
-        keyboardType: this.inputType,
-        style: Theme.of(context).textTheme.bodyText1,
-        decoration: InputDecoration(
-            hintText: this.hint,
-            hintStyle:
-                Theme.of(context).textTheme.bodyText1!.copyWith(color: hintColor),
-            errorText: errorText,
-            counterText: '',
-            icon: this.isIcon ? Icon(this.icon, color: iconColor) : null),
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8),
+          child: Text(this.widget.label, style: Styles.cap2MediumTextStyle()),
+        ),
+        Neumorphic(
+          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+          style: NeumorphicStyle(
+            depth: NeumorphicTheme.embossDepth(context),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
+          ),
+          padding: EdgeInsets.symmetric(vertical: 14, horizontal: 18),
+          child: TextField(
+            onChanged: this.widget.onChanged,
+            controller: widget.controller,
+            cursorColor: Colors.black,
+            decoration: InputDecoration.collapsed(
+                hintText: this.widget.hint,
+                hintStyle: Styles.body2MediumTextStyle()),
+          ),
+        )
+      ],
     );
   }
-
-  const TextFieldWidget({
-    Key? key,
-    required this.icon,
-    required this.errorText,
-    required this.textController,
-    this.inputType,
-    this.hint,
-    this.isObscure = false,
-    this.isIcon = true,
-    this.padding = const EdgeInsets.all(0),
-    this.hintColor = Colors.grey,
-    this.iconColor = Colors.grey,
-    this.focusNode,
-    this.onFieldSubmitted,
-    this.onChanged,
-    this.autoFocus = false,
-    this.inputAction,
-  }) : super(key: key);
-
 }
