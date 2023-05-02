@@ -54,6 +54,7 @@ class Styles {
   static TextStyle cap2SemiBoldTextStyle() => TextStyle(
         fontFamily: FontFamily.pretenDard,
         fontWeight: FontWeight.w600,
+        color: AppColors.checkButtonActiveColor,
         fontSize: 12,
       );
 }
