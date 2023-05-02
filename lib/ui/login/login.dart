@@ -6,6 +6,7 @@ import 'package:boilerplate/stores/theme/theme_store.dart';
 import 'package:boilerplate/utils/locale/app_localization.dart';
 import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/app_icon_widget.dart';
+import 'package:boilerplate/widgets/app_theme_button.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/textfield_widget.dart';
@@ -168,7 +169,11 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _passwordController,
               onChanged: (value) {},
             ),
-            _buildSignInButton()
+            AppThemeButton(
+              text: '확인',
+              onTap: () {},
+            )
+            // _buildSignInButton()
           ],
         ),
       ),
