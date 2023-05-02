@@ -26,7 +26,6 @@ class _RoundedButtonWidgetState extends State<RoundedButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return NeumorphicButton(
-      //margin: const EdgeInsets.only(top: 8, bottom: 6),
       padding: const EdgeInsets.all(12),
       style: NeumorphicStyle(
         shape: NeumorphicShape.flat,

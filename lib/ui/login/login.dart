@@ -3,6 +3,7 @@ import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/data/sharedpref/constants/preferences.dart';
 import 'package:boilerplate/stores/theme/theme_store.dart';
+import 'package:boilerplate/utils/device/device_utils.dart';
 import 'package:boilerplate/utils/locale/app_localization.dart';
 import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/app_icon_widget.dart';
@@ -44,16 +45,120 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.only(left: 14, right: 14),
+          padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               AppIconWidget(image: Assets.appLogo),
-              buildRowImageIconView()
+              buildTitleView(context),
+              buildRowImageIconView(),
+              SizedBox(height: 25),
+              buildBottomButtonView(title: "이메일로 로그인"),
+              SizedBox(height: 16),
+              buildBottomButtonView(title: "회원가입", isMembershipButton: true),
+              SizedBox(height: 20),
+              bottomTextView(),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Row bottomTextView() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        findIdPwdText(text: '아이디찾기'),
+        Neumorphic(
+          margin: EdgeInsets.only(right: 6, left: 6),
+          child: Container(
+            height: 12,
+            width: 1,
+            color: Color(0xffECF0F3),
+          ),
+        ),
+        findIdPwdText(text: '비밀번호 찾기'),
+      ],
+    );
+  }
+
+  Padding findIdPwdText({required String text}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        text,
+        style: Styles.body2SemiBoldTextStyle(),
+      ),
+    );
+  }
+
+  Row buildBottomButtonView(
+      {required String title, bool isMembershipButton = false}) {
+    return Row(
+      children: [
+        Expanded(
+          child: NeumorphicButton(
+            style: NeumorphicStyle(
+              shape: NeumorphicShape.flat,
+              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 18),
+            margin: EdgeInsets.only(right: 30, left: 30),
+            child: isMembershipButton
+                ? Center(child: buildButtonTextView(title))
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(Assets.inboxIconImg, width: 16, height: 16),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      buildButtonTextView(title),
+                    ],
+                  ),
+            onPressed: () {},
+          ),
+        ),
+      ],
+    );
+  }
+
+  Text buildButtonTextView(String title) {
+    return Text(
+      title,
+      style: Styles.body2TextStyle(),
+    );
+  }
+
+  Widget buildTitleView(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 16),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          buildNeumorphicLineWidget(context),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8),
+            child: Text('간편로그인', style: Styles.body1TextStyle()),
+          ),
+          buildNeumorphicLineWidget(context),
+        ],
+      ),
+    );
+  }
+
+  Widget buildNeumorphicLineWidget(
+    BuildContext context,
+  ) {
+    return Neumorphic(
+      margin: EdgeInsets.only(right: 6, left: 6),
+      child: Container(
+        height: 1.5,
+        width: DeviceUtils.getDeviceWidth(context) / 3.5,
+        color: Color(0xffECF0F3),
       ),
     );
   }
@@ -66,31 +171,31 @@ class _LoginScreenState extends State<LoginScreen> {
           onPressed: () {},
           isLoginScreen: true,
           buttonChildView:
-              Image.asset(Assets.messageIconImg, width: 18, height: 17),
+              Image.asset(Assets.messageIconImg, width: 20, height: 20),
         ),
         RoundedButtonWidget(
           onPressed: () {},
           isLoginScreen: true,
           buttonChildView:
-              Image.asset(Assets.letterNIconImg, width: 16, height: 16),
+              Image.asset(Assets.letterNIconImg, width: 18, height: 19),
         ),
         RoundedButtonWidget(
           onPressed: () {},
           isLoginScreen: true,
           buttonChildView:
-              Image.asset(Assets.facebookIconImg, width: 22, height: 21),
+              Image.asset(Assets.facebookIconImg, width: 24, height: 23),
         ),
         RoundedButtonWidget(
           onPressed: () {},
           isLoginScreen: true,
           buttonChildView:
-              Image.asset(Assets.appleIconImg, width: 16, height: 20),
+              Image.asset(Assets.appleIconImg, width: 20, height: 22),
         ),
         RoundedButtonWidget(
           onPressed: () {},
           isLoginScreen: true,
           buttonChildView:
-              Image.asset(Assets.googleIconImg, width: 18, height: 18),
+              Image.asset(Assets.googleIconImg, width: 19, height: 19),
         ),
       ],
     );
