@@ -1,4 +1,5 @@
 import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:boilerplate/constants/app_utils.dart';
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/data/sharedpref/constants/preferences.dart';
@@ -195,6 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
       buttonColor: Colors.orangeAccent,
       textColor: Colors.white,
       onPressed: () async {
+        AppUtils.showToast(msg: 'Testing');
         if (_store.canLogin) {
           DeviceUtils.hideKeyboard(context);
           _store.login();
