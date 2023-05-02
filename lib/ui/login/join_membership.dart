@@ -1,4 +1,5 @@
 import 'package:boilerplate/constants/text_style.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/app_theme_button.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
 import 'package:boilerplate/widgets/textfield_widget.dart';
@@ -75,7 +76,11 @@ class _JoinMemberShipState extends State<JoinMemberShip> {
               SizedBox(height: 18),
               AppThemeButton(
                 text: '확인',
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushReplacementNamed(
+                    Routes.agreeTermsConditions,
+                  );
+                },
               ),
             ],
           ),

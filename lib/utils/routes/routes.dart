@@ -3,6 +3,7 @@ import 'package:boilerplate/ui/findPassword/password_reset.dart';
 import 'package:boilerplate/ui/home/home.dart';
 import 'package:boilerplate/ui/login/join_membership.dart';
 import 'package:boilerplate/ui/login/login.dart';
+import 'package:boilerplate/ui/login/terms_conditions.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class Routes {
   static const String findPassword = '/findPassword';
   static const String passwordReset = '/passwordReset';
   static const String joinMemberShip = '/joinMemberShip';
+  static const String agreeTermsConditions = '/agreeTermsConditions';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -24,5 +26,6 @@ class Routes {
     findPassword: (BuildContext context) => FindPassword(),
     passwordReset: (BuildContext context) => PasswordReset(),
     joinMemberShip: (BuildContext context) => JoinMemberShip(),
+    agreeTermsConditions: (BuildContext context) => TermsConditions(),
   };
 }
