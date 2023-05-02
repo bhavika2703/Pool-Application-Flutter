@@ -20,7 +20,8 @@ class _JoinMemberShipState extends State<JoinMemberShip> {
   TextEditingController nameController = TextEditingController();
   TextEditingController birthDateController = TextEditingController();
   Gender? gender;
-  bool isMaleSelected = false;
+  ValueNotifier<bool> isMaleSelected = ValueNotifier<bool>(true);
+  ValueNotifier<bool> isFemaleSelected = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
@@ -105,51 +106,58 @@ class _JoinMemberShipState extends State<JoinMemberShip> {
     );
   }
 
-  Neumorphic neumorphicGenderButton({required BuildContext context}) {
-    return Neumorphic(
-      style: NeumorphicStyle(
-        depth: NeumorphicTheme.embossDepth(context),
-        boxShape: NeumorphicBoxShape.stadium(),
-      ),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-              child: genderViewButtons(
-            title: '남자',
-            onButtonPressed: () {
-              setState(() {
-                isMaleSelected = true;
-              });
-            },
-          )),
-          SizedBox(
-            width: 8,
+  Widget neumorphicGenderButton({required BuildContext context}) {
+    return ValueListenableBuilder<bool>(
+      valueListenable: isMaleSelected,
+      builder: (context, bool value, child) {
+        return Neumorphic(
+          style: NeumorphicStyle(
+            depth: NeumorphicTheme.embossDepth(context),
+            boxShape: NeumorphicBoxShape.stadium(),
           ),
-          Expanded(
-              child: genderViewButtons(
-            onButtonPressed: () {
-              setState(() {
-                isMaleSelected = false;
-              });
-            },
-            title: '여자',
-            isButtonTap: isMaleSelected,
-          )),
-        ],
-      ),
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                child: genderViewButtons(
+                  title: '남자',
+                  onButtonPressed: () {
+                    isMaleSelected.value = true;
+                    isFemaleSelected.value = false;
+                  },
+                  showBackground: value,
+                ),
+              ),
+              SizedBox(
+                width: 8,
+              ),
+              Expanded(
+                child: genderViewButtons(
+                  onButtonPressed: () {
+                    isMaleSelected.value = false;
+                    isFemaleSelected.value = true;
+                  },
+                  showBackground: !value,
+                  title: '여자',
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
-  NeumorphicButton genderViewButtons(
-      {required String title,
-      required VoidCallback onButtonPressed,
-      bool isButtonTap = false}) {
+  NeumorphicButton genderViewButtons({
+    required String title,
+    required VoidCallback onButtonPressed,
+    required bool showBackground,
+  }) {
     return NeumorphicButton(
-      style: isMaleSelected
-          ? NeumorphicStyle(depth: 0, boxShape: NeumorphicBoxShape.rect())
-          : NeumorphicStyle(
+      style: showBackground
+          ? NeumorphicStyle(
               depth: NeumorphicTheme.depth(context),
-              boxShape: NeumorphicBoxShape.stadium()),
+              boxShape: NeumorphicBoxShape.stadium())
+          : NeumorphicStyle(depth: 0, boxShape: NeumorphicBoxShape.rect()),
       padding: EdgeInsets.symmetric(vertical: 16, horizontal: 40),
       margin: EdgeInsets.only(right: 4, left: 4, bottom: 4, top: 4),
       child: Center(child: buildButtonTextView(title)),
