@@ -18,4 +18,5 @@ class Assets {
   static const String googleIconImg = "assets/images/googleLogo.png";
 
   static const String inboxIconImg = "assets/images/Inbox.png";
+  static const String userAvatarImg = "assets/images/ic_user_avatar.png";
 }

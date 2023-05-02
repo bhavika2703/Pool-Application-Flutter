@@ -1,3 +1,5 @@
+import 'package:boilerplate/ui/findEmail/find_email.dart';
+import 'package:boilerplate/ui/findEmail/find_email_result.dart';
 import 'package:boilerplate/ui/findPassword/find_password.dart';
 import 'package:boilerplate/ui/findPassword/password_reset.dart';
 import 'package:boilerplate/ui/home/home.dart';
@@ -16,6 +18,8 @@ class Routes {
   static const String findPassword = '/findPassword';
   static const String passwordReset = '/passwordReset';
   static const String joinMemberShip = '/joinMemberShip';
+  static const String findEmail = '/findEmail';
+  static const String findEmailResults = '/FindEmailResults';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -24,5 +28,7 @@ class Routes {
     findPassword: (BuildContext context) => FindPassword(),
     passwordReset: (BuildContext context) => PasswordReset(),
     joinMemberShip: (BuildContext context) => JoinMemberShip(),
+    findEmail: (BuildContext context) => FindEmail(),
+    findEmailResults: (BuildContext context) => FindEmailResults(),
   };
 }
