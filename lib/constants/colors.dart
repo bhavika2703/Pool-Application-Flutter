@@ -22,4 +22,5 @@ class AppColors {
   static const textHintColor = Color(0xFFB6C6D0);
   static const toastBackgroundColor = Color.fromRGBO(0, 0, 0, 0.5);
   static const toastTextColor = Colors.white;
+  static const whiteColor = Colors.white;
 }
