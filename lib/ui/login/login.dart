@@ -2,13 +2,12 @@ import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/data/sharedpref/constants/preferences.dart';
-import 'package:boilerplate/stores/form/form_store.dart';
 import 'package:boilerplate/stores/theme/theme_store.dart';
 import 'package:boilerplate/utils/locale/app_localization.dart';
 import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/app_icon_widget.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
-import 'package:boilerplate/widgets/progress_indicator_widget.dart';
+import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/textfield_widget.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -28,16 +27,9 @@ class _LoginScreenState extends State<LoginScreen> {
   //stores:---------------------------------------------------------------------
   late ThemeStore _themeStore;
 
-  //focus node:-----------------------------------------------------------------
-  late FocusNode _passwordFocusNode;
-
-  //stores:---------------------------------------------------------------------
-  final _store = FormStore();
-
   @override
   void initState() {
     super.initState();
-    _passwordFocusNode = FocusNode();
   }
 
   @override
@@ -48,14 +40,63 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      primary: true,
-      body: _buildBody(),
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.only(left: 14, right: 14),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              AppIconWidget(image: Assets.appLogo),
+              buildRowImageIconView()
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Row buildRowImageIconView() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        RoundedButtonWidget(
+          onPressed: () {},
+          isLoginScreen: true,
+          buttonChildView:
+              Image.asset(Assets.messageIconImg, width: 18, height: 17),
+        ),
+        RoundedButtonWidget(
+          onPressed: () {},
+          isLoginScreen: true,
+          buttonChildView:
+              Image.asset(Assets.letterNIconImg, width: 16, height: 16),
+        ),
+        RoundedButtonWidget(
+          onPressed: () {},
+          isLoginScreen: true,
+          buttonChildView:
+              Image.asset(Assets.facebookIconImg, width: 22, height: 21),
+        ),
+        RoundedButtonWidget(
+          onPressed: () {},
+          isLoginScreen: true,
+          buttonChildView:
+              Image.asset(Assets.appleIconImg, width: 16, height: 20),
+        ),
+        RoundedButtonWidget(
+          onPressed: () {},
+          isLoginScreen: true,
+          buttonChildView:
+              Image.asset(Assets.googleIconImg, width: 18, height: 18),
+        ),
+      ],
     );
   }
 
   // body methods:--------------------------------------------------------------
-  Widget _buildBody() {
+  /*Widget _buildBody() {
     return Material(
       child: Stack(
         children: <Widget>[
@@ -91,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
-  }
+  }*/
 
   Widget _buildLeftSide() {
     return SizedBox.expand(
@@ -270,7 +311,6 @@ class _LoginScreenState extends State<LoginScreen> {
     // Clean up the controller when the Widget is removed from the Widget tree
     _userEmailController.dispose();
     _passwordController.dispose();
-    _passwordFocusNode.dispose();
     super.dispose();
   }
 }
