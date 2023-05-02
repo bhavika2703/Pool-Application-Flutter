@@ -26,30 +26,33 @@ class _CommonTextFieldState extends State<CommonTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8),
-          child: Text(this.widget.label, style: Styles.cap2MediumTextStyle()),
-        ),
-        Neumorphic(
-          margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-          style: NeumorphicStyle(
-            depth: NeumorphicTheme.embossDepth(context),
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
+    return Container(
+      margin: EdgeInsets.only(top: 8, bottom: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8),
+            child: Text(this.widget.label, style: Styles.cap2MediumTextStyle()),
           ),
-          padding: EdgeInsets.symmetric(vertical: 14, horizontal: 18),
-          child: TextField(
-            onChanged: this.widget.onChanged,
-            controller: widget.controller,
-            cursorColor: Colors.black,
-            decoration: InputDecoration.collapsed(
-                hintText: this.widget.hint,
-                hintStyle: Styles.body2MediumTextStyle()),
-          ),
-        )
-      ],
+          Neumorphic(
+            margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
+            style: NeumorphicStyle(
+              depth: NeumorphicTheme.embossDepth(context),
+              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 14, horizontal: 18),
+            child: TextField(
+              onChanged: this.widget.onChanged,
+              controller: widget.controller,
+              cursorColor: Colors.black,
+              decoration: InputDecoration.collapsed(
+                  hintText: this.widget.hint,
+                  hintStyle: Styles.body2MediumTextStyle()),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
