@@ -1,7 +1,6 @@
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/data/sharedpref/constants/preferences.dart';
-import 'package:boilerplate/ui/login/join_membership.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
 import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/app_icon_widget.dart';
@@ -49,8 +48,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 title: "회원가입",
                 isMembershipButton: true,
                 onButtonPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => JoinMemberShip()));
+                  Navigator.of(context).pushReplacementNamed(
+                    Routes.joinMemberShip,
+                  );
                 },
               ),
               SizedBox(height: 20),
