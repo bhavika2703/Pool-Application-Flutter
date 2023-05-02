@@ -18,14 +18,13 @@ class _PasswordResetState extends State<PasswordReset> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 15),
+    return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(onPressed: () {}, title: '비밀번호 재설정'),
         body: Container(
-          margin: EdgeInsets.symmetric(vertical: 20, horizontal: 14),
+          margin: EdgeInsets.only(top: 12, right: 8, left: 8, bottom: 12),
           child: Column(
             children: [
+              CustomAppBar(onPressed: () {}, title: '비밀번호 재설정'),
               _buildInfoView(),
               CommonTextField(
                 label: '새 비밀번호',
@@ -63,6 +62,7 @@ class _PasswordResetState extends State<PasswordReset> {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(15),
+      margin: EdgeInsets.only(top: 16, left: 8, right: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

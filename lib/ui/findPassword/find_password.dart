@@ -38,14 +38,13 @@ class _FindPasswordState extends State<FindPassword> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 15),
+    return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(onPressed: () {}, title: '비밀번호 찾기'),
         body: Container(
           margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
           child: Column(
             children: [
+              CustomAppBar(onPressed: () {}, title: '비밀번호 찾기'),
               _buildEmailField(),
               _buildAuthenticationField(),
               _buildValueEmailAuthenticated(),
@@ -146,16 +145,19 @@ class _FindPasswordState extends State<FindPassword> {
     return ValueListenableBuilder<bool>(
       valueListenable: isEmailTextChanged,
       builder: (BuildContext context, bool value, Widget? child) {
-        return CommonTextFieldWithButton(
-          label: '이메일 주소',
-          hint: 'abc@gmail.com',
-          onChanged: (value) {},
-          buttonText: '인증받기',
-          onButtonTap: () {
-            validateEmail();
-          },
-          isCheckButtonActive: value,
-          controller: emailController,
+        return Container(
+          margin: EdgeInsets.only(top: 16, bottom: 4),
+          child: CommonTextFieldWithButton(
+            label: '이메일 주소',
+            hint: 'abc@gmail.com',
+            onChanged: (value) {},
+            buttonText: '인증받기',
+            onButtonTap: () {
+              validateEmail();
+            },
+            isCheckButtonActive: value,
+            controller: emailController,
+          ),
         );
       },
     );
