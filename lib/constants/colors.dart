@@ -20,4 +20,6 @@ class AppColors {
   static const lightGrayColor = Color(0xFF6D7984);
   static const darkGrayColor = Color(0xFF4A525C);
   static const textHintColor = Color(0xFFB6C6D0);
+  static const toastBackgroundColor = Color.fromRGBO(0, 0, 0, 0.5);
+  static const toastTextColor = Colors.white;
 }
