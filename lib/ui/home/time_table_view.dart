@@ -3,8 +3,11 @@ import 'dart:math';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 // ignore: must_be_immutable
 class ResourceViewBuilder extends StatefulWidget {
@@ -28,6 +31,8 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
   final List<CalendarResource> _employeeCollection = <CalendarResource>[];
   final List<String> _nameCollection = <String>[];
   _DataSource? _events;
+  DateRangePickerController _controller = DateRangePickerController();
+  String headerString = '';
 
   @override
   void initState() {
@@ -106,12 +111,15 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
   void bottomSheetView(BuildContext context) {
     showModalBottomSheet(
       context: context,
+      backgroundColor: Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(25.0),
         ),
       ),
       builder: (BuildContext context) {
+        final double width = MediaQuery.of(context).size.width;
+        final double cellWidth = width / 12;
         return Container(
           margin: EdgeInsets.only(top: 8, left: 10, right: 10, bottom: 1),
           child: Column(
@@ -138,23 +146,59 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
                   ],
                 ),
               ),
+              Container(
+                margin: EdgeInsets.only(bottom: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      height: cellWidth,
+                      width: cellWidth + 10,
+                    ),
+                    RoundedButtonWidget(
+                      onPressed: () {
+                        _controller.backward!();
+                      },
+                      buttonIcon: Icons.arrow_back_ios_rounded,
+                    ),
+                    Container(
+                      height: cellWidth,
+                      width: cellWidth * 4.5,
+                      child: Text('2023. 04',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 25, color: Colors.black, height: 1.4)),
+                    ),
+                    RoundedButtonWidget(
+                      onPressed: () {
+                        _controller.forward!();
+                      },
+                      buttonIcon: Icons.arrow_forward_ios_rounded,
+                    ),
+                    Container(
+                      height: cellWidth,
+                      width: cellWidth,
+                    )
+                  ],
+                ),
+              ),
               Flexible(
-                child: SfCalendar(
-                  view: CalendarView.month,
-
-                  cellBorderColor: Colors.transparent,
-                  showDatePickerButton: false,
-                  monthViewSettings: MonthViewSettings(),
-                  headerDateFormat: 'yyyy. ' 'MM',
-                  /* monthCellBuilder: (context, details) {
-                    return monthCellBuilder(context, details);
-                  },*/
-                  viewHeaderStyle: ViewHeaderStyle(),
-                  showCurrentTimeIndicator: true,
-                  //  monthCellBuilder:monthCellBuilder ,
-                  headerStyle: CalendarHeaderStyle(
-                      textAlign: TextAlign.center,
-                      textStyle: Styles.heading2TextStyle()),
+                child: SfDateRangePicker(
+                  controller: _controller,
+                  enablePastDates: false,
+                  onViewChanged: viewChanged,
+                  todayHighlightColor: Colors.blue,
+                  headerHeight: 0,
+                  monthCellStyle: const DateRangePickerMonthCellStyle(
+                      blackoutDateTextStyle: TextStyle(
+                    color: Colors.grey,
+                  )),
+                  selectionColor: Colors.transparent,
+                  selectionMode: DateRangePickerSelectionMode.single,
+                  monthViewSettings: DateRangePickerMonthViewSettings(
+                    showTrailingAndLeadingDates: true,
+                  ),
+                  cellBuilder: cellBuilder,
                 ),
               ),
             ],
@@ -164,7 +208,53 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
     );
   }
 
-  monthCellBuilder(BuildContext context) {}
+  void viewChanged(DateRangePickerViewChangedArgs args) {
+    final DateTime visibleStartDate = args.visibleDateRange.startDate!;
+    final DateTime visibleEndDate = args.visibleDateRange.endDate!;
+    final int totalVisibleDays =
+        (visibleStartDate.difference(visibleEndDate).inDays);
+    final DateTime midDate =
+        visibleStartDate.add(Duration(days: totalVisibleDays ~/ 2));
+    headerString = DateFormat('MMMM yyyy').format(midDate).toString();
+    SchedulerBinding.instance.addPostFrameCallback((duration) {
+      setState(() {});
+    });
+  }
+
+  Widget cellBuilder(
+      BuildContext context, DateRangePickerCellDetails cellDetails) {
+    bool IsSelected = _controller.selectedDate != null &&
+        cellDetails.date.year == _controller.selectedDate?.year &&
+        cellDetails.date.month == _controller.selectedDate?.month &&
+        cellDetails.date.day == _controller.selectedDate?.day;
+    if (IsSelected) {
+      return NeumorphicRadio(
+        padding: EdgeInsets.all(15),
+        style: NeumorphicRadioStyle(
+          boxShape: NeumorphicBoxShape.circle(),
+          selectedColor: Colors.black,
+          unselectedColor: Color(0xFFECF0F3),
+          intensity: -50,
+          unselectedDepth: NeumorphicTheme.embossDepth(context),
+        ),
+        child: Center(
+          child: Text(
+            DateFormat('dd').format(cellDetails.date),
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      );
+    }
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          child: Text(DateFormat('dd').format(cellDetails.date)),
+        ),
+      ],
+    );
+  }
 
   void _addResourceDetails() {
     _nameCollection.add('역삼청소년수련관 수영장');

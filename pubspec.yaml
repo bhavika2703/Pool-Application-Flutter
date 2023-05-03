@@ -73,6 +73,7 @@ dependencies:
   fluttertoast: ^8.2.1
   syncfusion_flutter_calendar: ^21.1.41
   syncfusion_localizations: ^21.2.3
+  syncfusion_flutter_datepicker: 21.1.41
 
 dev_dependencies:
   flutter_test:
