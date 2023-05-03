@@ -1,7 +1,8 @@
 import 'dart:math';
 
 import 'package:boilerplate/constants/text_style.dart';
-import 'package:flutter/material.dart';
+import 'package:boilerplate/utils/device/device_utils.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class ResourceViewBuilder extends StatefulWidget {
@@ -35,15 +36,43 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return SfCalendar(
-      view: CalendarView.timelineDay,
-      showDatePickerButton: true,
-      allowedViews: _allowedViews,
-      dataSource: _events,
-      resourceViewSettings: const ResourceViewSettings(
-        size: 150,
-      ),
-      resourceViewHeaderBuilder: resourceBuilder,
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('자유수영 시간표', style: Styles.body1TextStyle()),
+            Neumorphic(
+              padding: EdgeInsets.all(2),
+              child: NeumorphicButton(
+                  padding: EdgeInsets.all(4),
+                  style: NeumorphicStyle(),
+                  child: Row(
+                    children: [
+                      Text('03/12 (오늘)', style: Styles.cap2SemiBoldTextStyle()),
+                      Icon(Icons.arrow_drop_down, color: Color(0xff6D7984)),
+                    ],
+                  )),
+            ),
+          ],
+        ),
+        SfCalendar(
+          headerHeight: 0,
+          view: CalendarView.timelineDay,
+          cellEndPadding: 0,
+          showDatePickerButton: false,
+          allowedViews: _allowedViews,
+          dataSource: _events,
+          allowAppointmentResize: true,
+          resourceViewSettings: ResourceViewSettings(
+            size: DeviceUtils.getDeviceWidth(context) / 2.5,
+            visibleResourceCount: 3,
+            displayNameTextStyle: TextStyle(color: Colors.white),
+            showAvatar: false,
+          ),
+          resourceViewHeaderBuilder: resourceBuilder,
+        ),
+      ],
     );
   }
 
@@ -85,6 +114,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
             subject: '',
             startTimeZone: '',
             endTimeZone: '',
+            color: Color(0xff0BA5EC),
             resourceIds: employeeIds),
       );
     }
@@ -129,25 +159,29 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
 
   Widget resourceBuilder(
       BuildContext context, ResourceViewHeaderDetails details) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Center(
-          child: Text(
+    return Container(
+      padding: EdgeInsets.all(6),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
             details.resource.displayName,
             style: Styles.cap2SemiBoldTextStyle(),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
           ),
-        ),
-        Row(
-          children: [
-            Icon(Icons.access_time),
-            Text(getTimeView(details)),
-          ],
-        ),
-      ],
+          Row(
+            children: [
+              Icon(Icons.access_time, size: 16, color: Color(0xff6D7984)),
+              SizedBox(
+                width: 2,
+              ),
+              Text(getTimeView(details),
+                  style: Styles.caption3MediumTextStyle()),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -180,19 +214,19 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
     if (i == '1') {
       return '08:00-16:00';
     } else if (i == '2') {
-      return '08:00-16:00';
+      return '05:00-10:30';
     } else if (i == '3') {
-      return '08:00-16:00';
+      return '08:00-18:00';
     } else if (i == '4') {
-      return '08:00-16:00';
+      return '08:00-15:00';
     } else if (i == '5') {
-      return '08:00-16:00';
+      return '08:00-14:00';
     } else if (i == '6') {
-      return '08:00-16:00';
+      return '08:00-15:00';
     } else if (i == '7') {
-      return '08:00-16:00';
+      return '08:00-19:00';
     } else if (i == '8') {
-      return '08:00-16:00';
+      return '08:00-14:00';
     } else if (i == '9') {
       return '08:00-16:00';
     }

@@ -16,13 +16,39 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    /* SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      showModalBottomSheet<void>(
+        context: context,
+        enableDrag: true,
+        useSafeArea: true,
+        useRootNavigator: true,
+        isScrollControlled: true,
+        isDismissible: false,
+        builder: (BuildContext context) {
+          return buildBottomSheet(context);
+          //Your builder code
+        },
+      );
+    });*/
     return Scaffold(
       body: _buildBody(context),
-      bottomSheet: Container(
-        height: 600,
-        child: ResourceViewBuilder(),
-      ),
+      bottomSheet: buildBottomSheet(context),
       bottomNavigationBar: BottomNavigation(),
+    );
+  }
+
+  Container buildBottomSheet(BuildContext context) {
+    return Container(
+      height: DeviceUtils.getDeviceHeight(context) / 2,
+      padding: EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
+      child: ResourceViewBuilder(),
     );
   }
 
@@ -32,9 +58,17 @@ class _HomeScreenState extends State<HomeScreen> {
       children: <Widget>[
         Image.asset(Assets.homeMapImg,
             fit: BoxFit.fill, width: double.infinity),
+        Positioned(
+            top: DeviceUtils.getDeviceHeight(context) / 3,
+            left: DeviceUtils.getDeviceWidth(context) / 2.1,
+            child: Image.asset(
+              Assets.mapLocationIconImg,
+              height: 28,
+              width: 28,
+            )),
         searchView(),
         Positioned(
-          top: DeviceUtils.getDeviceHeight(context) / 2,
+          top: DeviceUtils.getDeviceHeight(context) / 2.4,
           left: 8,
           child: RoundedButtonWidget(
             onPressed: () {},
