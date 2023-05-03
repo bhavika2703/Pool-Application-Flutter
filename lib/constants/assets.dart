@@ -23,4 +23,25 @@ class Assets {
   //privacy policy screen
 
   static const String arrowIconImg = "assets/images/arrow.png";
+
+  //home screen
+  static const String homeMapImg = "assets/images/home_map.png";
+
+  static const String searchIconImg = "assets/images/search_icon_img.png";
+
+  static const String sentIconImg = "assets/images/sent_icon_img.png";
+
+  static const String mapLocationIconImg =
+      "assets/images/map_location_icon.png";
+
+  //bottom navigation icon
+
+  static const String homeNavigationIconImg =
+      "assets/images/home_navigation_icon.png";
+
+  static const String messageNavigationIconImg =
+      "assets/images/message_navigation_icon.png";
+
+  static const String personNavigationIconImg =
+      "assets/images/person_navigation_icon.png";
 }

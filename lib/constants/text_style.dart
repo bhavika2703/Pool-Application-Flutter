@@ -57,4 +57,11 @@ class Styles {
         color: AppColors.checkButtonActiveColor,
         fontSize: 12,
       );
+
+  static TextStyle caption3MediumTextStyle() => TextStyle(
+        fontFamily: FontFamily.pretenDard,
+        fontWeight: FontWeight.w500,
+        color: AppColors.checkButtonActiveColor,
+        fontSize: 11,
+      );
 }
