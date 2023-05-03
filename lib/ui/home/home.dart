@@ -3,6 +3,7 @@ import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/ui/bottom_navigation.dart';
 import 'package:boilerplate/ui/home/time_table_view.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -13,6 +14,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,28 +89,39 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Neumorphic searchView() {
-    return Neumorphic(
-      margin: EdgeInsets.only(left: 8, right: 8, top: 50, bottom: 4),
-      style: NeumorphicStyle(
-          depth: NeumorphicTheme.embossDepth(context),
-          boxShape: NeumorphicBoxShape.stadium()),
-      child: TextField(
-        controller: searchController,
-        cursorColor: Colors.black,
-        decoration: InputDecoration(
-          hintText: '검색해보세요',
-          hintStyle: Styles.body2MediumTextStyle(),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Image.asset(Assets.searchIconImg, height: 7, width: 7),
+  Widget searchView() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(Routes.searchView);
+      },
+      child: Neumorphic(
+        margin: EdgeInsets.only(left: 8, right: 8, top: 50, bottom: 4),
+        style: NeumorphicStyle(
+            depth: NeumorphicTheme.embossDepth(context),
+            boxShape: NeumorphicBoxShape.stadium()),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(Routes.searchView);
+          },
+          child: TextField(
+            controller: searchController,
+            cursorColor: Colors.black,
+            enabled: false,
+            decoration: InputDecoration(
+              hintText: '검색해보세요',
+              hintStyle: Styles.body2MediumTextStyle(),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Image.asset(Assets.searchIconImg, height: 7, width: 7),
+              ),
+              errorBorder: InputBorder.none,
+              border: InputBorder.none,
+              focusedErrorBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+            ),
           ),
-          errorBorder: InputBorder.none,
-          border: InputBorder.none,
-          focusedErrorBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
         ),
       ),
     );

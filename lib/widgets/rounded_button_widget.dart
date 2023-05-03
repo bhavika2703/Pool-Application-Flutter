@@ -6,6 +6,7 @@ class RoundedButtonWidget extends StatefulWidget {
   final Color textColor;
   final VoidCallback onPressed;
   final bool isLoginScreen;
+  final double? size;
   final Widget? buttonChildView;
 
   const RoundedButtonWidget({
@@ -13,6 +14,7 @@ class RoundedButtonWidget extends StatefulWidget {
     this.buttonIcon,
     this.buttonColor,
     this.buttonChildView,
+    this.size,
     this.textColor = Colors.white,
     this.isLoginScreen = false,
     required this.onPressed,
@@ -41,7 +43,7 @@ class _RoundedButtonWidgetState extends State<RoundedButtonWidget> {
   Icon buildBackIcon(BuildContext context) {
     return Icon(
       widget.buttonIcon,
-      size: 20,
+      size: widget.size ?? 20,
       color: NeumorphicTheme.isUsingDark(context)
           ? Colors.white70
           : const Color.fromRGBO(74, 82, 92, 1),
