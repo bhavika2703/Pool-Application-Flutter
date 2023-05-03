@@ -7,7 +7,6 @@ import 'package:boilerplate/stores/post/post_store.dart';
 import 'package:boilerplate/stores/theme/theme_store.dart';
 import 'package:boilerplate/stores/user/user_store.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
-import 'package:boilerplate/utils/locale/app_localization.dart';
 import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -41,13 +40,13 @@ class MyApp extends StatelessWidget {
                 ? AppThemeData.darkThemeData
                 : AppThemeData.lightThemeData,
             routes: Routes.routes,
-            locale: Locale(_languageStore.locale),
-            supportedLocales: _languageStore.supportedLanguages
-                .map((language) => Locale(language.locale!, language.code))
-                .toList(),
+            locale: Locale('ko'),
+            supportedLocales: [
+              const Locale('ko'),
+              const Locale('hi'),
+              const Locale('en'),
+            ],
             localizationsDelegates: [
-              // A class which loads the translations from JSON files
-              AppLocalizations.delegate,
               // Built-in localization of basic text for Material widgets
               GlobalMaterialLocalizations.delegate,
               // Built-in localization for text direction LTR/RTL

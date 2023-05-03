@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
+import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -49,6 +50,9 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
               padding: EdgeInsets.all(2),
               margin: EdgeInsets.only(top: 6),
               child: NeumorphicButton(
+                  onPressed: () {
+                    bottomSheetView(context);
+                  },
                   padding: EdgeInsets.all(4),
                   style: NeumorphicStyle(),
                   child: Row(
@@ -98,6 +102,69 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
       ],
     );
   }
+
+  void bottomSheetView(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.0),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          margin: EdgeInsets.only(top: 8, left: 10, right: 10, bottom: 1),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10, right: 4, left: 4),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(
+                        child: Text(
+                      '날짜 선택',
+                      style: Styles.body1TextStyle(),
+                      textAlign: TextAlign.center,
+                    )),
+                    RoundedButtonWidget(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      buttonIcon: Icons.close_rounded,
+                      buttonColor: Colors.grey.shade700,
+                    )
+                  ],
+                ),
+              ),
+              Flexible(
+                child: SfCalendar(
+                  view: CalendarView.month,
+
+                  cellBorderColor: Colors.transparent,
+                  showDatePickerButton: false,
+                  monthViewSettings: MonthViewSettings(),
+                  headerDateFormat: 'yyyy. ' 'MM',
+                  /* monthCellBuilder: (context, details) {
+                    return monthCellBuilder(context, details);
+                  },*/
+                  viewHeaderStyle: ViewHeaderStyle(),
+                  showCurrentTimeIndicator: true,
+                  //  monthCellBuilder:monthCellBuilder ,
+                  headerStyle: CalendarHeaderStyle(
+                      textAlign: TextAlign.center,
+                      textStyle: Styles.heading2TextStyle()),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  monthCellBuilder(BuildContext context) {}
 
   void _addResourceDetails() {
     _nameCollection.add('역삼청소년수련관 수영장');
