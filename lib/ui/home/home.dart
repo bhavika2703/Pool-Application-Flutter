@@ -1,6 +1,7 @@
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/ui/bottom_navigation.dart';
+import 'package:boilerplate/ui/home/time_table_view.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -17,7 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildBody(context),
-      bottomSheet: Container(height: 600),
+      bottomSheet: Container(
+        height: 600,
+        child: ResourceViewBuilder(),
+      ),
       bottomNavigationBar: BottomNavigation(),
     );
   }
