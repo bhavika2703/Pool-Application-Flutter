@@ -28,63 +28,66 @@ class _JoinMemberShipState extends State<JoinMemberShip> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          margin: EdgeInsets.only(top: 12, right: 8, left: 8),
-          child: Column(
-            children: [
-              CustomAppBar(
-                title: '회원가입',
-                onPressed: () {
-                  Navigator.of(context).popAndPushNamed(Routes.login);
-                },
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              CommonTextField(
-                controller: emailController,
-                label: '이메일 주소',
-                hint: 'abc@gmail.com',
-                onChanged: (value) {},
-              ),
-              CommonTextField(
-                controller: passwordController,
-                label: '비밀번호',
-                hint: '영문 대소문자,숫자,특수문자 포함 8자리 이상',
-                onChanged: (value) {},
-              ),
-              CommonTextField(
-                controller: verifyPasswordController,
-                label: '비밀번호 확인',
-                hint: '비밀번호 재 입력',
-                onChanged: (value) {},
-              ),
-              CommonTextField(
-                controller: nameController,
-                label: '이름',
-                hint: '홍길동',
-                onChanged: (value) {},
-              ),
-              CommonTextField(
-                controller: birthDateController,
-                label: '생년월일',
-                hint: '921105',
-                onChanged: (value) {},
-              ),
-              genderView(
-                onChanged: (value) {},
-                context: context,
-              ),
-              SizedBox(height: 18),
-              AppThemeButton(
-                text: '확인',
-                onTap: () {
-                  Navigator.of(context).pushReplacementNamed(
-                    Routes.agreeTermsConditions,
-                  );
-                },
-              ),
-            ],
+        resizeToAvoidBottomInset: true,
+        body: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.only(top: 12, right: 8, left: 8),
+            child: Column(
+              children: [
+                CustomAppBar(
+                  title: '회원가입',
+                  onPressed: () {
+                    Navigator.of(context).popAndPushNamed(Routes.login);
+                  },
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                CommonTextField(
+                  controller: emailController,
+                  label: '이메일 주소',
+                  hint: 'abc@gmail.com',
+                  onChanged: (value) {},
+                ),
+                CommonTextField(
+                  controller: passwordController,
+                  label: '비밀번호',
+                  hint: '영문 대소문자,숫자,특수문자 포함 8자리 이상',
+                  onChanged: (value) {},
+                ),
+                CommonTextField(
+                  controller: verifyPasswordController,
+                  label: '비밀번호 확인',
+                  hint: '비밀번호 재 입력',
+                  onChanged: (value) {},
+                ),
+                CommonTextField(
+                  controller: nameController,
+                  label: '이름',
+                  hint: '홍길동',
+                  onChanged: (value) {},
+                ),
+                CommonTextField(
+                  controller: birthDateController,
+                  label: '생년월일',
+                  hint: '921105',
+                  onChanged: (value) {},
+                ),
+                genderView(
+                  onChanged: (value) {},
+                  context: context,
+                ),
+                SizedBox(height: 18),
+                AppThemeButton(
+                  text: '확인',
+                  onTap: () {
+                    Navigator.of(context).pushNamed(
+                      Routes.agreeTermsConditions,
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

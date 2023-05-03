@@ -27,7 +27,9 @@ class _TermsConditionsState extends State<TermsConditions> {
       margin: EdgeInsets.only(top: 12, right: 8, left: 8, bottom: 12),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         RoundedButtonWidget(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           buttonIcon: Icons.arrow_back_ios_new_sharp,
         ),
         Container(

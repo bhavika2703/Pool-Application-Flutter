@@ -24,7 +24,12 @@ class _PasswordResetState extends State<PasswordReset> {
           margin: EdgeInsets.only(top: 12, right: 8, left: 8, bottom: 12),
           child: Column(
             children: [
-              CustomAppBar(onPressed: () {}, title: '비밀번호 재설정'),
+              CustomAppBar(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                title: '비밀번호 재설정',
+              ),
               _buildInfoView(),
               CommonTextField(
                 label: '새 비밀번호',
