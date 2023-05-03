@@ -2,7 +2,9 @@ import 'package:boilerplate/ui/findEmail/find_email.dart';
 import 'package:boilerplate/ui/findEmail/find_email_result.dart';
 import 'package:boilerplate/ui/findPassword/find_password.dart';
 import 'package:boilerplate/ui/findPassword/password_reset.dart';
+import 'package:boilerplate/ui/home/full_screen_time_table_view.dart';
 import 'package:boilerplate/ui/home/home.dart';
+import 'package:boilerplate/ui/home/time_table_view.dart';
 import 'package:boilerplate/ui/login/join_membership.dart';
 import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/login/login_with_email.dart';
@@ -24,6 +26,10 @@ class Routes {
   static const String loginWithEmail = '/loginWithEmail';
   static const String findEmail = '/findEmail';
   static const String findEmailResults = '/FindEmailResults';
+  static const String calenderBottomResourceView =
+      '/calenderBottomResourceView';
+  static const String calenderFullScreenResourceView =
+      '/calenderFullScreenResourceView';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -36,5 +42,10 @@ class Routes {
     loginWithEmail: (BuildContext context) => LoginWithEmail(),
     findEmail: (BuildContext context) => FindEmail(),
     findEmailResults: (BuildContext context) => FindEmailResults(),
+    calenderBottomResourceView: (BuildContext context) => ResourceViewBuilder(
+          isFullScreenView: false,
+        ),
+    calenderFullScreenResourceView: (BuildContext context) =>
+        FullScreenTimeTableView(),
   };
 }

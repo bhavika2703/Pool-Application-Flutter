@@ -5,8 +5,11 @@ import 'package:boilerplate/utils/device/device_utils.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+// ignore: must_be_immutable
 class ResourceViewBuilder extends StatefulWidget {
-  const ResourceViewBuilder({Key? key}) : super(key: key);
+  bool isFullScreenView = false;
+
+  ResourceViewBuilder({required this.isFullScreenView});
 
   @override
   ResourceViewBuilderState createState() => ResourceViewBuilderState();
@@ -44,6 +47,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
             Text('자유수영 시간표', style: Styles.body1TextStyle()),
             Neumorphic(
               padding: EdgeInsets.all(2),
+              margin: EdgeInsets.only(top: 6),
               child: NeumorphicButton(
                   padding: EdgeInsets.all(4),
                   style: NeumorphicStyle(),
@@ -56,38 +60,40 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
             ),
           ],
         ),
-        SfCalendar(
-          headerHeight: 0,
-          view: CalendarView.timelineDay,
-          cellEndPadding: 0,
-          showDatePickerButton: false,
-          allowedViews: _allowedViews,
-          dataSource: _events,
-          allowAppointmentResize: false,
-          resourceViewSettings: ResourceViewSettings(
-            size: DeviceUtils.getDeviceWidth(context) / 2.5,
-            visibleResourceCount: 3,
-            showAvatar: false,
+        Expanded(
+          child: SfCalendar(
+            headerHeight: 0,
+            view: CalendarView.timelineDay,
+            cellEndPadding: 0,
+            showDatePickerButton: false,
+            allowedViews: _allowedViews,
+            dataSource: _events,
+            allowAppointmentResize: false,
+            resourceViewSettings: ResourceViewSettings(
+              size: DeviceUtils.getDeviceWidth(context) / 2.5,
+              visibleResourceCount: widget.isFullScreenView ? 6 : 2,
+            ),
+            timeSlotViewSettings: TimeSlotViewSettings(
+              timeInterval: Duration(minutes: 60),
+              timeFormat: 'h',
+              dateFormat: 'dd/',
+              dayFormat: 'yy',
+              timeIntervalHeight: 10,
+              timeIntervalWidth: 40,
+              timelineAppointmentHeight: widget.isFullScreenView ? 40 : 24,
+            ),
+            cellBorderColor: Colors.grey.shade100,
+            showCurrentTimeIndicator: true,
+            appointmentBuilder: (context, calendarAppointmentDetails) {
+              return Container(
+                decoration: BoxDecoration(
+                  color: Color(0xff0BA5EC),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              );
+            },
+            resourceViewHeaderBuilder: resourceBuilder,
           ),
-          timeSlotViewSettings: TimeSlotViewSettings(
-            timeInterval: Duration(minutes: 60),
-            timeFormat: 'h',
-            dateFormat: 'dd/',
-            dayFormat: 'yy',
-            timeIntervalHeight: 10,
-            timeIntervalWidth: 40,
-          ),
-          cellBorderColor: Colors.grey.shade100,
-          showCurrentTimeIndicator: true,
-          appointmentBuilder: (context, calendarAppointmentDetails) {
-            return Container(
-              decoration: BoxDecoration(
-                color: Color(0xff0BA5EC),
-                borderRadius: BorderRadius.circular(12),
-              ),
-            );
-          },
-          resourceViewHeaderBuilder: resourceBuilder,
         ),
       ],
     );
@@ -181,6 +187,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             details.resource.displayName,
@@ -189,6 +196,8 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
           ),
           SizedBox(height: 1),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(Icons.access_time, size: 16, color: Color(0xff6D7984)),
               SizedBox(

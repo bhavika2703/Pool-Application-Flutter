@@ -9,6 +9,10 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
+  ValueNotifier<bool> isButton1OnTap = ValueNotifier<bool>(true);
+  ValueNotifier<bool> isButton2OnTap = ValueNotifier<bool>(false);
+  ValueNotifier<bool> isButton3OnTap = ValueNotifier<bool>(false);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,45 +37,80 @@ class _BottomNavigationState extends State<BottomNavigation> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          NeumorphicButton(
-            onPressed: () {},
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              surfaceIntensity: 0.40,
-              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-              depth: 8,
-              lightSource: LightSource.topLeft,
-            ),
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(Assets.homeNavigationIconImg,
-                height: 27, width: 27),
+          ValueListenableBuilder(
+            valueListenable: isButton1OnTap,
+            builder: (context, bool value, child) {
+              return NeumorphicButton(
+                style: buttonStyleView(value, context),
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  Assets.homeNavigationIconImg,
+                  height: 27,
+                  width: 27,
+                ),
+                onPressed: () {
+                  isButton1OnTap.value = true;
+                  isButton2OnTap.value = false;
+                  isButton3OnTap.value = false;
+                },
+              );
+            },
           ),
-          NeumorphicButton(
-            onPressed: () {},
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-              depth: 8,
-              lightSource: LightSource.topLeft,
-            ),
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(Assets.messageNavigationIconImg,
-                height: 27, width: 27),
+          ValueListenableBuilder(
+            valueListenable: isButton2OnTap,
+            builder: (context, bool value, child) {
+              return NeumorphicButton(
+                onPressed: () {
+                  isButton1OnTap.value = false;
+                  isButton3OnTap.value = false;
+                  isButton2OnTap.value = true;
+                },
+                style: buttonStyleView(value, context),
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  Assets.messageNavigationIconImg,
+                  height: 27,
+                  width: 27,
+                ),
+              );
+            },
           ),
-          NeumorphicButton(
-            onPressed: () {},
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-              depth: 8,
-              lightSource: LightSource.topLeft,
-            ),
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(Assets.personNavigationIconImg,
-                height: 27, width: 27),
+          ValueListenableBuilder(
+            valueListenable: isButton3OnTap,
+            builder: (context, bool value, child) {
+              return NeumorphicButton(
+                onPressed: () {
+                  isButton1OnTap.value = false;
+                  isButton2OnTap.value = false;
+                  isButton3OnTap.value = true;
+                },
+                style: buttonStyleView(value, context),
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  Assets.personNavigationIconImg,
+                  height: 27,
+                  width: 27,
+                ),
+              );
+            },
           ),
         ],
       ),
     );
+  }
+
+  NeumorphicStyle buttonStyleView(bool buttonOnTapValue, BuildContext context) {
+    return buttonOnTapValue
+        ? NeumorphicStyle(
+            color: Colors.white,
+            depth: NeumorphicTheme.embossDepth(context),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)))
+        : NeumorphicStyle(
+            shape: NeumorphicShape.flat,
+            color: Colors.white,
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+            depth: 4,
+            lightSource: LightSource.topLeft,
+          );
   }
 }

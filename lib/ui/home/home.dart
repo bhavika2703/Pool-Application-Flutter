@@ -3,6 +3,7 @@ import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/ui/bottom_navigation.dart';
 import 'package:boilerplate/ui/home/time_table_view.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -13,23 +14,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
+  ValueNotifier<bool> isFullScreenView = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
-    /* SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-      showModalBottomSheet<void>(
-        context: context,
-        enableDrag: true,
-        useSafeArea: true,
-        useRootNavigator: true,
-        isScrollControlled: true,
-        isDismissible: false,
-        builder: (BuildContext context) {
-          return buildBottomSheet(context);
-          //Your builder code
-        },
-      );
-    });*/
     return Scaffold(
       body: _buildBody(context),
       bottomSheet: buildBottomSheet(context),
@@ -37,18 +25,31 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Container buildBottomSheet(BuildContext context) {
-    return Container(
-      height: DeviceUtils.getDeviceHeight(context) / 2.3,
-      padding: EdgeInsets.only(top: 12, left: 12, right: 12, bottom: 0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
-      ),
-      child: ResourceViewBuilder(),
+  Widget buildBottomSheet(BuildContext context) {
+    return ValueListenableBuilder<bool>(
+      valueListenable: isFullScreenView,
+      builder: (context, fullScreenValue, child) {
+        return GestureDetector(
+          onTap: () {
+            isFullScreenView.value = true;
+            Navigator.of(context).pushReplacementNamed(
+              Routes.calenderFullScreenResourceView,
+            );
+          },
+          child: Container(
+            height: DeviceUtils.getDeviceHeight(context) / 3,
+            padding: EdgeInsets.only(top: 12, left: 12, right: 12, bottom: 0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
+            child: ResourceViewBuilder(isFullScreenView: false),
+          ),
+        );
+      },
     );
   }
 
@@ -68,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
         searchView(),
         Positioned(
-          top: DeviceUtils.getDeviceHeight(context) / 2.5,
+          top: DeviceUtils.getDeviceHeight(context) / 2,
           left: 8,
           child: RoundedButtonWidget(
             onPressed: () {},
@@ -85,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Neumorphic searchView() {
     return Neumorphic(
-      margin: EdgeInsets.only(left: 8, right: 8, top: 50, bottom: 4),
+      margin: EdgeInsets.only(left: 14, right: 14, top: 50, bottom: 4),
       style: NeumorphicStyle(
           depth: NeumorphicTheme.embossDepth(context),
           boxShape: NeumorphicBoxShape.stadium()),
