@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
-import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:intl/intl.dart';
@@ -125,7 +124,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(bottom: 10, right: 4, left: 4),
+                padding: const EdgeInsets.only(bottom: 20, right: 4, left: 4),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
@@ -136,52 +135,19 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
                       style: Styles.body1TextStyle(),
                       textAlign: TextAlign.center,
                     )),
-                    RoundedButtonWidget(
+                    NeumorphicButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      buttonIcon: Icons.close_rounded,
-                      buttonColor: Colors.grey.shade700,
+                      style: roundedButtonStyle(context),
+                      padding: const EdgeInsets.all(14),
+                      child:
+                          Icon(Icons.close, color: Color(0xff6D7984), size: 20),
                     )
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(bottom: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height: cellWidth,
-                      width: cellWidth + 10,
-                    ),
-                    RoundedButtonWidget(
-                      onPressed: () {
-                        _controller.backward!();
-                      },
-                      buttonIcon: Icons.arrow_back_ios_rounded,
-                    ),
-                    Container(
-                      height: cellWidth,
-                      width: cellWidth * 4.5,
-                      child: Text('2023. 04',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 25, color: Colors.black, height: 1.4)),
-                    ),
-                    RoundedButtonWidget(
-                      onPressed: () {
-                        _controller.forward!();
-                      },
-                      buttonIcon: Icons.arrow_forward_ios_rounded,
-                    ),
-                    Container(
-                      height: cellWidth,
-                      width: cellWidth,
-                    )
-                  ],
-                ),
-              ),
+              calenderBottomSheetHeaderView(cellWidth, context),
               Flexible(
                 child: SfDateRangePicker(
                   controller: _controller,
@@ -206,6 +172,57 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
         );
       },
     );
+  }
+
+  Container calenderBottomSheetHeaderView(
+      double cellWidth, BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            height: cellWidth,
+            width: cellWidth + 10,
+          ),
+          NeumorphicButton(
+            onPressed: () {
+              _controller.backward!();
+            },
+            style: roundedButtonStyle(context),
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.arrow_back_ios_new_rounded,
+                color: Color(0xff6D7984), size: 17),
+          ),
+          Container(
+            height: cellWidth,
+            width: cellWidth * 4,
+            child: Text('2023. 04',
+                textAlign: TextAlign.center, style: Styles.heading2TextStyle()),
+          ),
+          NeumorphicButton(
+            onPressed: () {
+              _controller.forward!();
+            },
+            style: roundedButtonStyle(context),
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.arrow_forward_ios_rounded,
+                color: Color(0xff6D7984), size: 17),
+          ),
+          Container(
+            height: cellWidth,
+            width: cellWidth,
+          )
+        ],
+      ),
+    );
+  }
+
+  NeumorphicStyle roundedButtonStyle(BuildContext context) {
+    return NeumorphicStyle(
+        color: Colors.white,
+        depth: NeumorphicTheme.depth(context),
+        boxShape: NeumorphicBoxShape.circle());
   }
 
   void viewChanged(DateRangePickerViewChangedArgs args) {
