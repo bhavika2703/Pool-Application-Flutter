@@ -23,4 +23,7 @@ class Assets {
   //privacy policy screen
 
   static const String arrowIconImg = "assets/images/arrow.png";
+
+  //home screen
+  static const String homeMapImg = "assets/images/home_map.png";
 }
