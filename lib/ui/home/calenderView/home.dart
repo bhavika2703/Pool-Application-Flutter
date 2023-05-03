@@ -62,8 +62,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Stack(
       fit: StackFit.loose,
       children: <Widget>[
-        Image.asset(Assets.homeMapImg,
-            fit: BoxFit.fill, width: double.infinity),
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(Routes.poolDetailView);
+          },
+          child: Image.asset(Assets.homeMapImg,
+              fit: BoxFit.fill, width: double.infinity),
+        ),
         Positioned(
             top: DeviceUtils.getDeviceHeight(context) / 3,
             left: DeviceUtils.getDeviceWidth(context) / 2.1,

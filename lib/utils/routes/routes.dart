@@ -4,8 +4,9 @@ import 'package:boilerplate/ui/findPassword/find_password.dart';
 import 'package:boilerplate/ui/findPassword/password_reset.dart';
 import 'package:boilerplate/ui/home/calenderView/full_screen_time_table_view.dart';
 import 'package:boilerplate/ui/home/calenderView/home.dart';
-import 'package:boilerplate/ui/home/time_table_view.dart';
+import 'package:boilerplate/ui/home/detalis/pool_detalis.dart';
 import 'package:boilerplate/ui/home/search_file.dart';
+import 'package:boilerplate/ui/home/time_table_view.dart';
 import 'package:boilerplate/ui/login/join_membership.dart';
 import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/login/login_with_email.dart';
@@ -32,6 +33,7 @@ class Routes {
   static const String calenderFullScreenResourceView =
       '/calenderFullScreenResourceView';
   static const String searchView = '/SearchView';
+  static const String poolDetailView = '/poolDetailView';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -50,5 +52,6 @@ class Routes {
     calenderFullScreenResourceView: (BuildContext context) =>
         FullScreenTimeTableView(),
     searchView: (BuildContext context) => SearchView(),
+    poolDetailView: (BuildContext context) => PoolDetalis(),
   };
 }
