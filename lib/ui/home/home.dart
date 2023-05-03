@@ -39,8 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Container buildBottomSheet(BuildContext context) {
     return Container(
-      height: DeviceUtils.getDeviceHeight(context) / 2,
-      padding: EdgeInsets.all(12),
+      height: DeviceUtils.getDeviceHeight(context) / 2.3,
+      padding: EdgeInsets.only(top: 12, left: 12, right: 12, bottom: 0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
         searchView(),
         Positioned(
-          top: DeviceUtils.getDeviceHeight(context) / 2.4,
+          top: DeviceUtils.getDeviceHeight(context) / 2.5,
           left: 8,
           child: RoundedButtonWidget(
             onPressed: () {},

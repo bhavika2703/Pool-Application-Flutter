@@ -63,13 +63,30 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
           showDatePickerButton: false,
           allowedViews: _allowedViews,
           dataSource: _events,
-          allowAppointmentResize: true,
+          allowAppointmentResize: false,
           resourceViewSettings: ResourceViewSettings(
             size: DeviceUtils.getDeviceWidth(context) / 2.5,
             visibleResourceCount: 3,
-            displayNameTextStyle: TextStyle(color: Colors.white),
             showAvatar: false,
           ),
+          timeSlotViewSettings: TimeSlotViewSettings(
+            timeInterval: Duration(minutes: 60),
+            timeFormat: 'h',
+            dateFormat: 'dd/',
+            dayFormat: 'yy',
+            timeIntervalHeight: 10,
+            timeIntervalWidth: 40,
+          ),
+          cellBorderColor: Colors.grey.shade100,
+          showCurrentTimeIndicator: true,
+          appointmentBuilder: (context, calendarAppointmentDetails) {
+            return Container(
+              decoration: BoxDecoration(
+                color: Color(0xff0BA5EC),
+                borderRadius: BorderRadius.circular(12),
+              ),
+            );
+          },
           resourceViewHeaderBuilder: resourceBuilder,
         ),
       ],
@@ -162,7 +179,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
     return Container(
       padding: EdgeInsets.all(6),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -170,6 +187,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
             style: Styles.cap2SemiBoldTextStyle(),
             textAlign: TextAlign.start,
           ),
+          SizedBox(height: 1),
           Row(
             children: [
               Icon(Icons.access_time, size: 16, color: Color(0xff6D7984)),
@@ -180,7 +198,24 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
                   style: Styles.caption3MediumTextStyle()),
             ],
           ),
+          buildNeumorphicLineWidget(context),
         ],
+      ),
+    );
+  }
+
+  Widget buildNeumorphicLineWidget(
+    BuildContext context,
+  ) {
+    return Neumorphic(
+      margin: EdgeInsets.only(top: 8, bottom: 8),
+      style: NeumorphicStyle(
+        depth: NeumorphicTheme.embossDepth(context),
+      ),
+      child: Container(
+        height: 1,
+        width: DeviceUtils.getDeviceWidth(context),
+        color: Color(0xffECF0F3),
       ),
     );
   }
