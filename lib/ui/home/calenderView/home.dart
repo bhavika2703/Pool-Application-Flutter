@@ -15,6 +15,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
   ValueNotifier<bool> isFullScreenView = ValueNotifier<bool>(false);
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,28 +89,39 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Neumorphic searchView() {
-    return Neumorphic(
-      margin: EdgeInsets.only(left: 14, right: 14, top: 50, bottom: 4),
-      style: NeumorphicStyle(
-          depth: NeumorphicTheme.embossDepth(context),
-          boxShape: NeumorphicBoxShape.stadium()),
-      child: TextField(
-        controller: searchController,
-        cursorColor: Colors.black,
-        decoration: InputDecoration(
-          hintText: '검색해보세요',
-          hintStyle: Styles.body2MediumTextStyle(),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Image.asset(Assets.searchIconImg, height: 7, width: 7),
+  Widget searchView() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(Routes.searchView);
+      },
+      child: Neumorphic(
+        margin: EdgeInsets.only(left: 14, right: 14, top: 50, bottom: 4),
+        style: NeumorphicStyle(
+            depth: NeumorphicTheme.embossDepth(context),
+            boxShape: NeumorphicBoxShape.stadium()),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(Routes.searchView);
+          },
+          child: TextField(
+            controller: searchController,
+            cursorColor: Colors.black,
+            enabled: false,
+            decoration: InputDecoration(
+              hintText: '검색해보세요',
+              hintStyle: Styles.body2MediumTextStyle(),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Image.asset(Assets.searchIconImg, height: 7, width: 7),
+              ),
+              errorBorder: InputBorder.none,
+              border: InputBorder.none,
+              focusedErrorBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+            ),
           ),
-          errorBorder: InputBorder.none,
-          border: InputBorder.none,
-          focusedErrorBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
         ),
       ),
     );

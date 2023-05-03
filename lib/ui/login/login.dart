@@ -14,7 +14,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -71,7 +70,12 @@ class _LoginScreenState extends State<LoginScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        findIdPwdText(text: '아이디찾기'),
+        GestureDetector(
+          child: findIdPwdText(text: '아이디찾기'),
+          onTap: () {
+            Navigator.of(context).pushNamed(Routes.findEmail);
+          },
+        ),
         Neumorphic(
           margin: EdgeInsets.only(right: 6, left: 6),
           child: Container(
@@ -80,7 +84,12 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Color(0xffECF0F3),
           ),
         ),
-        findIdPwdText(text: '비밀번호 찾기'),
+        GestureDetector(
+          child: findIdPwdText(text: '비밀번호 찾기'),
+          onTap: () {
+            Navigator.of(context).pushNamed(Routes.findPassword);
+          },
+        ),
       ],
     );
   }

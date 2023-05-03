@@ -23,7 +23,9 @@ class _FindEmailResultsState extends State<FindEmailResults> {
             children: [
               CustomAppBar(
                 title: '회원가입',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
               Container(
                 margin: EdgeInsets.only(top: 45, left: 10, right: 10),

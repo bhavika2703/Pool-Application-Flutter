@@ -29,7 +29,9 @@ class _FindEmailState extends State<FindEmail> {
             children: [
               CustomAppBar(
                 title: '회원가입',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
               SizedBox(
                 height: 12,
@@ -65,7 +67,7 @@ class _FindEmailState extends State<FindEmail> {
                   child: AppThemeButton(
                     text: '확인',
                     onTap: () {
-                      Navigator.of(context).pushReplacementNamed(Routes.findEmailResults);
+                      Navigator.of(context).pushNamed(Routes.findEmailResults);
                     },
                   ),
                 ),
