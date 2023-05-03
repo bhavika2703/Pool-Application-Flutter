@@ -5,7 +5,6 @@ import 'package:boilerplate/ui/findPassword/password_reset.dart';
 import 'package:boilerplate/ui/home/calenderView/full_screen_time_table_view.dart';
 import 'package:boilerplate/ui/home/calenderView/home.dart';
 import 'package:boilerplate/ui/home/time_table_view.dart';
-import 'package:boilerplate/ui/home/home.dart';
 import 'package:boilerplate/ui/home/search_file.dart';
 import 'package:boilerplate/ui/login/join_membership.dart';
 import 'package:boilerplate/ui/login/login.dart';
