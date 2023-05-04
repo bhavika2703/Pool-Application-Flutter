@@ -19,7 +19,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.shade300,
+            color: Color(0xffB6C6D0),
             blurRadius: 10.0,
             spreadRadius: 4.0,
             offset: const Offset(
@@ -28,7 +28,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
           )
         ],
-        color: Colors.white,
+        color: Color(0xffECF0F3),
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20), topRight: Radius.circular(20)),
       ),
@@ -102,12 +102,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
   NeumorphicStyle buttonStyleView(bool buttonOnTapValue, BuildContext context) {
     return buttonOnTapValue
         ? NeumorphicStyle(
-            color: Colors.white,
+        color: Color(0xffECF0F3),
             depth: NeumorphicTheme.embossDepth(context),
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)))
         : NeumorphicStyle(
-            shape: NeumorphicShape.flat,
-            color: Colors.white,
+      shape: NeumorphicShape.flat,
+            color: Color(0xffECF0F3),
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
             depth: 4,
             lightSource: LightSource.topLeft,

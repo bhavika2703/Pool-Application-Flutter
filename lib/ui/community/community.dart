@@ -30,143 +30,163 @@ class _CommunityState extends State<Community> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            body: Container(
-              margin: EdgeInsets.only(top: 12, bottom: 12, left: 8, right: 8),
-              child: Column(
-                children: [
-                  buildHeaderView(),
-                  SizedBox(height: 16),
-                  SearchTextField(
-                    onChanged: (value) {},
-                    controller: searchController,
-                    hint: '검색해보세요',
-                    leadingIcon: Image.asset(Assets.searchIconImg,
-                        width: 15, height: 16),
-                  ),
-                  SizedBox(
-                    height: 18,
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: 2,
-                      itemBuilder: (context, index) {
-                        var profileImage = avtarImage[index];
-                        var profileTitle = avtarTitle[index];
-                        var profileSubTitle = avtarSubTitle[index];
-                        var message = listTitle[index];
-                        var subMessage = listSubTitle[index];
-                        return Container(
-                          padding: EdgeInsets.all(4),
-                          child: Neumorphic(
-                            style: NeumorphicStyle(/*color: Colors.white*/),
-                            child: Column(
+      body: Container(
+        margin: EdgeInsets.only(top: 12, bottom: 12, left: 8, right: 8),
+        child: Column(
+          children: [
+            buildHeaderView(),
+            SizedBox(height: 16),
+            SearchTextField(
+              onChanged: (value) {},
+              controller: searchController,
+              hint: '검색해보세요',
+              leadingIcon:
+                  Image.asset(Assets.searchIconImg, width: 15, height: 16),
+            ),
+            SizedBox(
+              height: 18,
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 2,
+                itemBuilder: (context, index) {
+                  var profileImage = avtarImage[index];
+                  var profileTitle = avtarTitle[index];
+                  var profileSubTitle = avtarSubTitle[index];
+                  var message = listTitle[index];
+                  var subMessage = listSubTitle[index];
+                  return Container(
+                    padding: EdgeInsets.all(4),
+                    child: Neumorphic(
+                      style: NeumorphicStyle(/*color: Colors.white*/),
+                      child: Column(
+                        children: [
+                          buildListTileProfileView(
+                              profileImage, profileTitle, profileSubTitle),
+                          ListTile(
+                            title: Container(
+                              child: Text(message,
+                                  style: Styles.body1TextStyle()
+                                      .copyWith(color: Color(0xff383E45))),
+                              margin: EdgeInsets.only(bottom: 14),
+                            ),
+                            subtitle: Column(
                               children: [
-                                buildListTileProfileView(profileImage,
-                                    profileTitle, profileSubTitle),
-                                ListTile(
-                                  title: Container(
-                                    child: Text(message,
-                                        style: Styles.body1TextStyle().copyWith(
-                                            color: Color(0xff383E45))),
-                                    margin: EdgeInsets.only(bottom: 14),
-                                  ),
-                                  subtitle: Column(
-                                    children: [
-                                      if (index == 1) ...[
-                                        Container(
-                                          child: ListView(
-                                            scrollDirection: Axis.horizontal,
-                                            children: [
-                                              Container(
-                                                child: Image.asset(Assets
-                                                    .communityListImg1IconImg),
-                                                width: 140,
-                                                margin:
-                                                    EdgeInsets.only(right: 8),
-                                              ),
-                                              Container(
-                                                child: Image.asset(Assets
-                                                    .communityListImg2IconImg),
-                                                width: 140,
-                                                margin:
-                                                    EdgeInsets.only(right: 8),
-                                              ),
-                                              Container(
-                                                child: Image.asset(Assets
-                                                    .communityListImg1IconImg),
-                                                width: 140,
-                                                margin:
-                                                    EdgeInsets.only(right: 8),
-                                              ),
-                                            ],
-                                          ),
-                                          height: 140,
-                                          margin: EdgeInsets.only(
-                                              top: 4, bottom: 14),
-                                        ),
-                                      ],
-                                      Text(
-                                        subMessage,
-                                        style: Styles.body2MediumTextStyle()
-                                            .copyWith(color: Color(0xff212529)),
-                                        maxLines: 2,
-                                        overflow: TextOverflow.visible,
-                                      ),
-                                    ],
-                                  ),
-                                  contentPadding: EdgeInsets.only(
-                                      top: 4, bottom: 8, left: 10, right: 10),
+                                if (index == 1) ...[
+                                  buildListImageView(),
+                                ],
+                                Text(
+                                  subMessage,
+                                  style: Styles.body2MediumTextStyle()
+                                      .copyWith(color: Color(0xff212529)),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.visible,
                                 ),
-                                Container(
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Image.asset(
-                                        Assets.communityCopyPostIconImg,
-                                        height: 15,
-                                        width: 14,
-                                      ),
-                                      SizedBox(width: 3),
-                                      Text('25',
-                                          style:
-                                              Styles.caption3MediumTextStyle()
-                                                  .copyWith(
-                                                      color:
-                                                          Color(0xff0BA5EC))),
-                                      SizedBox(width: 6),
-                                      Image.asset(
-                                        Assets.communityPostMessageIconImg,
-                                        height: 20,
-                                        width: 20,
-                                      ),
-                                      SizedBox(width: 2),
-                                      Text('39',
-                                          style:
-                                              Styles.caption3MediumTextStyle()),
-                                      Spacer(),
-                                      Text('2023.04.03',
-                                          style: Styles.cap2MediumTextStyle()
-                                              .copyWith(
-                                                  color: Color(0xff8195A0),
-                                                  fontSize: 12)),
-                                    ],
-                                  ),
-                                  margin: EdgeInsets.only(
-                                      bottom: 10, top: 8, left: 8, right: 8),
-                                )
                               ],
                             ),
+                            contentPadding: EdgeInsets.only(
+                                top: 4, bottom: 8, left: 10, right: 10),
                           ),
-                        );
-                      },
+                          Container(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  Assets.communityCopyPostIconImg,
+                                  height: 15,
+                                  width: 14,
+                                ),
+                                SizedBox(width: 3),
+                                Text('25',
+                                    style: Styles.caption3MediumTextStyle()
+                                        .copyWith(color: Color(0xff0BA5EC))),
+                                SizedBox(width: 6),
+                                Image.asset(
+                                  Assets.communityPostMessageIconImg,
+                                  height: 20,
+                                  width: 20,
+                                ),
+                                SizedBox(width: 2),
+                                Text('39',
+                                    style: Styles.caption3MediumTextStyle()),
+                                Spacer(),
+                                Text('2023.04.03',
+                                    style: Styles.cap2MediumTextStyle()
+                                        .copyWith(
+                                            color: Color(0xff8195A0),
+                                            fontSize: 12)),
+                              ],
+                            ),
+                            margin: EdgeInsets.only(
+                                bottom: 10, top: 8, left: 8, right: 8),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ),
-            bottomNavigationBar: BottomNavigation()));
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigation(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xff0BA5EC),
+        onPressed: () {},
+        child: Icon(Icons.edit, color: Colors.white, size: 27),
+      ),
+    ));
+  }
+
+  void bottomSheetView(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.0),
+        ),
+      ),
+      builder: (BuildContext context) {
+        final double width = MediaQuery.of(context).size.width;
+        final double cellWidth = width / 12;
+        return Container(
+          margin: EdgeInsets.only(top: 8, left: 10, right: 10, bottom: 1),
+          child: Column(
+            children: <Widget>[],
+          ),
+        );
+      },
+    );
+  }
+
+  Container buildListImageView() {
+    return Container(
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          Container(
+            child: Image.asset(Assets.communityListImg1IconImg),
+            width: 140,
+            margin: EdgeInsets.only(right: 8),
+          ),
+          Container(
+            child: Image.asset(Assets.communityListImg2IconImg),
+            width: 140,
+            margin: EdgeInsets.only(right: 8),
+          ),
+          Container(
+            child: Image.asset(Assets.communityListImg1IconImg),
+            width: 140,
+            margin: EdgeInsets.only(right: 8),
+          ),
+        ],
+      ),
+      height: 140,
+      margin: EdgeInsets.only(top: 4, bottom: 14),
+    );
   }
 
   ListTile buildListTileProfileView(
@@ -198,7 +218,9 @@ class _CommunityState extends State<Community> {
             textAlign: TextAlign.center),
         Spacer(),
         RoundedButtonWidget(
-          onPressed: () {},
+          onPressed: () {
+            bottomSheetView(context);
+          },
           isLoginScreen: true,
           buttonChildView: Image.asset(Assets.communityLocationIconImg,
               height: 16, width: 16),
