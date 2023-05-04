@@ -1,6 +1,7 @@
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/colors.dart';
 import 'package:boilerplate/constants/text_style.dart';
+import 'package:boilerplate/widgets/app_theme_button.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -127,7 +128,7 @@ class _PostViewState extends State<PostView> {
           child: CustomAppBar(
             title: '글쓰기',
             onPressed: () {
-              Navigator.pop(context);
+              showBottomSheet();
             },
           ),
         ),
@@ -145,6 +146,64 @@ class _PostViewState extends State<PostView> {
           },
         ),
       ],
+    );
+  }
+
+  void showBottomSheet() {
+    showModalBottomSheet(
+      shape: const RoundedRectangleBorder( // <-- SEE HERE
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.0),
+        ),
+      ),
+      context: context,
+      builder: (context) {
+        return Wrap(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 30),
+              child: Center(
+                child: Text(
+                  '작성중인 글이 지워집니다.',
+                  style: Styles.subHeadBoldTextStyle(),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              child: Center(
+                child: Text(
+                  '삭제한 글은 되돌릴 수 없으니 신중히 생각해주세요!',
+                  style: Styles.body2SemiBoldTextStyle(),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 50,left: 10,right: 10,bottom: 20),
+              child: Row(
+
+                children: [
+                  Expanded(
+                    child: AppThemeButton(
+                      text: '취소',
+                      textColor: AppColors.black,
+                      onTap: () {},
+                      backgroundColor: AppColors.whiteColor,
+                    ),
+                  ),
+                  Expanded(
+                    child: AppThemeButton(
+                      text: '확인',
+                      onTap: () {},
+                      backgroundColor: AppColors.themeColor,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }

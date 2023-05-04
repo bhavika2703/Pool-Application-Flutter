@@ -7,6 +7,7 @@ class AppThemeButton extends StatelessWidget {
   final double height;
   final String text;
   final Color? backgroundColor;
+  final Color? textColor;
 
   final void Function() onTap;
 
@@ -16,6 +17,7 @@ class AppThemeButton extends StatelessWidget {
     required this.text,
     required this.onTap,
     this.backgroundColor,
+    this.textColor,
     Key? key,
   }) : super(key: key);
 
@@ -37,7 +39,7 @@ class AppThemeButton extends StatelessWidget {
         child: Text(
           text,
           style: Styles.body1TextStyle().copyWith(
-            color: AppColors.whiteColor,
+            color: textColor??AppColors.whiteColor,
           ),
         ),
       ),
