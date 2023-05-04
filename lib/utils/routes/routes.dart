@@ -1,4 +1,5 @@
 import 'package:boilerplate/ui/community/community.dart';
+import 'package:boilerplate/ui/community/post_detalis.dart';
 import 'package:boilerplate/ui/findEmail/find_email.dart';
 import 'package:boilerplate/ui/findEmail/find_email_result.dart';
 import 'package:boilerplate/ui/findPassword/find_password.dart';
@@ -36,6 +37,7 @@ class Routes {
   static const String searchView = '/SearchView';
   static const String poolDetailView = '/poolDetailView';
   static const String community = '/community';
+  static const String postDetails = '/postDetails';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -56,5 +58,6 @@ class Routes {
     searchView: (BuildContext context) => SearchView(),
     poolDetailView: (BuildContext context) => PoolDetalis(),
     community: (BuildContext context) => Community(),
+    postDetails: (BuildContext context) => PostDetails(),
   };
 }
