@@ -44,4 +44,6 @@ class Assets {
 
   static const String personNavigationIconImg =
       "assets/images/person_navigation_icon.png";
+
+  static const String galleryPostIcon = "assets/images/photos_icon.png";
 }

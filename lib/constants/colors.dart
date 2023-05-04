@@ -27,4 +27,5 @@ class AppColors {
   static const toastBackgroundColor = Color.fromRGBO(0, 0, 0, 0.5);
   static const toastTextColor = Colors.white;
   static const whiteColor = Colors.white;
+  static const dividerColor = Color(0xFFECF0F3);
 }
