@@ -408,7 +408,9 @@ class _PostDetailsState extends State<PostDetails> {
 
   Widget buildHeaderView(BuildContext context) {
     return CustomAppBar(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pop(context);
+      },
       title: '수영러버님의 게시글',
     );
   }

@@ -1,5 +1,6 @@
 import 'package:boilerplate/ui/community/community.dart';
 import 'package:boilerplate/ui/community/post_detalis.dart';
+import 'package:boilerplate/ui/community/post_view.dart';
 import 'package:boilerplate/ui/findEmail/find_email.dart';
 import 'package:boilerplate/ui/findEmail/find_email_result.dart';
 import 'package:boilerplate/ui/findPassword/find_password.dart';
@@ -13,7 +14,6 @@ import 'package:boilerplate/ui/login/join_membership.dart';
 import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/login/login_with_email.dart';
 import 'package:boilerplate/ui/login/terms_conditions.dart';
-import 'package:boilerplate/ui/post_view.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
 

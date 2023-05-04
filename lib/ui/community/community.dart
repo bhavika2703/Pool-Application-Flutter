@@ -2,6 +2,7 @@ import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/ui/bottom_navigation.dart';
 import 'package:boilerplate/ui/community/community_bottom_sheet.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/search_text_field.dart';
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
@@ -59,73 +60,78 @@ class _CommunityState extends State<Community> {
                   var profileSubTitle = avtarSubTitle[index];
                   var message = listTitle[index];
                   var subMessage = listSubTitle[index];
-                  return Container(
-                    padding: EdgeInsets.all(4),
-                    child: Neumorphic(
-                      style: NeumorphicStyle(/*color: Colors.white*/),
-                      child: Column(
-                        children: [
-                          buildListTileProfileView(
-                              profileImage, profileTitle, profileSubTitle),
-                          ListTile(
-                            title: Container(
-                              child: Text(message,
-                                  style: Styles.body1TextStyle()
-                                      .copyWith(color: Color(0xff383E45))),
-                              margin: EdgeInsets.only(bottom: 14),
-                            ),
-                            subtitle: Column(
-                              children: [
-                                if (index == 1) ...[
-                                  buildListImageView(),
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(Routes.postDetails);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(4),
+                      child: Neumorphic(
+                        style: NeumorphicStyle(/*color: Colors.white*/),
+                        child: Column(
+                          children: [
+                            buildListTileProfileView(
+                                profileImage, profileTitle, profileSubTitle),
+                            ListTile(
+                              title: Container(
+                                child: Text(message,
+                                    style: Styles.body1TextStyle()
+                                        .copyWith(color: Color(0xff383E45))),
+                                margin: EdgeInsets.only(bottom: 14),
+                              ),
+                              subtitle: Column(
+                                children: [
+                                  if (index == 1) ...[
+                                    buildListImageView(),
+                                  ],
+                                  Text(
+                                    subMessage,
+                                    style: Styles.body2MediumTextStyle()
+                                        .copyWith(color: Color(0xff212529)),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.visible,
+                                  ),
                                 ],
-                                Text(
-                                  subMessage,
-                                  style: Styles.body2MediumTextStyle()
-                                      .copyWith(color: Color(0xff212529)),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.visible,
-                                ),
-                              ],
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                  top: 4, bottom: 8, left: 10, right: 10),
                             ),
-                            contentPadding: EdgeInsets.only(
-                                top: 4, bottom: 8, left: 10, right: 10),
-                          ),
-                          Container(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  Assets.communityCopyPostIconImg,
-                                  height: 15,
-                                  width: 14,
-                                ),
-                                SizedBox(width: 3),
-                                Text('25',
-                                    style: Styles.caption3MediumTextStyle()
-                                        .copyWith(color: Color(0xff0BA5EC))),
-                                SizedBox(width: 6),
-                                Image.asset(
-                                  Assets.communityPostMessageIconImg,
-                                  height: 20,
-                                  width: 20,
-                                ),
-                                SizedBox(width: 2),
-                                Text('39',
-                                    style: Styles.caption3MediumTextStyle()),
-                                Spacer(),
-                                Text('2023.04.03',
-                                    style: Styles.cap2MediumTextStyle()
-                                        .copyWith(
-                                            color: Color(0xff8195A0),
-                                            fontSize: 12)),
-                              ],
-                            ),
-                            margin: EdgeInsets.only(
-                                bottom: 10, top: 8, left: 8, right: 8),
-                          )
-                        ],
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    Assets.communityCopyPostIconImg,
+                                    height: 15,
+                                    width: 14,
+                                  ),
+                                  SizedBox(width: 3),
+                                  Text('25',
+                                      style: Styles.caption3MediumTextStyle()
+                                          .copyWith(color: Color(0xff0BA5EC))),
+                                  SizedBox(width: 6),
+                                  Image.asset(
+                                    Assets.communityPostMessageIconImg,
+                                    height: 20,
+                                    width: 20,
+                                  ),
+                                  SizedBox(width: 2),
+                                  Text('39',
+                                      style: Styles.caption3MediumTextStyle()),
+                                  Spacer(),
+                                  Text('2023.04.03',
+                                      style: Styles.cap2MediumTextStyle()
+                                          .copyWith(
+                                              color: Color(0xff8195A0),
+                                              fontSize: 12)),
+                                ],
+                              ),
+                              margin: EdgeInsets.only(
+                                  bottom: 10, top: 8, left: 8, right: 8),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -138,7 +144,9 @@ class _CommunityState extends State<Community> {
       bottomNavigationBar: BottomNavigation(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xff0BA5EC),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(Routes.postView);
+        },
         child: Icon(Icons.edit, color: Colors.white, size: 27),
       ),
     ));

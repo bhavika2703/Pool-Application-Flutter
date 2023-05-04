@@ -1,4 +1,5 @@
 import 'package:boilerplate/constants/assets.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -47,11 +48,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   Assets.homeNavigationIconImg,
                   height: 27,
                   width: 27,
+                  color: Colors.grey,
                 ),
                 onPressed: () {
                   isButton1OnTap.value = true;
                   isButton2OnTap.value = false;
                   isButton3OnTap.value = false;
+                  Navigator.of(context).pushReplacementNamed(Routes.home);
                 },
               );
             },
@@ -64,6 +67,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   isButton1OnTap.value = false;
                   isButton3OnTap.value = false;
                   isButton2OnTap.value = true;
+                  Navigator.of(context).pushReplacementNamed(Routes.community);
                 },
                 style: buttonStyleView(value, context),
                 padding: const EdgeInsets.all(8.0),
