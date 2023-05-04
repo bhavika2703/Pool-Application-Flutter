@@ -1,3 +1,4 @@
+import 'package:boilerplate/ui/community/community.dart';
 import 'package:boilerplate/ui/findEmail/find_email.dart';
 import 'package:boilerplate/ui/findEmail/find_email_result.dart';
 import 'package:boilerplate/ui/findPassword/find_password.dart';
@@ -34,6 +35,7 @@ class Routes {
       '/calenderFullScreenResourceView';
   static const String searchView = '/SearchView';
   static const String poolDetailView = '/poolDetailView';
+  static const String community = '/community';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -53,5 +55,6 @@ class Routes {
         FullScreenTimeTableView(),
     searchView: (BuildContext context) => SearchView(),
     poolDetailView: (BuildContext context) => PoolDetalis(),
+    community: (BuildContext context) => Community(),
   };
 }

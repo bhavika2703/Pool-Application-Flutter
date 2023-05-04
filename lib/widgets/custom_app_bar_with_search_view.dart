@@ -1,3 +1,4 @@
+import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,7 @@ class CustomAppBarWithSearchView extends StatefulWidget
   Size get preferredSize => Size(double.infinity, 55);
 }
 
-class _CustomAppBarWithSearchViewState
-    extends State<CustomAppBarWithSearchView> {
+class _CustomAppBarWithSearchViewState extends State<CustomAppBarWithSearchView> {
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -42,7 +42,7 @@ class _CustomAppBarWithSearchViewState
         child: SearchTextField(
           hint: widget.searchHint,
           trailIcon: Icons.close,
-          leadingIcon: Icons.search,
+          leadingIcon: Image.asset(Assets.searchIconImg, height: 15, width: 15),
           onChanged: (value) {},
           controller: searchController,
         ),

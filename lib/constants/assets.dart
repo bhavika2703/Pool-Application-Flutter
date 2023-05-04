@@ -44,4 +44,12 @@ class Assets {
 
   static const String personNavigationIconImg =
       "assets/images/person_navigation_icon.png";
+
+  //community
+
+  static const String communityBellIconImg =
+      "assets/images/community_bell_icon.png";
+
+  static const String communityLocationIconImg =
+      "assets/images/community_location_icon.png";
 }
