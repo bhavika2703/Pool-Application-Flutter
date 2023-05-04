@@ -6,13 +6,13 @@ class SearchTextField extends StatefulWidget {
   final String hint;
   final ValueChanged<String> onChanged;
   final TextEditingController controller;
-  final IconData leadingIcon;
+  final Widget? leadingIcon;
   final IconData? trailIcon;
 
   SearchTextField({
     required this.hint,
     required this.onChanged,
-    required this.leadingIcon,
+    this.leadingIcon,
     this.trailIcon,
     this.textInputType,
     required this.controller,
@@ -41,19 +41,20 @@ class _SearchTextFieldState extends State<SearchTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Neumorphic(
-          margin: EdgeInsets.only(left: 5, top: 2, bottom: 4),
+          margin: EdgeInsets.only(left: 8, top: 2, bottom: 4, right: 8),
           style: NeumorphicStyle(
-            depth: NeumorphicTheme.embossDepth(context),
-            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-          ),
-          padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+              depth: NeumorphicTheme.embossDepth(context),
+              boxShape: NeumorphicBoxShape.stadium()),
+          padding: EdgeInsets.symmetric(vertical: 14, horizontal: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                height: 45,
-                width: 45,
-                child: Icon(widget.leadingIcon),
+                height: 22,
+                width: 22,
+                margin: EdgeInsets.only(right: 8, left: 2),
+                padding: EdgeInsets.all(2),
+                child: widget.leadingIcon ?? Icon(Icons.search),
               ),
               Expanded(
                 child: TextField(
@@ -61,9 +62,8 @@ class _SearchTextFieldState extends State<SearchTextField> {
                   controller: widget.controller,
                   keyboardType: widget.textInputType ?? TextInputType.text,
                   cursorColor: Colors.black,
-                  style: Styles.body2MediumTextStyle().copyWith(
-                    color: Color(0xFF212529)
-                  ),
+                  style: Styles.body2MediumTextStyle()
+                      .copyWith(color: Color(0xFF212529)),
                   decoration: InputDecoration.collapsed(
                     hintText: this.widget.hint,
                     hintStyle: Styles.body2MediumTextStyle()

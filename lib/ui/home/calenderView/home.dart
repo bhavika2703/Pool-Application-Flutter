@@ -131,23 +131,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  modelBottomSheet(BuildContext context) {
-    showModalBottomSheet<void>(
-        context: context,
-        builder: (context) {
-          return Container(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                ListTile(
-                  leading: new Icon(Icons.photo),
-                  title: new Text('Photo'),
-                  onTap: () {},
-                ),
-              ],
-            ),
-          );
-        });
-  }
 }
