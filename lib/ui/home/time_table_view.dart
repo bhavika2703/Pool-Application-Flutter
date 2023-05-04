@@ -35,6 +35,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
 
   @override
   void initState() {
+    headerString = DateFormat('yyyy. MM').format(DateTime.now()).toString();
     _addResourceDetails();
     _addResources();
     _addAppointments();
@@ -197,7 +198,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
           Container(
             height: cellWidth,
             width: cellWidth * 4,
-            child: Text('2023. 04',
+            child: Text(headerString,
                 textAlign: TextAlign.center, style: Styles.heading2TextStyle()),
           ),
           NeumorphicButton(
@@ -232,7 +233,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
         (visibleStartDate.difference(visibleEndDate).inDays);
     final DateTime midDate =
         visibleStartDate.add(Duration(days: totalVisibleDays ~/ 2));
-    headerString = DateFormat('MMMM yyyy').format(midDate).toString();
+    headerString = DateFormat('yyyy. MM').format(midDate).toString();
     SchedulerBinding.instance.addPostFrameCallback((duration) {
       setState(() {});
     });
@@ -245,19 +246,23 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
         cellDetails.date.month == _controller.selectedDate?.month &&
         cellDetails.date.day == _controller.selectedDate?.day;
     if (IsSelected) {
-      return NeumorphicRadio(
-        padding: EdgeInsets.all(15),
-        style: NeumorphicRadioStyle(
-          boxShape: NeumorphicBoxShape.circle(),
-          selectedColor: Colors.black,
-          unselectedColor: Color(0xFFECF0F3),
-          intensity: -50,
-          unselectedDepth: NeumorphicTheme.embossDepth(context),
+      return NeumorphicButton(
+        minDistance: -5.0,
+        padding: EdgeInsets.all(10),
+        style: NeumorphicStyle(
+          color: Colors.white,
+          depth: NeumorphicTheme.embossDepth(context),
+          shape: NeumorphicShape.flat,
+          shadowDarkColorEmboss: Colors.grey,
+          boxShape: NeumorphicBoxShape.roundRect(
+              BorderRadius.all(Radius.circular(25))),
         ),
+        onPressed: () {},
         child: Center(
           child: Text(
             DateFormat('dd').format(cellDetails.date),
-            style: TextStyle(color: Colors.black),
+            style: Styles.body2MediumTextStyle()
+                .copyWith(color: Colors.black, fontSize: 12),
           ),
         ),
       );
@@ -267,7 +272,11 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          child: Text(DateFormat('dd').format(cellDetails.date)),
+          child: Text(
+            DateFormat('dd').format(cellDetails.date),
+            style: Styles.body2MediumTextStyle()
+                .copyWith(color: Colors.black, fontSize: 12),
+          ),
         ),
       ],
     );
