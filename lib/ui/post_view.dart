@@ -149,9 +149,10 @@ class _PostViewState extends State<PostView> {
     );
   }
 
-  void showBottomSheet() {
-    showModalBottomSheet(
-      shape: const RoundedRectangleBorder( // <-- SEE HERE
+  Future<void> showBottomSheet() async {
+    bool result = await showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        // <-- SEE HERE
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(25.0),
         ),
@@ -179,22 +180,25 @@ class _PostViewState extends State<PostView> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 50,left: 10,right: 10,bottom: 20),
+              margin: EdgeInsets.only(top: 50, left: 10, right: 10, bottom: 20),
               child: Row(
-
                 children: [
                   Expanded(
                     child: AppThemeButton(
                       text: '취소',
                       textColor: AppColors.black,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pop(false);
+                      },
                       backgroundColor: AppColors.whiteColor,
                     ),
                   ),
                   Expanded(
                     child: AppThemeButton(
                       text: '확인',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pop(true);
+                      },
                       backgroundColor: AppColors.themeColor,
                     ),
                   )
@@ -205,5 +209,8 @@ class _PostViewState extends State<PostView> {
         );
       },
     );
+    if (result) {
+      Navigator.pop(context);
+    }
   }
 }
