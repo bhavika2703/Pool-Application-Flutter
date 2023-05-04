@@ -68,6 +68,9 @@ class Assets {
   static const String communityCopyPostIconImg =
       "assets/images/copy_post_icon.png";
 
+  static const String likePostIconImg =
+      "assets/images/like_button.png";
+
   static const String communityPostMessageIconImg =
       "assets/images/post_message_icon.png";
 

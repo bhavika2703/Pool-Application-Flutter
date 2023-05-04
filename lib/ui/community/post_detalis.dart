@@ -27,6 +27,11 @@ class _PostDetailsState extends State<PostDetails> {
 
   @override
   Widget build(BuildContext context) {
+    var profileImage = avtarImage[1];
+    var profileTitle = avtarTitle[1];
+    var profileSubTitle = avtarSubTitle[1];
+    var message = listTitle[1];
+    var subMessage = listSubTitle[1];
     return SafeArea(
         child: Scaffold(
       body: Container(
@@ -38,86 +43,250 @@ class _PostDetailsState extends State<PostDetails> {
               height: 18,
             ),
             Expanded(
-              child: ListView.builder(
+              child: Container(
+                padding: EdgeInsets.all(4),
+                child: Neumorphic(
+                  style: NeumorphicStyle(/*color: Colors.white*/),
+                  child: Column(
+                    children: [
+                      buildListTileProfileView(
+                          profileImage, profileTitle, profileSubTitle, false),
+                      ListTile(
+                        title: Container(
+                          child: Text(message,
+                              style: Styles.body1TextStyle()
+                                  .copyWith(color: Color(0xff383E45))),
+                          margin: EdgeInsets.only(bottom: 14),
+                        ),
+                        subtitle: Column(
+                          children: [
+                            buildListImageView(),
+                            Text(
+                              subMessage,
+                              style: Styles.body2MediumTextStyle()
+                                  .copyWith(color: Color(0xff212529)),
+                              maxLines: 2,
+                              overflow: TextOverflow.visible,
+                            ),
+                          ],
+                        ),
+                        contentPadding: EdgeInsets.only(
+                            top: 4, bottom: 8, left: 10, right: 10),
+                      ),
+                      Container(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              Assets.communityCopyPostIconImg,
+                              height: 15,
+                              width: 14,
+                            ),
+                            SizedBox(width: 3),
+                            Text('25',
+                                style: Styles.caption3MediumTextStyle()
+                                    .copyWith(color: Color(0xff0BA5EC))),
+                            SizedBox(width: 6),
+                            Image.asset(
+                              Assets.communityPostMessageIconImg,
+                              height: 20,
+                              width: 20,
+                            ),
+                            SizedBox(width: 2),
+                            Text('39', style: Styles.caption3MediumTextStyle()),
+                            Spacer(),
+                            Text('2023.04.03',
+                                style: Styles.cap2MediumTextStyle().copyWith(
+                                    color: Color(0xff8195A0), fontSize: 12)),
+                          ],
+                        ),
+                        margin: EdgeInsets.only(
+                            bottom: 10, top: 8, left: 8, right: 8),
+                      ),
+                      Divider(
+                        color: Color(0xFFECF0F3),
+                        height: 1,
+                      ),
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.only(left: 5, top: 10),
+                          child: ListView.builder(
+                            itemCount: 1,
+                            itemBuilder: (context, index) {
+                              var profileImage = avtarImage[index];
+                              var profileTitle = avtarTitle[index];
+                              var profileSubTitle = avtarSubTitle[index];
+                              var message = listTitle[index];
+                              var subMessage = listSubTitle[index];
+                              return Container(
+                                padding: EdgeInsets.all(4),
+                                child: Column(
+                                  children: [
+                                    buildListTileProfileView(
+                                        profileImage, profileTitle, '',true),
+                                    ListTile(
+                                      title: Container(
+                                        child: Text(message,
+                                            style: Styles.body1TextStyle()
+                                                .copyWith(
+                                                    color: Color(0xff383E45))),
+                                        margin: EdgeInsets.only(bottom: 14),
+                                      ),
+                                      subtitle: Column(
+                                        children: [
+                                          Text(
+                                            subMessage,
+                                            style: Styles.body2MediumTextStyle()
+                                                .copyWith(
+                                                    color: Color(0xff212529)),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.visible,
+                                          ),
+                                        ],
+                                      ),
+                                      contentPadding: EdgeInsets.only(
+                                          top: 4,
+                                          bottom: 8,
+                                          left: 10,
+                                          right: 10),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Image.asset(
+                                            Assets.likePostIconImg,
+                                            height: 15,
+                                            width: 15,
+                                          ),
+                                          SizedBox(width: 3),
+                                          Text('12',
+                                              style: Styles
+                                                      .caption3MediumTextStyle()
+                                                  .copyWith(
+                                                      color:
+                                                          Color(0xff0BA5EC))),
+                                          SizedBox(width: 5),
+                                          Text('댓글달기',
+                                              style: Styles
+                                                      .caption3MediumTextStyle()
+                                                  .copyWith(
+                                                      color:
+                                                          Color(0xff8195A0))),
+                                        ],
+                                      ),
+                                      margin: EdgeInsets.only(
+                                          bottom: 10,
+                                          top: 8,
+                                          left: 8,
+                                          right: 8),
+                                    ),
+                                    SizedBox(
+                                      height: 180,
+                                      child: ListView.builder(
+                                        itemCount: 1,
+                                        itemBuilder: (context, index) {
+                                          var profileImage = avtarImage[index];
+                                          var profileTitle = avtarTitle[index];
+                                          var profileSubTitle = avtarSubTitle[index];
+                                          var message = listTitle[index];
+                                          var subMessage = listSubTitle[index];
+                                          return Container(
+                                            padding: EdgeInsets.all(4),
+                                            margin: EdgeInsets.only(left: 30,top: 5),
+                                            child: Column(
+                                              children: [
+                                                buildListTileProfileView(
+                                                    profileImage, profileTitle, '',true),
+                                                ListTile(
+                                                  title: Container(
+                                                    child: Text(message,
+                                                        style: Styles.body1TextStyle()
+                                                            .copyWith(
+                                                            color: Color(0xff383E45))),
+                                                    margin: EdgeInsets.only(bottom: 14),
+                                                  ),
+                                                  subtitle: Column(
+                                                    children: [
+                                                      Text(
+                                                        subMessage,
+                                                        style: Styles.body2MediumTextStyle()
+                                                            .copyWith(
+                                                            color: Color(0xff212529)),
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow.visible,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  contentPadding: EdgeInsets.only(
+                                                      top: 4,
+                                                      bottom: 8,
+                                                      left: 10,
+                                                      right: 10),
+                                                ),
+                                                Container(
+                                                  child: Row(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                    mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                    children: [
+                                                      Image.asset(
+                                                        Assets.likePostIconImg,
+                                                        height: 15,
+                                                        width: 15,
+                                                      ),
+                                                      SizedBox(width: 3),
+                                                      Text('12',
+                                                          style: Styles
+                                                              .caption3MediumTextStyle()
+                                                              .copyWith(
+                                                              color:
+                                                              Color(0xff0BA5EC))),
+                                                      SizedBox(width: 5),
+                                                      Text('댓글달기',
+                                                          style: Styles
+                                                              .caption3MediumTextStyle()
+                                                              .copyWith(
+                                                              color:
+                                                              Color(0xff8195A0))),
+                                                    ],
+                                                  ),
+                                                  margin: EdgeInsets.only(
+                                                      bottom: 10,
+                                                      top: 8,
+                                                      left: 8,
+                                                      right: 8),
+                                                )
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              /*ListView.builder(
                 itemCount: 2,
                 itemBuilder: (context, index) {
-                  var profileImage = avtarImage[index];
-                  var profileTitle = avtarTitle[index];
-                  var profileSubTitle = avtarSubTitle[index];
-                  var message = listTitle[index];
-                  var subMessage = listSubTitle[index];
-                  return Container(
-                    padding: EdgeInsets.all(4),
-                    child: Neumorphic(
-                      style: NeumorphicStyle(/*color: Colors.white*/),
-                      child: Column(
-                        children: [
-                          buildListTileProfileView(
-                              profileImage, profileTitle, profileSubTitle),
-                          ListTile(
-                            title: Container(
-                              child: Text(message,
-                                  style: Styles.body1TextStyle()
-                                      .copyWith(color: Color(0xff383E45))),
-                              margin: EdgeInsets.only(bottom: 14),
-                            ),
-                            subtitle: Column(
-                              children: [
-                                if (index == 1) ...[
-                                  buildListImageView(),
-                                ],
-                                Text(
-                                  subMessage,
-                                  style: Styles.body2MediumTextStyle()
-                                      .copyWith(color: Color(0xff212529)),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.visible,
-                                ),
-                              ],
-                            ),
-                            contentPadding: EdgeInsets.only(
-                                top: 4, bottom: 8, left: 10, right: 10),
-                          ),
-                          Container(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  Assets.communityCopyPostIconImg,
-                                  height: 15,
-                                  width: 14,
-                                ),
-                                SizedBox(width: 3),
-                                Text('25',
-                                    style: Styles.caption3MediumTextStyle()
-                                        .copyWith(color: Color(0xff0BA5EC))),
-                                SizedBox(width: 6),
-                                Image.asset(
-                                  Assets.communityPostMessageIconImg,
-                                  height: 20,
-                                  width: 20,
-                                ),
-                                SizedBox(width: 2),
-                                Text('39',
-                                    style: Styles.caption3MediumTextStyle()),
-                                Spacer(),
-                                Text('2023.04.03',
-                                    style: Styles.cap2MediumTextStyle()
-                                        .copyWith(
-                                            color: Color(0xff8195A0),
-                                            fontSize: 12)),
-                              ],
-                            ),
-                            margin: EdgeInsets.only(
-                                bottom: 10, top: 8, left: 8, right: 8),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
+
+
                 },
-              ),
+              ),*/
             ),
           ],
         ),
@@ -204,18 +373,33 @@ class _PostDetailsState extends State<PostDetails> {
     );
   }
 
-  ListTile buildListTileProfileView(
-      String profileImage, String profileTitle, String profileSubTitle) {
+  ListTile buildListTileProfileView(String profileImage, String profileTitle,
+      String profileSubTitle, bool isFromSubComment) {
     return ListTile(
       leading: CircleAvatar(
         child: Image.asset(profileImage),
         radius: 18,
       ),
-      title: Text(profileTitle, style: Styles.body2TextStyle()),
-      subtitle: Text(
-        profileSubTitle,
-        style: Styles.cap2SemiBoldTextStyle(),
-      ),
+      title: !isFromSubComment
+          ? Text(profileTitle, style: Styles.body2TextStyle())
+          : Row(
+              children: [
+                Expanded(
+                    child: Text(profileTitle, style: Styles.body2TextStyle())),
+                Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Text(
+                      '2021.12.05',
+                      style: Styles.body2MediumTextStyle(),
+                    )),
+              ],
+            ),
+      subtitle: profileSubTitle.isNotEmpty
+          ? Text(
+              profileSubTitle,
+              style: Styles.cap2SemiBoldTextStyle(),
+            )
+          : SizedBox(),
       trailing: Image.asset(Assets.communityMoreIconImg, height: 24, width: 24),
       dense: true,
       minLeadingWidth: 18,
