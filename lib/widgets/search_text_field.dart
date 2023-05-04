@@ -41,13 +41,11 @@ class _SearchTextFieldState extends State<SearchTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Neumorphic(
-          margin: EdgeInsets.only(left: 5, top: 2, bottom: 4),
+          margin: EdgeInsets.only(left: 8, top: 2, bottom: 4, right: 8),
           style: NeumorphicStyle(
-            //color: Colors.white,
-            depth: NeumorphicTheme.embossDepth(context),
-            boxShape: NeumorphicBoxShape.stadium(),
-          ),
-          padding: EdgeInsets.only(bottom: 9, top: 9, right: 8, left: 8),
+              depth: NeumorphicTheme.embossDepth(context),
+              boxShape: NeumorphicBoxShape.stadium()),
+          padding: EdgeInsets.symmetric(vertical: 14, horizontal: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

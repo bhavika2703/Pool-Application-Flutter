@@ -52,4 +52,28 @@ class Assets {
 
   static const String communityLocationIconImg =
       "assets/images/community_location_icon.png";
+
+  static const String communityAvtar1IconImg =
+      "assets/images/community_avtar1.png";
+
+  static const String communityAvtar2IconImg =
+      "assets/images/community_avtar2.png";
+
+  static const String communityAvtar3IconImg =
+      "assets/images/community_avtar3.png";
+
+  static const String communityMoreIconImg =
+      "assets/images/community_more_icon.png";
+
+  static const String communityCopyPostIconImg =
+      "assets/images/copy_post_icon.png";
+
+  static const String communityPostMessageIconImg =
+      "assets/images/post_message_icon.png";
+
+  static const String communityListImg1IconImg =
+      "assets/images/community_list_Img1.png";
+
+  static const String communityListImg2IconImg =
+      "assets/images/community_list_img2.png";
 }
