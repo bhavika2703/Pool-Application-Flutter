@@ -28,11 +28,11 @@ class _RoundedButtonWidgetState extends State<RoundedButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return NeumorphicButton(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(11),
       style: NeumorphicStyle(
-        shape: NeumorphicShape.flat,
-        boxShape: NeumorphicBoxShape.stadium(),
-      ),
+          color: Colors.white,
+          depth: NeumorphicTheme.depth(context),
+          boxShape: NeumorphicBoxShape.circle()),
       child: widget.isLoginScreen
           ? widget.buttonChildView
           : buildBackIcon(context),

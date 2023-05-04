@@ -1,6 +1,7 @@
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/ui/bottom_navigation.dart';
+import 'package:boilerplate/ui/community/community_bottom_sheet.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/search_text_field.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -34,7 +35,7 @@ class _CommunityState extends State<Community> {
         margin: EdgeInsets.only(top: 12, bottom: 12, left: 8, right: 8),
         child: Column(
           children: [
-            buildHeaderView(),
+            buildHeaderView(context),
             SizedBox(height: 16),
             SearchTextField(
               onChanged: (value) {},
@@ -140,22 +141,51 @@ class _CommunityState extends State<Community> {
     ));
   }
 
-  void bottomSheetView(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(25.0),
-        ),
-      ),
-      builder: (BuildContext context) {
-        final double width = MediaQuery.of(context).size.width;
-        final double cellWidth = width / 12;
+  Widget bottomDetailsSheet() {
+    return DraggableScrollableSheet(
+      initialChildSize: .2,
+      minChildSize: .1,
+      maxChildSize: .6,
+      expand: false,
+      builder: (BuildContext context, ScrollController scrollController) {
         return Container(
-          margin: EdgeInsets.only(top: 8, left: 10, right: 10, bottom: 1),
-          child: Column(
-            children: <Widget>[],
+          color: Colors.lightGreen[100],
+          child: ListView(
+            controller: scrollController,
+            children: [
+              ListTile(
+                title: Text(
+                  "NAME",
+                ),
+                subtitle: Text(
+                  'animalNames[selectedTile]',
+                ),
+              ),
+              ListTile(
+                title: Text(
+                  "FAMILY",
+                ),
+                subtitle: Text(
+                  ' animalFamily[selectedTile]',
+                ),
+              ),
+              ListTile(
+                title: Text(
+                  "LIFESPAN",
+                ),
+                subtitle: Text(
+                  ' animalLifeSpan[selectedTile]',
+                ),
+              ),
+              ListTile(
+                title: Text(
+                  "WEIGHT",
+                ),
+                subtitle: Text(
+                  'animalWeight[selectedTile]',
+                ),
+              ),
+            ],
           ),
         );
       },
@@ -207,7 +237,7 @@ class _CommunityState extends State<Community> {
     );
   }
 
-  Row buildHeaderView() {
+  Row buildHeaderView(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
@@ -229,7 +259,10 @@ class _CommunityState extends State<Community> {
           width: 12,
         ),
         RoundedButtonWidget(
-          onPressed: () {},
+          onPressed: () {
+            bottomDetailsSheet();
+            print('on tapped');
+          },
           isLoginScreen: true,
           buttonChildView:
               Image.asset(Assets.communityBellIconImg, height: 16, width: 16),
