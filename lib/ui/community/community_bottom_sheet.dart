@@ -8,7 +8,7 @@ void bottomSheetView(BuildContext context) {
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.white,
-    isScrollControlled: true,
+    //isScrollControlled: true,
     enableDrag: true,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
@@ -18,121 +18,137 @@ void bottomSheetView(BuildContext context) {
     builder: (BuildContext context) {
       ValueNotifier<bool> checkBoxValue = ValueNotifier<bool>(false);
       ValueNotifier<bool> selectedCheckBoxValue = ValueNotifier<bool>(true);
-      return Container(
-        margin: EdgeInsets.only(top: 8, left: 0, right: 0, bottom: 12),
+      return SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8),
-              child: Row(
-                children: [
-                  Spacer(),
-                  Text('지역', style: Styles.body1TextStyle()),
-                  Spacer(),
-                  RoundedButtonWidget(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    buttonIcon: Icons.close,
-                    size: 23,
-                  )
-                ],
-              ),
-            ),
+          children: [
+            buildHeaderWidget(context),
             buildLineView(
                 context: context,
                 height: 0.75,
                 width: DeviceUtils.getDeviceWidth(context)),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: bottomListOnePadding(),
-                      child: Text('서울',
-                          style: Styles.body1TextStyle()
-                              .copyWith(color: Color(0xff212529))),
-                    ),
-                    Container(
-                      width: 130,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        itemCount: bottomSheet1stList.length,
-                        itemBuilder: (context, index) {
-                          var name = bottomSheet1stList[index];
-                          return Container(
-                            padding: bottomListOnePadding(),
-                            child: Text(name,
-                                style: Styles.body1TextStyle()
-                                    .copyWith(color: Color(0xffB6C6D0))),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                buildLineView(context: context, height: 400, width: 0.75),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 12),
-                      child: Row(
+            Container(
+              margin: EdgeInsets.only(top: 8, left: 0, right: 0, bottom: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          checkboxView(selectedCheckBoxValue, context),
-                          Text('서울 전체',
-                              style: Styles.body1TextStyle()
-                                  .copyWith(color: Color(0xff212529))),
+                          Padding(
+                            padding: bottomListOnePadding(),
+                            child: Text('서울',
+                                style: Styles.body1TextStyle()
+                                    .copyWith(color: Color(0xff212529))),
+                          ),
+                          Container(
+                            width: 130,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: bottomSheet1stList.length,
+                              itemBuilder: (context, index) {
+                                var name = bottomSheet1stList[index];
+                                return Container(
+                                  padding: bottomListOnePadding(),
+                                  child: Text(name,
+                                      style: Styles.body1TextStyle()
+                                          .copyWith(color: Color(0xffB6C6D0))),
+                                );
+                              },
+                            ),
+                          ),
                         ],
                       ),
-                    ),
-                    Container(
-                      width: 250,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        itemCount: bottomSheet2ndList.length,
-                        itemBuilder: (context, index) {
-                          var name = bottomSheet2ndList[index];
-                          return Row(
-                            children: [
-                              checkboxView(checkBoxValue, context),
-                              Container(
-                                padding: bottomListOnePadding(),
-                                child: Text(name,
-                                    style: Styles.body2TextStyle()
-                                        .copyWith(color: Color(0xffB6C6D0))),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                )
-              ],
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 12),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                checkboxView(selectedCheckBoxValue, context),
+                                Text('서울 전체',
+                                    style: Styles.body1TextStyle()
+                                        .copyWith(color: Color(0xff212529))),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 250,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: bottomSheet2ndList.length,
+                              itemBuilder: (context, index) {
+                                var name = bottomSheet2ndList[index];
+                                return Row(
+                                  children: [
+                                    checkboxView(checkBoxValue, context),
+                                    Container(
+                                      padding: bottomListOnePadding(),
+                                      child: Text(name,
+                                          style: Styles.body2TextStyle()
+                                              .copyWith(
+                                                  color: Color(0xff212529))),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
-            AppThemeButton(
-              onTap: () {},
-              text: '필터선택 완료',
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 12),
+              child: AppThemeButton(
+                onTap: () {},
+                text: '필터선택 완료',
+              ),
             ),
           ],
         ),
       );
     },
+  );
+}
+
+Padding buildHeaderWidget(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.only(left: 8.0, right: 8),
+    child: Row(
+      children: [
+        Spacer(),
+        Text('지역', style: Styles.body1TextStyle()),
+        Spacer(),
+        RoundedButtonWidget(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          buttonIcon: Icons.close,
+          size: 23,
+        )
+      ],
+    ),
   );
 }
 
