@@ -43,6 +43,12 @@ class Styles {
         color: AppColors.darkGrayColor,
         fontSize: 18,
       );
+  static TextStyle subHeadBoldTextStyle() => TextStyle(
+        fontFamily: FontFamily.pretenDard,
+        fontWeight: FontWeight.w700,
+        color: Color(0xFF212529),
+        fontSize: 18,
+      );
 
   static TextStyle cap2MediumTextStyle() => TextStyle(
         fontFamily: FontFamily.pretenDard,

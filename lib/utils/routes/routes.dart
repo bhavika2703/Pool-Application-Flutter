@@ -13,6 +13,7 @@ import 'package:boilerplate/ui/login/join_membership.dart';
 import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/login/login_with_email.dart';
 import 'package:boilerplate/ui/login/terms_conditions.dart';
+import 'package:boilerplate/ui/post_view.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,7 @@ class Routes {
       '/calenderFullScreenResourceView';
   static const String searchView = '/SearchView';
   static const String poolDetailView = '/poolDetailView';
+  static const String postView = '/PostView';
   static const String community = '/community';
   static const String postDetails = '/postDetails';
   static const String bottomSheet = '/bottomSheet';
@@ -58,6 +60,7 @@ class Routes {
         FullScreenTimeTableView(),
     searchView: (BuildContext context) => SearchView(),
     poolDetailView: (BuildContext context) => PoolDetalis(),
+    postView: (BuildContext context) => PostView(),
     community: (BuildContext context) => Community(),
     postDetails: (BuildContext context) => PostDetails(),
     bottomSheet: (BuildContext context) => PostDetails(),
