@@ -75,6 +75,7 @@ dependencies:
   syncfusion_localizations: ^21.2.3
   syncfusion_flutter_datepicker: 21.1.41
   timelines: ^0.1.0
+  expandable_bottom_sheet: ^1.1.1+1
 
 dev_dependencies:
   flutter_test:

@@ -4,6 +4,7 @@ import 'package:boilerplate/ui/bottom_navigation.dart';
 import 'package:boilerplate/ui/community/community_bottom_sheet.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:boilerplate/widgets/search_text_field.dart';
+import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class Community extends StatefulWidget {
@@ -26,6 +27,8 @@ class _CommunityState extends State<Community> {
     '방배근처에서 같이 수영장 다니실 분 구해요! 아침수영을 다니고 있는데, 동기부여가 안되어서 아침에 일... 더 보기',
     '이제 어린이풀에서 25m 초보반으로 넘어왔습니다 :) \n거북이등 없이 25m 하려니 힘드네요 현재 자유... 더 보기'
   ];
+  GlobalKey<ExpandableBottomSheetState> key = new GlobalKey();
+  int _contentAmount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -259,10 +262,7 @@ class _CommunityState extends State<Community> {
           width: 12,
         ),
         RoundedButtonWidget(
-          onPressed: () {
-            bottomDetailsSheet();
-            print('on tapped');
-          },
+          onPressed: () {},
           isLoginScreen: true,
           buttonChildView:
               Image.asset(Assets.communityBellIconImg, height: 16, width: 16),

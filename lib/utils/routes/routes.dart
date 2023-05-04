@@ -38,6 +38,7 @@ class Routes {
   static const String poolDetailView = '/poolDetailView';
   static const String community = '/community';
   static const String postDetails = '/postDetails';
+  static const String bottomSheet = '/bottomSheet';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -59,5 +60,6 @@ class Routes {
     poolDetailView: (BuildContext context) => PoolDetalis(),
     community: (BuildContext context) => Community(),
     postDetails: (BuildContext context) => PostDetails(),
+    bottomSheet: (BuildContext context) => PostDetails(),
   };
 }
