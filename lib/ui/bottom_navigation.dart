@@ -35,70 +35,74 @@ class _BottomNavigationState extends State<BottomNavigation> {
       ),
       height: 70,
       width: double.infinity,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          ValueListenableBuilder(
-            valueListenable: isButton1OnTap,
-            builder: (context, bool value, child) {
-              return NeumorphicButton(
-                style: buttonStyleView(value, context),
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  Assets.homeNavigationIconImg,
-                  height: 27,
-                  width: 27,
-                  color: Colors.grey,
-                ),
-                onPressed: () {
-                  isButton1OnTap.value = true;
-                  isButton2OnTap.value = false;
-                  isButton3OnTap.value = false;
-                  Navigator.of(context).pushReplacementNamed(Routes.home);
-                },
-              );
-            },
-          ),
-          ValueListenableBuilder(
+      child: ValueListenableBuilder(
+        valueListenable: isButton3OnTap,
+        builder: (context, bool button3Value, child) {
+          return ValueListenableBuilder(
             valueListenable: isButton2OnTap,
-            builder: (context, bool value, child) {
-              return NeumorphicButton(
-                onPressed: () {
-                  isButton1OnTap.value = false;
-                  isButton3OnTap.value = false;
-                  isButton2OnTap.value = true;
-                  Navigator.of(context).pushReplacementNamed(Routes.community);
+            builder: (context, bool button2Value, child) {
+              return ValueListenableBuilder(
+                valueListenable: isButton1OnTap,
+                builder: (context, bool button1Value, child) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      NeumorphicButton(
+                        style: buttonStyleView(button1Value, context),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          Assets.homeNavigationIconImg,
+                          height: 27,
+                          width: 27,
+                          color: button2Value == true ? Colors.black : null,
+                        ),
+                        onPressed: () {
+                          isButton2OnTap.value = false;
+                          isButton3OnTap.value = false;
+                          isButton1OnTap.value = true;
+                          Navigator.of(context)
+                              .pushReplacementNamed(Routes.home);
+                        },
+                      ),
+                      NeumorphicButton(
+                        onPressed: () {
+                          isButton1OnTap.value = false;
+                          isButton3OnTap.value = false;
+                          isButton2OnTap.value = true;
+                          Navigator.of(context)
+                              .pushReplacementNamed(Routes.community);
+                        },
+                        style: buttonStyleView(button2Value, context),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          Assets.messageNavigationIconImg,
+                          height: 27,
+                          width: 27,
+                          color: button2Value == true ? Colors.black : null,
+                        ),
+                      ),
+                      NeumorphicButton(
+                        onPressed: () {
+                          isButton1OnTap.value = false;
+                          isButton2OnTap.value = false;
+                          isButton3OnTap.value = true;
+                        },
+                        style: buttonStyleView(button3Value, context),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          Assets.personNavigationIconImg,
+                          height: 27,
+                          width: 27,
+                          color: button3Value == true ? Colors.black : null,
+                        ),
+                      ),
+                    ],
+                  );
                 },
-                style: buttonStyleView(value, context),
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  Assets.messageNavigationIconImg,
-                  height: 27,
-                  width: 27,
-                ),
               );
             },
-          ),
-          ValueListenableBuilder(
-            valueListenable: isButton3OnTap,
-            builder: (context, bool value, child) {
-              return NeumorphicButton(
-                onPressed: () {
-                  isButton1OnTap.value = false;
-                  isButton2OnTap.value = false;
-                  isButton3OnTap.value = true;
-                },
-                style: buttonStyleView(value, context),
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  Assets.personNavigationIconImg,
-                  height: 27,
-                  width: 27,
-                ),
-              );
-            },
-          ),
-        ],
+          );
+        },
       ),
     );
   }
