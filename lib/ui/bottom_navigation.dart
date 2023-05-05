@@ -64,11 +64,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 },
               ),
               SizedBox(
-                        height: 12,
-                      ),
-                      NeumorphicButton(
-                        onPressed: () {
-                          selectedButton.value = 2;
+                height: 12,
+              ),
+              NeumorphicButton(
+                onPressed: () {
+                  selectedButton.value = 2;
                   Navigator.of(context).pushReplacementNamed(Routes.community);
                 },
                 style: buttonStyleView(
@@ -79,17 +79,16 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   height: 27,
                   width: 27,
                   color: selectedButtonVal == 2 ? Colors.black : null,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 12,
+                ),
+              ),
+              SizedBox(
+                height: 12,
               ),
               NeumorphicButton(
                 onPressed: () {
                   selectedButton.value = 3;
 
-                          Navigator.of(context)
-                              .pushReplacementNamed(Routes.profile);
+                  Navigator.of(context).pushReplacementNamed(Routes.profile);
                 },
                 style: buttonStyleView(selectedButtonVal == 3, context),
                 padding: const EdgeInsets.all(8.0),
