@@ -1,6 +1,8 @@
 import 'package:boilerplate/constants/assets.dart';
+import 'package:boilerplate/constants/colors.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
+import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class FavouriteSwimmingPool extends StatefulWidget {
@@ -76,25 +78,37 @@ class _FavouriteSwimmingPoolState extends State<FavouriteSwimmingPool> {
             margin: EdgeInsets.only(right: 5, top: 14, bottom: 8),
             style: getStyles(context),
             child: Container(
-              child: ListTile(
-                leading: _buildImageView(),
-                title: _buildTitleView(),
-                subtitle: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                        child: Icon(Icons.location_on, size: 15),
-                        margin: EdgeInsets.only(right: 5)),
-                    Expanded(
-                      child: Text(
-                        '서울특별시 서초구 사임당로 64 교대벤처타워 1층',
-                        style: Styles.caption3SemiBoldTextStyle()
-                            .copyWith(fontSize: 13,),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ListTile(
+                      leading: _buildImageView(),
+                      title: _buildTitleView(),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              child: Icon(Icons.location_on, size: 15),
+                              margin: EdgeInsets.only(right: 5)),
+                          Expanded(
+                            child: Text(
+                              '서울특별시 서초구 사임당로 64 교대벤처타워 1층',
+                              style:
+                                  Styles.caption3SemiBoldTextStyle().copyWith(
+                                fontSize: 13,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-                trailing: _buildLikeButton(context),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: 5,bottom: 10,),
+                    child: _buildLikeButton(context),
+                  )
+                ],
               ),
             ),
           );
@@ -103,19 +117,16 @@ class _FavouriteSwimmingPoolState extends State<FavouriteSwimmingPool> {
     );
   }
 
-  NeumorphicButton _buildLikeButton(BuildContext context) {
-    return NeumorphicButton(
-      style: NeumorphicStyle(
-          color: Colors.white,
-          depth: NeumorphicTheme.depth(context),
-          boxShape: NeumorphicBoxShape.circle()),
-      child: IconButton(
-        iconSize: 30,
-        icon: Image.asset(Assets.wishlistIcon),
-        color: NeumorphicTheme.isUsingDark(context)
-            ? Colors.white70
-            : const Color.fromRGBO(74, 82, 92, 1),
-        onPressed: () {},
+  Widget _buildLikeButton(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 16),
+      child: RoundedButtonWidget(
+        onPressed: () {
+        },
+        buttonColor: AppColors.whiteColor,
+        isLoginScreen: true,
+        buttonChildView: Image.asset(Assets.wishlistIcon,
+            height: 18, width: 18),
       ),
     );
   }
@@ -140,9 +151,9 @@ class _FavouriteSwimmingPoolState extends State<FavouriteSwimmingPool> {
 
   Container _buildImageView() {
     return Container(
-      child: Image.asset(Assets.communityListImg1IconImg),
-      height: 85,
-      width: 85,
+      child: Image.asset(Assets.favouriteSample),
+      height: 64,
+      width: 64,
     );
   }
 
