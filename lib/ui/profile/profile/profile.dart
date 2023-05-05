@@ -144,15 +144,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Column(
-            children: [
-              Text('내 게시물', style: Styles.cap2SemiBoldTextStyle()),
-              Text(
-                '2',
-                style:
-                    Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
-              ),
-            ],
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(
+                Routes.myPost,
+              );
+            },
+            child: Column(
+              children: [
+                Text('내 게시물', style: Styles.cap2SemiBoldTextStyle()),
+                Text(
+                  '2',
+                  style: Styles.body1TextStyle()
+                      .copyWith(color: Color(0xff0BA5EC)),
+                ),
+              ],
+            ),
           ),
           buildColumnLineView(context),
           GestureDetector(
@@ -175,8 +182,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           buildColumnLineView(context),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed(
-                Routes.alarmView,
+              Navigator.of(context).pushReplacementNamed(
+                Routes.savePost,
               );
             },
             child: Column(
@@ -189,7 +196,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
