@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
               buildBottomButtonView(
                 title: "이메일로 로그인",
                 onLoginWithEmailButtonPressed: () {
-                  Navigator.of(context).pushReplacementNamed(
+                  Navigator.of(context).pushNamed(
                     Routes.loginWithEmail,
                   );
                 },
@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 title: "회원가입",
                 isMembershipButton: true,
                 onMemberShipButtonPressed: () {
-                  Navigator.of(context).pushReplacementNamed(
+                  Navigator.of(context).pushNamed(
                     Routes.joinMemberShip,
                   );
                 },

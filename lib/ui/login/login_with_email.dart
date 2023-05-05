@@ -66,6 +66,9 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                     : AppColors.themeColorTransparent,
                 onTap: () {
                   clearTextFiledText();
+                  Navigator.of(context).pushReplacementNamed(
+                    Routes.home,
+                  );
                 },
               )
             ],

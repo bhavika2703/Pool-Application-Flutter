@@ -254,8 +254,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
           depth: NeumorphicTheme.embossDepth(context),
           shape: NeumorphicShape.flat,
           shadowDarkColorEmboss: Colors.grey,
-          boxShape: NeumorphicBoxShape.roundRect(
-              BorderRadius.all(Radius.circular(25))),
+          boxShape: NeumorphicBoxShape.circle(),
         ),
         onPressed: () {},
         child: Center(
