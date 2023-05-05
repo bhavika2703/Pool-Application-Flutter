@@ -76,7 +76,7 @@ class PoolDetalis extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigation(),
+        bottomNavigationBar: BottomNavigation(selectedTab: 1),
       ),
     );
   }

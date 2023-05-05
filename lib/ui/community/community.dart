@@ -141,7 +141,7 @@ class _CommunityState extends State<Community> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(selectedTab: 2),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xff0BA5EC),
         onPressed: () {
