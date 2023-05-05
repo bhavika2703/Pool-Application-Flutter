@@ -14,6 +14,7 @@ import 'package:boilerplate/ui/login/join_membership.dart';
 import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/login/login_with_email.dart';
 import 'package:boilerplate/ui/login/terms_conditions.dart';
+import 'package:boilerplate/ui/profile/profile/profile.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,7 @@ class Routes {
   static const String postView = '/PostView';
   static const String community = '/community';
   static const String postDetails = '/postDetails';
-  static const String bottomSheet = '/bottomSheet';
+  static const String profile = '/profile';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -63,6 +64,6 @@ class Routes {
     postView: (BuildContext context) => PostView(),
     community: (BuildContext context) => Community(),
     postDetails: (BuildContext context) => PostDetails(),
-    bottomSheet: (BuildContext context) => PostDetails(),
+    profile: (BuildContext context) => ProfileScreen(),
   };
 }

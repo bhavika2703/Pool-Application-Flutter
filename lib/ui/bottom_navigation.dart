@@ -64,6 +64,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                               .pushReplacementNamed(Routes.home);
                         },
                       ),
+                      SizedBox(
+                        height: 12,
+                      ),
                       NeumorphicButton(
                         onPressed: () {
                           isButton1OnTap.value = false;
@@ -81,11 +84,17 @@ class _BottomNavigationState extends State<BottomNavigation> {
                           color: button2Value == true ? Colors.black : null,
                         ),
                       ),
+                      SizedBox(
+                        height: 12,
+                      ),
                       NeumorphicButton(
                         onPressed: () {
                           isButton1OnTap.value = false;
                           isButton2OnTap.value = false;
                           isButton3OnTap.value = true;
+
+                          Navigator.of(context)
+                              .pushReplacementNamed(Routes.profile);
                         },
                         style: buttonStyleView(button3Value, context),
                         padding: const EdgeInsets.all(8.0),
