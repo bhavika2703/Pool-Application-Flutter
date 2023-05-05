@@ -14,6 +14,7 @@ import 'package:boilerplate/ui/login/join_membership.dart';
 import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/login/login_with_email.dart';
 import 'package:boilerplate/ui/login/terms_conditions.dart';
+import 'package:boilerplate/ui/profile/alarmsView/alarmsView.dart';
 import 'package:boilerplate/ui/profile/changeEmail/change_email.dart';
 import 'package:boilerplate/ui/profile/favouriteSwimmingPool/FavouriteSwimmingPool.dart';
 import 'package:boilerplate/ui/profile/profile/profile.dart';
@@ -46,6 +47,7 @@ class Routes {
   static const String profile = '/profile';
   static const String changeEmail = '/changeEmail';
   static const String favouriteSwimmingPool = '/FavouriteSwimmingPool';
+  static const String alarmView = '/AlarmView';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -71,5 +73,6 @@ class Routes {
     profile: (BuildContext context) => ProfileScreen(),
     changeEmail: (BuildContext context) => ChangeEmail(),
     favouriteSwimmingPool: (BuildContext context) => FavouriteSwimmingPool(),
+    alarmView: (BuildContext context) => AlarmView(),
   };
 }
