@@ -82,6 +82,6 @@ class Assets {
   static const String galleryPostIcon = "assets/images/photos_icon.png";
 
   static const String roundCloseIcon = "assets/images/close_icon.png";
-  static const String wishlistIcon = "assets/images/ic_wishlist_blank.png";
+  static const String wishlistIcon = "assets/images/ic_wishlist.png";
   static const String infoIcon = "assets/images/info.png";
 }
