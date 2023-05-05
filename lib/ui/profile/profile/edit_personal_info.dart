@@ -1,6 +1,7 @@
 import 'package:boilerplate/constants/colors.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import '../../../widgets/custom_app_bar_widget.dart';
@@ -40,7 +41,9 @@ class _EditPersonalInfoState extends State<EditPersonalInfo> {
                     ),
                     buildRowLineView(context),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.changePassword);
+                      },
                       child: buildAccountInfoRowButtonsView(
                           text: '개인정보보호 처리방침', trailingText: '변경하기'),
                     ),

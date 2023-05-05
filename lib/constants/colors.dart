@@ -29,4 +29,5 @@ class AppColors {
   static const whiteColor = Colors.white;
   static const dividerColor = Color(0xFFECF0F3);
   static const darkGrey = Color(0xFF383E45);
+  static const errorRed = Color(0xFFED183E);
 }

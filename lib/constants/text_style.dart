@@ -77,4 +77,11 @@ class Styles {
         color: AppColors.checkButtonActiveColor,
         fontSize: 11,
       );
+
+  static TextStyle errorTextStyle() => TextStyle(
+        fontFamily: FontFamily.pretenDard,
+        fontWeight: FontWeight.w500,
+        color: AppColors.errorRed,
+        fontSize: 11,
+      );
 }
