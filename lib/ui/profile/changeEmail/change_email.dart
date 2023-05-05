@@ -1,19 +1,20 @@
 import 'package:boilerplate/constants/app_utils.dart';
 import 'package:boilerplate/constants/colors.dart';
+import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/app_theme_button.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
 import 'package:boilerplate/widgets/textfield_button_widget_.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-class FindPassword extends StatefulWidget {
-  const FindPassword({Key? key}) : super(key: key);
+class ChangeEmail extends StatefulWidget {
+  const ChangeEmail({Key? key}) : super(key: key);
 
   @override
-  _FindPasswordState createState() => _FindPasswordState();
+  _ChangeEmailState createState() => _ChangeEmailState();
 }
 
-class _FindPasswordState extends State<FindPassword> {
+class _ChangeEmailState extends State<ChangeEmail> {
   ValueNotifier<bool> isEmailTextChanged = ValueNotifier<bool>(false);
   ValueNotifier<bool> isAuthenticationTextChanged = ValueNotifier<bool>(false);
   ValueNotifier<bool> showAuthenticationCode = ValueNotifier<bool>(false);
@@ -43,12 +44,48 @@ class _FindPasswordState extends State<FindPassword> {
         body: Container(
           margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               CustomAppBar(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                title: '비밀번호 찾기',
+                title: '이메일 변경하기',
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 20, left: 20),
+                child: Text(
+                  '새 이메일 주소를 입력하고 인증해주세요.',
+                  style: Styles.body2MediumTextStyle()
+                      .copyWith(color: Color(0xFF6D7984)),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 20, left: 20),
+                child: Text(
+                  '가입한 이메일 주소',
+                  style: Styles.cap2MediumTextStyle(),
+                ),
+              ),
+              Neumorphic(
+                padding: EdgeInsets.only(top: 16, bottom: 16,left: 10,right: 10),
+                margin:
+                    EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 8),
+                style: NeumorphicStyle(
+                    color: Color(0xFFECF0F3),
+                    depth: NeumorphicTheme.depth(context),
+                    boxShape:
+                        NeumorphicBoxShape.roundRect(BorderRadius.circular(8))),
+                child: Container(child: Row(
+                  children: [
+                    Expanded(child: Text('dlskdj93@gmail.com',style: Styles.body2MediumTextStyle().copyWith(
+                      color: Color(0xFF8195A0)
+                    ),),),
+                    Icon(Icons.check,size: 20,color: Color(0xFF8195A0),)
+                    
+                  ],
+                )),
               ),
               _buildEmailField(),
               _buildAuthenticationField(),
@@ -153,7 +190,7 @@ class _FindPasswordState extends State<FindPassword> {
         return Container(
           margin: EdgeInsets.only(top: 16, bottom: 4),
           child: CommonTextFieldWithButton(
-            label: '이메일 주소',
+            label: '변경할 이메일 주소',
             hint: 'abc@gmail.com',
             onChanged: (value) {},
             buttonText: '인증받기',

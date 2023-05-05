@@ -78,6 +78,13 @@ class Styles {
         fontSize: 11,
       );
 
+  static TextStyle caption3SemiBoldTextStyle() => TextStyle(
+        fontFamily: FontFamily.pretenDard,
+        fontWeight: FontWeight.w600,
+        color: Color(0XFF4A525C),
+        fontSize: 11,
+      );
+
   static TextStyle errorTextStyle() => TextStyle(
         fontFamily: FontFamily.pretenDard,
         fontWeight: FontWeight.w500,
