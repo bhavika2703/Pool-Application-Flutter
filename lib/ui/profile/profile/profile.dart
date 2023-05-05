@@ -46,7 +46,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 margin:
                     EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 8),
                 style: NeumorphicStyle(
-                    color: Colors.white,
                     depth: NeumorphicTheme.depth(context),
                     boxShape:
                         NeumorphicBoxShape.roundRect(BorderRadius.circular(8))),
@@ -127,7 +126,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       padding: EdgeInsets.only(top: 18, bottom: 18),
       margin: EdgeInsets.only(left: 16, right: 16, top: 24, bottom: 8),
       style: NeumorphicStyle(
-          color: Colors.white,
           depth: NeumorphicTheme.depth(context),
           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8))),
       child: Row(
@@ -173,7 +171,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Neumorphic buildColumnLineView(BuildContext context) {
     return Neumorphic(
       style: NeumorphicStyle(
-          color: Colors.white,
           depth: NeumorphicTheme.embossDepth(context),
           boxShape: NeumorphicBoxShape.rect()),
       child: Container(height: 40, width: 1),
@@ -184,7 +181,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Neumorphic(
       margin: EdgeInsets.only(top: 14, bottom: 14),
       style: NeumorphicStyle(
-          color: Colors.white,
           depth: NeumorphicTheme.embossDepth(context),
           boxShape: NeumorphicBoxShape.rect()),
       child: Container(height: 2, width: DeviceUtils.getDeviceWidth(context)),
