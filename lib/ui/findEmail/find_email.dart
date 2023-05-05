@@ -28,7 +28,7 @@ class _FindEmailState extends State<FindEmail> {
           child: Column(
             children: [
               CustomAppBar(
-                title: '회원가입',
+                title: '이메일찾기',
                 onPressed: () {
                   Navigator.pop(context);
                 },
