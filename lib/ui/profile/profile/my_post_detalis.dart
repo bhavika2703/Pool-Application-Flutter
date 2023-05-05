@@ -294,7 +294,7 @@ class _MyPostDetailsState extends State<MyPostDetails> {
     return Container(
       child: Row(
         children: [
-          Text(listTitle[1],
+          Text('김진희',
               style:
                   Styles.body1TextStyle().copyWith(color: Color(0xff383E45))),
           Spacer(),

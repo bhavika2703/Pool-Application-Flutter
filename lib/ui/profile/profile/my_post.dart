@@ -19,121 +19,135 @@ class _MyPostState extends State<MyPost> {
     '방배근처에서 같이 수영장 다니실 분 구해요! 아침수영을 다니고 있는데, 동기부여가 안되어서 아침에 일... 더 보기'
   ];
 
+  ValueNotifier<bool> showEmptyView = ValueNotifier(true);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 12),
-                child: CustomAppBar(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  title: '내 게시물',
-                  count: '2',
-                ),
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 2,
-                  itemBuilder: (context, index) {
-                    var message = listTitle[index];
-                    var subMessage = listSubTitle[index];
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(Routes.myPostDetails);
+        body: ValueListenableBuilder<bool>(
+          valueListenable: showEmptyView,
+          builder: (context, value, child) {
+            return Container(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: CustomAppBar(
+                      onPressed: () {
+                        Navigator.pop(context);
                       },
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        child: Neumorphic(
-                          style: NeumorphicStyle(),
-                          child: Column(
-                            children: [
-                              ListTile(
-                                title: Container(
-                                  child: Row(
-                                    children: [
-                                      Text(message,
-                                          style: Styles.body1TextStyle()
+                      title: '내 게시물',
+                      count: '2',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 18,
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: 2,
+                      itemBuilder: (context, index) {
+                        var message = listTitle[index];
+                        var subMessage = listSubTitle[index];
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(Routes.myPostDetails);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(8),
+                            child: Neumorphic(
+                              style: NeumorphicStyle(),
+                              child: Column(
+                                children: [
+                                  ListTile(
+                                    title: Container(
+                                      child: Row(
+                                        children: [
+                                          Text(message,
+                                              style: Styles.body1TextStyle()
+                                                  .copyWith(
+                                                      color:
+                                                          Color(0xff383E45))),
+                                          Image.asset(
+                                              Assets.communityMoreIconImg,
+                                              height: 24,
+                                              width: 24),
+                                        ],
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                      ),
+                                      margin: EdgeInsets.only(bottom: 14),
+                                    ),
+                                    subtitle: Column(
+                                      children: [
+                                        if (index == 0) ...[
+                                          buildListImageView(),
+                                        ],
+                                        Text(
+                                          subMessage,
+                                          style: Styles.body2MediumTextStyle()
                                               .copyWith(
-                                                  color: Color(0xff383E45))),
-                                      Image.asset(Assets.communityMoreIconImg,
-                                          height: 24, width: 24),
-                                    ],
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                                  color: Color(0xff212529)),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.visible,
+                                        ),
+                                      ],
+                                    ),
+                                    contentPadding: EdgeInsets.only(
+                                        top: 4, bottom: 8, left: 10, right: 10),
                                   ),
-                                  margin: EdgeInsets.only(bottom: 14),
-                                ),
-                                subtitle: Column(
-                                  children: [
-                                    if (index == 0) ...[
-                                      buildListImageView(),
-                                    ],
-                                    Text(
-                                      subMessage,
-                                      style: Styles.body2MediumTextStyle()
-                                          .copyWith(color: Color(0xff212529)),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.visible,
+                                  Container(
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Image.asset(
+                                          Assets.communityCopyPostIconImg,
+                                          height: 15,
+                                          width: 14,
+                                          color: Color(0xffB6C6D0),
+                                        ),
+                                        SizedBox(width: 3),
+                                        Text('25',
+                                            style: Styles
+                                                .caption3MediumTextStyle()),
+                                        SizedBox(width: 6),
+                                        Image.asset(
+                                          Assets.communityPostMessageIconImg,
+                                          height: 20,
+                                          width: 20,
+                                        ),
+                                        SizedBox(width: 2),
+                                        Text('39',
+                                            style: Styles
+                                                .caption3MediumTextStyle()),
+                                        Spacer(),
+                                        Text('2023.04.01',
+                                            style: Styles.cap2MediumTextStyle()
+                                                .copyWith(
+                                                    color: Color(0xff8195A0),
+                                                    fontSize: 12)),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                                contentPadding: EdgeInsets.only(
-                                    top: 4, bottom: 8, left: 10, right: 10),
+                                    margin: EdgeInsets.only(
+                                        bottom: 10, top: 8, left: 8, right: 8),
+                                  )
+                                ],
                               ),
-                              Container(
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      Assets.communityCopyPostIconImg,
-                                      height: 15,
-                                      width: 14,
-                                      color: Color(0xffB6C6D0),
-                                    ),
-                                    SizedBox(width: 3),
-                                    Text('25',
-                                        style:
-                                            Styles.caption3MediumTextStyle()),
-                                    SizedBox(width: 6),
-                                    Image.asset(
-                                      Assets.communityPostMessageIconImg,
-                                      height: 20,
-                                      width: 20,
-                                    ),
-                                    SizedBox(width: 2),
-                                    Text('39',
-                                        style:
-                                            Styles.caption3MediumTextStyle()),
-                                    Spacer(),
-                                    Text('2023.04.01',
-                                        style: Styles.cap2MediumTextStyle()
-                                            .copyWith(
-                                                color: Color(0xff8195A0),
-                                                fontSize: 12)),
-                                  ],
-                                ),
-                                margin: EdgeInsets.only(
-                                    bottom: 10, top: 8, left: 8, right: 8),
-                              )
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         ),
         bottomSheet: BottomNavigation(selectedTab: 3),
       ),

@@ -134,7 +134,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           GestureDetector(
             onTap: () {
               Navigator.of(context).pushReplacementNamed(
-                Routes.myPost,
+                Routes.emptyListView,
               );
             },
             child: Column(

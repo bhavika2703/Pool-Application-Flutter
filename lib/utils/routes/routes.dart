@@ -16,6 +16,7 @@ import 'package:boilerplate/ui/login/login_with_email.dart';
 import 'package:boilerplate/ui/login/terms_conditions.dart';
 import 'package:boilerplate/ui/profile/changeEmail/change_email.dart';
 import 'package:boilerplate/ui/profile/favouriteSwimmingPool/FavouriteSwimmingPool.dart';
+import 'package:boilerplate/ui/profile/profile/Empty_list.dart';
 import 'package:boilerplate/ui/profile/profile/chnage_password.dart';
 import 'package:boilerplate/ui/profile/profile/edit_personal_info.dart';
 import 'package:boilerplate/ui/profile/profile/my_post.dart';
@@ -54,6 +55,7 @@ class Routes {
   static const String myPostDetails = '/myPostDetails';
   static const String changeEmail = '/changeEmail';
   static const String favouriteSwimmingPool = '/FavouriteSwimmingPool';
+  static const String emptyListView = '/emptyListView';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -83,5 +85,6 @@ class Routes {
     myPost: (BuildContext context) => MyPost(),
     changeEmail: (BuildContext context) => ChangeEmail(),
     favouriteSwimmingPool: (BuildContext context) => FavouriteSwimmingPool(),
+    emptyListView: (BuildContext context) => EmptyListView(),
   };
 }
