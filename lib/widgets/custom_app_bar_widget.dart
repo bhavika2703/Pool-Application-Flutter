@@ -52,7 +52,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                         left: 10,
                       ),
                       child: Text(
-                        '10',
+                        widget.count ?? '10',
                         style: Styles.subHeadSemiBoldTextStyle()
                             .copyWith(color: AppColors.themeColor),
                       ),
