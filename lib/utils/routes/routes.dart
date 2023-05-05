@@ -15,6 +15,9 @@ import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/login/login_with_email.dart';
 import 'package:boilerplate/ui/login/terms_conditions.dart';
 import 'package:boilerplate/ui/profile/alarmsView/alarmsView.dart';
+import 'package:boilerplate/ui/profile/profile/chnage_password.dart';
+import 'package:boilerplate/ui/profile/profile/edit_personal_info.dart';
+import 'package:boilerplate/ui/profile/profile/my_post.dart';
 import 'package:boilerplate/ui/profile/changeEmail/change_email.dart';
 import 'package:boilerplate/ui/profile/favouriteSwimmingPool/FavouriteSwimmingPool.dart';
 import 'package:boilerplate/ui/profile/profile/profile.dart';
@@ -46,6 +49,9 @@ class Routes {
   static const String community = '/community';
   static const String postDetails = '/postDetails';
   static const String profile = '/profile';
+  static const String editPersonalInfo = '/editPersonalInfo';
+  static const String changePassword = '/changePassword';
+  static const String myPost = '/myPost';
   static const String changeEmail = '/changeEmail';
   static const String favouriteSwimmingPool = '/FavouriteSwimmingPool';
   static const String alarmView = '/AlarmView';
@@ -73,6 +79,9 @@ class Routes {
     community: (BuildContext context) => Community(),
     postDetails: (BuildContext context) => PostDetails(),
     profile: (BuildContext context) => ProfileScreen(),
+    editPersonalInfo: (BuildContext context) => EditPersonalInfo(),
+    changePassword: (BuildContext context) => ChangePassword(),
+    myPost: (BuildContext context) => MyPost(),
     changeEmail: (BuildContext context) => ChangeEmail(),
     favouriteSwimmingPool: (BuildContext context) => FavouriteSwimmingPool(),
     alarmView: (BuildContext context) => AlarmView(),

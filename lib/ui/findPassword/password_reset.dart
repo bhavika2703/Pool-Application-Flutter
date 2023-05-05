@@ -128,9 +128,6 @@ class _PasswordResetState extends State<PasswordReset> {
   }
 
   TextStyle _infoTextStyle() {
-    return TextStyle(
-        color: Color.fromRGBO(109, 121, 132, 1),
-        fontWeight: FontWeight.w500,
-        fontSize: 11);
+    return Styles.caption3MediumTextStyle();
   }
 }

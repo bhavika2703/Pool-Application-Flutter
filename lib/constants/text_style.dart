@@ -57,6 +57,13 @@ class Styles {
         fontSize: 14,
       );
 
+  static TextStyle caption1SemiBoldTextStyle() => TextStyle(
+        fontFamily: FontFamily.pretenDard,
+        fontWeight: FontWeight.w600,
+        color: AppColors.checkButtonActiveColor,
+        fontSize: 13,
+      );
+
   static TextStyle cap2SemiBoldTextStyle() => TextStyle(
         fontFamily: FontFamily.pretenDard,
         fontWeight: FontWeight.w600,
@@ -75,6 +82,13 @@ class Styles {
         fontFamily: FontFamily.pretenDard,
         fontWeight: FontWeight.w600,
         color: Color(0XFF4A525C),
+        fontSize: 11,
+      );
+
+  static TextStyle errorTextStyle() => TextStyle(
+        fontFamily: FontFamily.pretenDard,
+        fontWeight: FontWeight.w500,
+        color: AppColors.errorRed,
         fontSize: 11,
       );
 }

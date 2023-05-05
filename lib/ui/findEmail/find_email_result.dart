@@ -22,7 +22,7 @@ class _FindEmailResultsState extends State<FindEmailResults> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(
-                title: '회원가입',
+                title: '이메일찾기',
                 onPressed: () {
                   Navigator.pop(context);
                 },
