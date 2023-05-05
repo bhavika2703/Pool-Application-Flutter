@@ -81,4 +81,5 @@ class Assets {
       "assets/images/community_list_img2.png";
 
   static const String galleryPostIcon = "assets/images/photos_icon.png";
+  static const String wishlistIcon = "assets/images/ic_wishlist_blank.png";
 }

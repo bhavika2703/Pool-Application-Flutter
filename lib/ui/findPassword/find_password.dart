@@ -44,9 +44,12 @@ class _FindPasswordState extends State<FindPassword> {
           margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
           child: Column(
             children: [
-              CustomAppBar(onPressed: () {
-                Navigator.pop(context);
-              }, title: '비밀번호 찾기'),
+              CustomAppBar(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                title: '비밀번호 찾기',
+              ),
               _buildEmailField(),
               _buildAuthenticationField(),
               _buildValueEmailAuthenticated(),

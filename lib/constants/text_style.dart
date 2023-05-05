@@ -70,4 +70,11 @@ class Styles {
         color: AppColors.checkButtonActiveColor,
         fontSize: 11,
       );
+
+  static TextStyle caption3SemiBoldTextStyle() => TextStyle(
+        fontFamily: FontFamily.pretenDard,
+        fontWeight: FontWeight.w600,
+        color: Color(0XFF4A525C),
+        fontSize: 11,
+      );
 }
