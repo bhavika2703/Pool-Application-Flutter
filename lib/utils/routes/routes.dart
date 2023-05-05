@@ -16,6 +16,7 @@ import 'package:boilerplate/ui/login/login_with_email.dart';
 import 'package:boilerplate/ui/login/terms_conditions.dart';
 import 'package:boilerplate/ui/profile/profile/chnage_password.dart';
 import 'package:boilerplate/ui/profile/profile/edit_personal_info.dart';
+import 'package:boilerplate/ui/profile/profile/my_post.dart';
 import 'package:boilerplate/ui/profile/profile/profile.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,7 @@ class Routes {
   static const String profile = '/profile';
   static const String editPersonalInfo = '/editPersonalInfo';
   static const String changePassword = '/changePassword';
+  static const String myPost = '/myPost';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -71,5 +73,6 @@ class Routes {
     profile: (BuildContext context) => ProfileScreen(),
     editPersonalInfo: (BuildContext context) => EditPersonalInfo(),
     changePassword: (BuildContext context) => ChangePassword(),
+    myPost: (BuildContext context) => MyPost(),
   };
 }

@@ -131,37 +131,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Column(
-            children: [
-              Text('내 게시물', style: Styles.cap2SemiBoldTextStyle()),
-              Text(
-                '2',
-                style:
-                    Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
-              ),
-            ],
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.myPost);
+            },
+            child: Column(
+              children: [
+                Text('내 게시물', style: Styles.cap2SemiBoldTextStyle()),
+                Text(
+                  '2',
+                  style: Styles.body1TextStyle()
+                      .copyWith(color: Color(0xff0BA5EC)),
+                ),
+              ],
+            ),
           ),
           buildColumnLineView(context),
-          Column(
-            children: [
-              Text('찜한 수영장', style: Styles.cap2SemiBoldTextStyle()),
-              Text(
-                '10',
-                style:
-                    Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
-              ),
-            ],
+          GestureDetector(
+            onTap: () {},
+            child: Column(
+              children: [
+                Text('찜한 수영장', style: Styles.cap2SemiBoldTextStyle()),
+                Text(
+                  '10',
+                  style: Styles.body1TextStyle()
+                      .copyWith(color: Color(0xff0BA5EC)),
+                ),
+              ],
+            ),
           ),
           buildColumnLineView(context),
-          Column(
-            children: [
-              Text('저장 게시글', style: Styles.cap2SemiBoldTextStyle()),
-              Text(
-                '10',
-                style:
-                    Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
-              ),
-            ],
+          GestureDetector(
+            child: Column(
+              children: [
+                Text('저장 게시글', style: Styles.cap2SemiBoldTextStyle()),
+                Text(
+                  '10',
+                  style: Styles.body1TextStyle()
+                      .copyWith(color: Color(0xff0BA5EC)),
+                ),
+              ],
+            ),
           )
         ],
       ),
