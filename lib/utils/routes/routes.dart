@@ -16,13 +16,13 @@ import 'package:boilerplate/ui/login/login_with_email.dart';
 import 'package:boilerplate/ui/login/terms_conditions.dart';
 import 'package:boilerplate/ui/profile/changeEmail/change_email.dart';
 import 'package:boilerplate/ui/profile/favouriteSwimmingPool/FavouriteSwimmingPool.dart';
-import 'package:boilerplate/ui/profile/profile/Empty_list.dart';
 import 'package:boilerplate/ui/profile/profile/chnage_password.dart';
 import 'package:boilerplate/ui/profile/profile/edit_personal_info.dart';
-import 'package:boilerplate/ui/profile/profile/my_post.dart';
-import 'package:boilerplate/ui/profile/profile/my_post_detalis.dart';
+import 'package:boilerplate/ui/profile/profile/myPost/my_post.dart';
+import 'package:boilerplate/ui/profile/profile/myPost/my_post_detalis.dart';
 import 'package:boilerplate/ui/profile/profile/profile.dart';
-import 'package:boilerplate/ui/profile/profile/save_post.dart';
+import 'package:boilerplate/ui/profile/profile/savePost/save_post.dart';
+import 'package:boilerplate/ui/profile/profile/savePost/save_post_detalis.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -56,8 +56,8 @@ class Routes {
   static const String myPostDetails = '/myPostDetails';
   static const String changeEmail = '/changeEmail';
   static const String favouriteSwimmingPool = '/FavouriteSwimmingPool';
-  static const String emptyListView = '/emptyListView';
   static const String savePost = '/savePost';
+  static const String saveDetailView = '/saveDetailView';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -87,7 +87,7 @@ class Routes {
     myPost: (BuildContext context) => MyPost(),
     changeEmail: (BuildContext context) => ChangeEmail(),
     favouriteSwimmingPool: (BuildContext context) => FavouriteSwimmingPool(),
-    emptyListView: (BuildContext context) => EmptyListView(),
     savePost: (BuildContext context) => SavePost(),
+    saveDetailView: (BuildContext context) => SavePostDetails(),
   };
 }

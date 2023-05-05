@@ -1,10 +1,10 @@
 import 'package:boilerplate/constants/text_style.dart';
-import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class EmptyListView extends StatefulWidget {
-  const EmptyListView({Key? key}) : super(key: key);
+  const EmptyListView({Key? key, required this.title}) : super(key: key);
+  final String title;
 
   @override
   State<EmptyListView> createState() => _EmptyListViewState();
@@ -13,11 +13,6 @@ class EmptyListView extends StatefulWidget {
 class _EmptyListViewState extends State<EmptyListView> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 6), () {
-      Navigator.of(context).pushNamed(
-        Routes.myPost,
-      );
-    });
     // TODO: implement initState
     super.initState();
   }
@@ -42,7 +37,7 @@ class _EmptyListViewState extends State<EmptyListView> {
               height: 150,
             ),
             Container(
-              child: Text('작성한 게시물이 없어요.',
+              child: Text(widget.title,
                   style: Styles.subHeadSemiBoldTextStyle()
                       .copyWith(color: Color(0xff8195A0))),
             ),
