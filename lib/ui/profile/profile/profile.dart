@@ -160,15 +160,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
           buildColumnLineView(context),
-          Column(
-            children: [
-              Text('저장 게시글', style: Styles.cap2SemiBoldTextStyle()),
-              Text(
-                '10',
-                style:
-                    Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
-              ),
-            ],
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(
+                Routes.savePost,
+              );
+            },
+            child: Column(
+              children: [
+                Text('저장 게시글', style: Styles.cap2SemiBoldTextStyle()),
+                Text(
+                  '10',
+                  style: Styles.body1TextStyle()
+                      .copyWith(color: Color(0xff0BA5EC)),
+                ),
+              ],
+            ),
           )
         ],
       ),
