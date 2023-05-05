@@ -33,7 +33,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            Image.asset(Assets.userAvatarImg, height: 120, width: 120),
+            GestureDetector(
+              onTap: () {
+
+              },
+              child: Image.asset(Assets.userAvatarImg, height: 120, width: 120),
+            ),
             Text(
               '김연지',
               style: Styles.body1TextStyle(),
