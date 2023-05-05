@@ -1,6 +1,7 @@
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -35,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             GestureDetector(
               onTap: () {
-
+                Navigator.of(context).pushNamed(Routes.changeEmail);
               },
               child: Image.asset(Assets.userAvatarImg, height: 120, width: 120),
             ),
