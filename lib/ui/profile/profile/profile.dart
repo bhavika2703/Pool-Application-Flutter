@@ -1,3 +1,4 @@
+import 'package:boilerplate/constants/app_utils.dart';
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/ui/bottom_navigation.dart';
@@ -62,7 +63,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     buildRowLineView(context),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        AppUtils.showAlertDialog(
+                            context: context,
+                            showCancel: true,
+                            optionText1: '취소',
+                            optionText2: '확인',
+                            desc: '로그아웃 하시겠습니까?');
+                      },
                       child: buildRowButtonsView(text: '로그아웃'),
                     ),
                   ],
@@ -77,8 +85,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(16),
-                      child:
-                          Text('회원탈퇴', style: Styles.caption1SemiBoldTextStyle()),
+                      child: Text('회원탈퇴',
+                          style: Styles.caption1SemiBoldTextStyle()),
                     ),
                   ),
                 ],
@@ -158,8 +166,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Text('찜한 수영장', style: Styles.cap2SemiBoldTextStyle()),
                 Text(
                   '10',
-                  style:
-                      Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
+                  style: Styles.body1TextStyle()
+                      .copyWith(color: Color(0xff0BA5EC)),
                 ),
               ],
             ),
@@ -176,8 +184,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Text('저장 게시글', style: Styles.cap2SemiBoldTextStyle()),
                 Text(
                   '10',
-                  style:
-                      Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
+                  style: Styles.body1TextStyle()
+                      .copyWith(color: Color(0xff0BA5EC)),
                 ),
               ],
             ),
