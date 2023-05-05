@@ -52,58 +52,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   children: [
                     GestureDetector(
-          body: Container(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0, top: 8),
-                  child: RoundedButtonWidget(
-                    onPressed: () {},
-                    isLoginScreen: true,
-                    buttonChildView: Image.asset(Assets.communityBellIconImg,
-                        height: 18, width: 18),
-                  ),
-                ),
-              ],
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).pushNamed(Routes.changeEmail);
-              },
-              child: Image.asset(Assets.userAvatarImg, height: 120, width: 120),
-            ),
-            Text(
-              '김연지',
-              style: Styles.body1TextStyle(),
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            Text(
-              'dlskdj93@gmail.com',
-              style: Styles.body2MediumTextStyle()
-                  .copyWith(color: Color(0xff6D7984)),
-            ),
-            buildThreeButtonView(context),
-            Neumorphic(
-              padding: EdgeInsets.only(top: 16, bottom: 16),
-              margin: EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 8),
-              style: NeumorphicStyle(
-                  color: Colors.white,
-                  depth: NeumorphicTheme.depth(context),
-                  boxShape:
-                      NeumorphicBoxShape.roundRect(BorderRadius.circular(8))),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 8.0,
-                      right: 8,
-                    ),
-                    child: GestureDetector(
                       onTap: () {},
                       child: buildRowButtonsView(text: '개인정보'),
                     ),
@@ -183,63 +131,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.myPost);
-            },
-            child: Column(
-              children: [
-                Text('내 게시물', style: Styles.cap2SemiBoldTextStyle()),
-                Text(
-                  '2',
-                  style: Styles.body1TextStyle()
-                      .copyWith(color: Color(0xff0BA5EC)),
-                ),
-              ],
-            ),
+          Column(
+            children: [
+              Text('내 게시물', style: Styles.cap2SemiBoldTextStyle()),
+              Text(
+                '2',
+                style:
+                    Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
+              ),
+            ],
           ),
           buildColumnLineView(context),
-          GestureDetector(
-            onTap: () {},
-            child: Column(
-              children: [
-                Text('찜한 수영장', style: Styles.cap2SemiBoldTextStyle()),
-                Text(
-                  '10',
-                  style: Styles.body1TextStyle()
-                      .copyWith(color: Color(0xff0BA5EC)),
-                ),
-              ],
-            ),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed(
-                Routes.favouriteSwimmingPool,
-              );
-            },
-            child: Column(
-              children: [
-                Text('찜한 수영장', style: Styles.cap2SemiBoldTextStyle()),
-                Text(
-                  '10',
-                  style:
-                      Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
-                ),
-              ],
-            ),
+          Column(
+            children: [
+              Text('찜한 수영장', style: Styles.cap2SemiBoldTextStyle()),
+              Text(
+                '10',
+                style:
+                    Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
+              ),
+            ],
           ),
           buildColumnLineView(context),
-          GestureDetector(
-            child: Column(
-              children: [
-                Text('저장 게시글', style: Styles.cap2SemiBoldTextStyle()),
-                Text(
-                  '10',
-                  style: Styles.body1TextStyle()
-                      .copyWith(color: Color(0xff0BA5EC)),
-                ),
-              ],
-            ),
+          Column(
+            children: [
+              Text('저장 게시글', style: Styles.cap2SemiBoldTextStyle()),
+              Text(
+                '10',
+                style:
+                    Styles.body1TextStyle().copyWith(color: Color(0xff0BA5EC)),
+              ),
+            ],
           )
         ],
       ),

@@ -35,7 +35,9 @@ class _EditPersonalInfoState extends State<EditPersonalInfo> {
                 child: Column(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.changeEmail);
+                      },
                       child: buildAccountInfoRowButtonsView(
                           text: '개인정보', trailingText: 'dlskdj93@gmail.com'),
                     ),
