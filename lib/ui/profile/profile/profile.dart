@@ -2,6 +2,7 @@ import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/ui/bottom_navigation.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
+import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -34,22 +35,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
-              Container(
-                  margin: EdgeInsets.only(top: 18),
-                  child: Image.asset(Assets.userAvatarImg,
-                      height: 120, width: 120)),
-              Text(
-                '김연지',
-                style: Styles.body1TextStyle(),
-              ),
-              SizedBox(
-                height: 6,
-              ),
-              Text(
-                'dlskdj93@gmail.com',
-                style: Styles.body2MediumTextStyle()
-                    .copyWith(color: Color(0xff6D7984)),
-              ),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(Routes.editPersonalInfo);
+                  },
+                  child: buildProfileView()),
               buildThreeButtonView(context),
               Neumorphic(
                 padding: EdgeInsets.only(top: 18, bottom: 18),
@@ -94,6 +84,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         bottomNavigationBar: BottomNavigation(selectedTab: 3),
       ),
+    );
+  }
+
+  Column buildProfileView() {
+    return Column(
+      children: [
+        Container(
+            margin: EdgeInsets.only(top: 18),
+            child: Image.asset(Assets.userAvatarImg, height: 120, width: 120)),
+        Text(
+          '김연지',
+          style: Styles.body1TextStyle(),
+        ),
+        SizedBox(
+          height: 6,
+        ),
+        Text(
+          'dlskdj93@gmail.com',
+          style:
+              Styles.body2MediumTextStyle().copyWith(color: Color(0xff6D7984)),
+        ),
+      ],
     );
   }
 
