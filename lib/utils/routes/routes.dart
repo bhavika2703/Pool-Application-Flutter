@@ -15,9 +15,6 @@ import 'package:boilerplate/ui/login/login.dart';
 import 'package:boilerplate/ui/login/login_with_email.dart';
 import 'package:boilerplate/ui/login/terms_conditions.dart';
 import 'package:boilerplate/ui/profile/alarmsView/alarmsView.dart';
-import 'package:boilerplate/ui/profile/profile/chnage_password.dart';
-import 'package:boilerplate/ui/profile/profile/edit_personal_info.dart';
-import 'package:boilerplate/ui/profile/profile/my_post.dart';
 import 'package:boilerplate/ui/profile/changeEmail/change_email.dart';
 import 'package:boilerplate/ui/profile/favouriteSwimmingPool/FavouriteSwimmingPool.dart';
 import 'package:boilerplate/ui/profile/profile/chnage_password.dart';
@@ -96,7 +93,6 @@ class Routes {
     favouriteSwimmingPool: (BuildContext context) => FavouriteSwimmingPool(),
     alarmView: (BuildContext context) => AlarmView(),
     withdrawalView: (BuildContext context) => WithdrawalView(),
-
     savePost: (BuildContext context) => SavePost(),
     saveDetailView: (BuildContext context) => SavePostDetails(),
   };

@@ -28,7 +28,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Padding(
                     padding: const EdgeInsets.only(right: 16, top: 16),
                     child: RoundedButtonWidget(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(
+                          Routes.alarmView,
+                        );
+                      },
                       isLoginScreen: true,
                       buttonChildView: Image.asset(Assets.communityBellIconImg,
                           height: 18, width: 18),
