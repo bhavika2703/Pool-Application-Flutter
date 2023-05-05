@@ -18,6 +18,7 @@ import 'package:boilerplate/ui/profile/alarmsView/alarmsView.dart';
 import 'package:boilerplate/ui/profile/changeEmail/change_email.dart';
 import 'package:boilerplate/ui/profile/favouriteSwimmingPool/FavouriteSwimmingPool.dart';
 import 'package:boilerplate/ui/profile/profile/profile.dart';
+import 'package:boilerplate/ui/profile/withdrawal/withdrawal_view.dart';
 import 'package:boilerplate/ui/splash/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -48,6 +49,7 @@ class Routes {
   static const String changeEmail = '/changeEmail';
   static const String favouriteSwimmingPool = '/FavouriteSwimmingPool';
   static const String alarmView = '/AlarmView';
+  static const String withdrawalView = '/WithdrawalView';
 
   static final routes = <String, WidgetBuilder>{
     splash: (BuildContext context) => SplashScreen(),
@@ -74,5 +76,7 @@ class Routes {
     changeEmail: (BuildContext context) => ChangeEmail(),
     favouriteSwimmingPool: (BuildContext context) => FavouriteSwimmingPool(),
     alarmView: (BuildContext context) => AlarmView(),
+    withdrawalView: (BuildContext context) => WithdrawalView(),
+
   };
 }
