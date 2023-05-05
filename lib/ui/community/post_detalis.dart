@@ -291,7 +291,7 @@ class _PostDetailsState extends State<PostDetails> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(selectedTab: 2),
     ));
   }
 

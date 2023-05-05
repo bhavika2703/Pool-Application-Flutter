@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: _buildBody(context),
       bottomSheet: buildBottomSheet(context),
-      bottomNavigationBar: BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(selectedTab: 1),
     );
   }
 
