@@ -50,9 +50,16 @@ class _MyPostDetailsState extends State<MyPostDetails> {
                   children: [
                     ListTile(
                       title: Container(
-                        child: Text(message,
-                            style: Styles.body1TextStyle()
-                                .copyWith(color: Color(0xff383E45))),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(message,
+                                style: Styles.body1TextStyle()
+                                    .copyWith(color: Color(0xff383E45))),
+                            Image.asset(Assets.communityMoreIconImg,
+                                height: 24, width: 24),
+                          ],
+                        ),
                         margin: EdgeInsets.only(bottom: 14),
                       ),
                       subtitle: Column(
@@ -79,11 +86,10 @@ class _MyPostDetailsState extends State<MyPostDetails> {
                             Assets.communityCopyPostIconImg,
                             height: 15,
                             width: 14,
+                            color: Color(0xffB6C6D0),
                           ),
                           SizedBox(width: 3),
-                          Text('25',
-                              style: Styles.caption3MediumTextStyle()
-                                  .copyWith(color: Color(0xff0BA5EC))),
+                          Text('25', style: Styles.caption3MediumTextStyle()),
                           SizedBox(width: 6),
                           Image.asset(
                             Assets.communityPostMessageIconImg,
@@ -151,14 +157,15 @@ class _MyPostDetailsState extends State<MyPostDetails> {
                                           Assets.likePostIconImg,
                                           height: 15,
                                           width: 15,
+                                          color: Color(0xffB6C6D0),
                                         ),
                                         SizedBox(width: 3),
                                         Text('12',
                                             style:
                                                 Styles.caption3MediumTextStyle()
                                                     .copyWith(
-                                                        color:
-                                                            Color(0xff0BA5EC))),
+                                              color: Color(0xffB6C6D0),
+                                            )),
                                         SizedBox(width: 5),
                                         Text('댓글달기',
                                             style:
@@ -234,8 +241,9 @@ class _MyPostDetailsState extends State<MyPostDetails> {
                                                         style: Styles
                                                                 .caption3MediumTextStyle()
                                                             .copyWith(
-                                                                color: Color(
-                                                                    0xff0BA5EC))),
+                                                          color:
+                                                              Color(0xffB6C6D0),
+                                                        )),
                                                     SizedBox(width: 5),
                                                     Text('댓글달기',
                                                         style: Styles
@@ -280,17 +288,17 @@ class _MyPostDetailsState extends State<MyPostDetails> {
         scrollDirection: Axis.horizontal,
         children: [
           Container(
-            child: Image.asset(Assets.communityListImg1IconImg),
+            child: Image.asset(Assets.myPostListImg1),
             width: 140,
             margin: EdgeInsets.only(right: 8),
           ),
           Container(
-            child: Image.asset(Assets.communityListImg2IconImg),
+            child: Image.asset(Assets.myPostListImg2),
             width: 140,
             margin: EdgeInsets.only(right: 8),
           ),
           Container(
-            child: Image.asset(Assets.communityListImg1IconImg),
+            child: Image.asset(Assets.myPostListImg1),
             width: 140,
             margin: EdgeInsets.only(right: 8),
           ),

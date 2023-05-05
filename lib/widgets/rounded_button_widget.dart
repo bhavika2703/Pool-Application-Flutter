@@ -30,7 +30,6 @@ class _RoundedButtonWidgetState extends State<RoundedButtonWidget> {
     return NeumorphicButton(
       padding: const EdgeInsets.all(11),
       style: NeumorphicStyle(
-          color: Colors.white,
           depth: NeumorphicTheme.depth(context),
           boxShape: NeumorphicBoxShape.circle()),
       child: widget.isLoginScreen
