@@ -1,6 +1,7 @@
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/utils/device/device_utils.dart';
 import 'package:boilerplate/widgets/app_theme_button.dart';
+import 'package:boilerplate/widgets/custom_check_box.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -20,6 +21,10 @@ void bottomSheetView(BuildContext context) {
     builder: (BuildContext context) {
       ValueNotifier<bool> checkBoxValue = ValueNotifier<bool>(false);
       ValueNotifier<bool> selectedCheckBoxValue = ValueNotifier<bool>(true);
+      ValueNotifier<int> isFirstCheckboxCalledDuringBuild =
+          ValueNotifier<int>(0);
+      ValueNotifier<int> isSecondCheckboxCalledDuringBuild =
+          ValueNotifier<int>(0);
       return DraggableScrollableSheet(
         expand: false,
         initialChildSize: .5,
@@ -96,8 +101,24 @@ void bottomSheetView(BuildContext context) {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        checkboxView(
-                                            selectedCheckBoxValue, context),
+                                        ValueListenableBuilder(
+                                          builder: (context, value, child) {
+                                            return CustomCheckbox(
+                                              value:
+                                              value == 0 ? true : checkBoxValue.value,
+                                              onChanged: (value) {
+                                                isFirstCheckboxCalledDuringBuild
+                                                    .value = 1;
+                                                checkBoxValue.value = value;
+                                              },
+                                              isEnabled: true,
+                                              padding: EdgeInsets.all(2),
+                                              margin: EdgeInsets.all(8),
+                                              style: CustomCheckboxStyle(),
+                                            );
+                                          },
+                                          valueListenable: isFirstCheckboxCalledDuringBuild,
+                                        ),
                                         Text('서울 전체',
                                             style: Styles.body1TextStyle()
                                                 .copyWith(
@@ -116,8 +137,24 @@ void bottomSheetView(BuildContext context) {
                                         var name = bottomSheet2ndList[index];
                                         return Row(
                                           children: [
-                                            checkboxView(
-                                                checkBoxValue, context),
+                                            ValueListenableBuilder(
+                                              builder: (context, value, child) {
+                                                return CustomCheckbox(
+                                                  value:
+                                                  value == 0 ? true : selectedCheckBoxValue.value,
+                                                  onChanged: (value) {
+                                                    isSecondCheckboxCalledDuringBuild
+                                                        .value = 1;
+                                                    selectedCheckBoxValue.value = value;
+                                                  },
+                                                  isEnabled: true,
+                                                  padding: EdgeInsets.all(2),
+                                                  margin: EdgeInsets.all(8),
+                                                  style: CustomCheckboxStyle(),
+                                                );
+                                              },
+                                              valueListenable: isSecondCheckboxCalledDuringBuild,
+                                            ),
                                             Container(
                                               padding: bottomListOnePadding(),
                                               child: Text(name,
@@ -202,22 +239,6 @@ Container buildLineView(
   );
 }
 
-NeumorphicCheckbox checkboxView(checkBoxValue, context) {
-  return NeumorphicCheckbox(
-    value: checkBoxValue.value,
-    onChanged: (value) {
-      checkBoxValue.value = value;
-    },
-    padding: EdgeInsets.all(2),
-    margin: EdgeInsets.all(8),
-    style: NeumorphicCheckboxStyle(
-        disabledColor: Colors.white,
-        unselectedDepth: 10,
-        unselectedIntensity: 0,
-        selectedDepth: NeumorphicTheme.embossDepth(context),
-        boxShape: NeumorphicBoxShape.rect()),
-  );
-}
 
 EdgeInsets bottomListOnePadding() =>
     EdgeInsets.only(top: 4, bottom: 12, left: 12, right: 8);
