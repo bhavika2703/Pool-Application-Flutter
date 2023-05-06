@@ -56,7 +56,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                   onChanged: (value) {},
                   controller: confirmPasswordController,
                   validator: (value) {
-                    isValidatorOn.value = true;
                     if (confirmPasswordController.text ==
                         newPasswordController.text) {
                       isValidValue.value = true;
@@ -92,7 +91,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       required String validValueMsg}) {
     RegExp regex =
         RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-    isValidatorOn.value = true;
+
     if (!regex.hasMatch(value)) {
       isValidValue.value = false;
       return errorMsg;
@@ -127,12 +126,12 @@ class _ChangePasswordState extends State<ChangePassword> {
           child: Text(label, style: Styles.cap2MediumTextStyle()),
         ),
         ValueListenableBuilder<bool>(
-          valueListenable: isValidatorOn,
-          builder: (context, validatorOnValue, child) {
+          valueListenable: isValidValue,
+          builder: (context, validValue, child) {
             return Neumorphic(
               margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-              padding: EdgeInsets.only(bottom: validatorOnValue ? 8 : 0),
-              style: validatorOnValue == true
+              padding: EdgeInsets.only(bottom: validValue ? 8 : 0),
+              style: validValue == true
                   ? NeumorphicStyle(depth: 0)
                   : NeumorphicStyle(
                       depth: NeumorphicTheme.embossDepth(context),
@@ -140,21 +139,18 @@ class _ChangePasswordState extends State<ChangePassword> {
                           BorderRadius.circular(8)),
                     ),
               // padding: EdgeInsets.symmetric(vertical: 14, horizontal: 18),
-              child: ValueListenableBuilder<bool>(
-                valueListenable: isValidValue,
-                builder: (context, validValue, child) {
-                  return TextFormField(
-                    onChanged: onChanged,
-                    validator: (String? value) {
-                      return validator(value);
-                    },
-                    controller: controller,
-                    keyboardType: textInputType ?? TextInputType.text,
-                    cursorColor: Colors.black,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      errorStyle: validValue == true
-                          ? Styles.errorTextStyle()
+              child: TextFormField(
+                onChanged: onChanged,
+                validator: (String? value) {
+                  return validator(value);
+                },
+                controller: controller,
+                keyboardType: textInputType ?? TextInputType.text,
+                cursorColor: Colors.black,
+                obscureText: true,
+                decoration: InputDecoration(
+                  errorStyle: validValue == true
+                      ? Styles.errorTextStyle()
                               .copyWith(color: AppColors.themeColor)
                           : Styles.errorTextStyle(),
                       suffix: GestureDetector(
@@ -192,18 +188,16 @@ class _ChangePasswordState extends State<ChangePassword> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       disabledBorder: OutlineInputBorder(),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: validValue == true
-                              ? AppColors.themeColor
-                              : Colors.red,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: validValue == true
+                          ? AppColors.themeColor
+                          : Colors.red,
+                      width: 1,
                     ),
-                  );
-                },
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
               ),
             );
           },
