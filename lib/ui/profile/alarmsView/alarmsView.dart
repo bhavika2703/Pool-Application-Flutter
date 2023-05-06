@@ -123,6 +123,7 @@ class _AlarmViewState extends State<AlarmView> {
       margin: EdgeInsets.only(bottom: 4),
       child: Text(
         '김진희님이 내 글에 댓글을 달았어요!',
+        maxLines: 1,
         style: Styles.body2TextStyle(),
       ),
     );
@@ -138,20 +139,18 @@ class _AlarmViewState extends State<AlarmView> {
 
   Widget _buildImageView(int index) {
     return NeumorphicButton(
+      padding: EdgeInsets.all(17),
       style: NeumorphicStyle(
-          color: Colors.white,
-          depth: NeumorphicTheme.depth(context),
+          color: Color(0xffECF0F3),
+          depth: NeumorphicTheme.embossDepth(context),
           boxShape: NeumorphicBoxShape.circle()),
-      child: IconButton(
-        iconSize: 35,
-        icon: Image.asset(
-            index % 2 == 0
-                ? Assets.communityCopyPostIconImg
-                : Assets.communityPostMessageIconImg,
-            color: AppColors.themeColor),
-        color: AppColors.themeColor,
-        onPressed: () {},
-      ),
+      child: Image.asset(
+          index % 2 == 0
+              ? Assets.communityCopyPostIconImg
+              : Assets.communityPostMessageIconImg,
+          height: index % 2 == 0 ? 16 : 20,
+          width: 20,
+          color: AppColors.themeColor),
     );
   }
 
@@ -159,7 +158,7 @@ class _AlarmViewState extends State<AlarmView> {
     return NeumorphicStyle(
       boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
       depth: 5,
-      color: const Color.fromRGBO(236, 240, 243, 0.6),
+      color: Colors.white,
     );
   }
 }

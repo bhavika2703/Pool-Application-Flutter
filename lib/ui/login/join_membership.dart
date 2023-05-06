@@ -122,6 +122,7 @@ class _JoinMemberShipState extends State<JoinMemberShip> {
       builder: (context, bool value, child) {
         return Neumorphic(
           style: NeumorphicStyle(
+            color: Colors.transparent,
             depth: NeumorphicTheme.embossDepth(context),
             boxShape: NeumorphicBoxShape.stadium(),
           ),
@@ -165,9 +166,14 @@ class _JoinMemberShipState extends State<JoinMemberShip> {
     return NeumorphicButton(
       style: showBackground
           ? NeumorphicStyle(
+              color: Colors.transparent,
               depth: NeumorphicTheme.depth(context),
               boxShape: NeumorphicBoxShape.stadium())
-          : NeumorphicStyle(depth: 0, boxShape: NeumorphicBoxShape.rect()),
+          : NeumorphicStyle(
+              depth: 0,
+              boxShape: NeumorphicBoxShape.rect(),
+              color: Colors.transparent,
+            ),
       padding: EdgeInsets.symmetric(vertical: 16, horizontal: 40),
       margin: EdgeInsets.only(right: 4, left: 4, bottom: 4, top: 4),
       child: Center(child: buildButtonTextView(title)),

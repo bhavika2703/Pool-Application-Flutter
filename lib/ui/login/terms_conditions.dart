@@ -70,6 +70,7 @@ class _TermsConditionsState extends State<TermsConditions> {
             builder: (context, check1Value, child) {
               return Neumorphic(
                 style: NeumorphicStyle(
+                  color: Colors.white,
                   depth: NeumorphicTheme.depth(context),
                   boxShape:
                       NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),

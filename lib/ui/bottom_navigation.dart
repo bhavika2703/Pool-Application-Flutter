@@ -56,7 +56,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   Assets.homeNavigationIconImg,
                   height: 27,
                   width: 27,
-                  color: selectedButtonVal == 1 ? Colors.black : null,
+                  color: selectedButtonVal == 1 ? Color(0xff212529) : null,
                 ),
                 onPressed: () {
                   selectedButton.value = 1;
@@ -75,10 +75,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     selectedButtonVal == 2 ? true : false, context),
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
-                  Assets.messageNavigationIconImg,
+                  selectedButtonVal == 2
+                      ? Assets.messageOnTapNavigationIconImg
+                      : Assets.messageNavigationIconImg,
                   height: 27,
                   width: 27,
-                  color: selectedButtonVal == 2 ? Colors.black : null,
                 ),
               ),
               SizedBox(
@@ -96,7 +97,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   Assets.personNavigationIconImg,
                   height: 27,
                   width: 27,
-                  color: selectedButtonVal == 3 ? Colors.black : null,
+                  color: selectedButtonVal == 3 ? Color(0xff212529) : null,
                 ),
               ),
             ],

@@ -116,6 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: NeumorphicButton(
             style: NeumorphicStyle(
               shape: NeumorphicShape.flat,
+              color: Colors.transparent,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
             ),
             padding: EdgeInsets.symmetric(vertical: 16, horizontal: 18),
@@ -221,6 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
       margin: const EdgeInsets.only(top: 8, bottom: 6),
       padding: const EdgeInsets.all(12),
       style: const NeumorphicStyle(
+        color: Colors.transparent,
         boxShape: NeumorphicBoxShape.circle(),
         shape: NeumorphicShape.concave,
         depth: 12,

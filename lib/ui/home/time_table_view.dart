@@ -59,7 +59,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
                     bottomSheetView(context);
                   },
                   padding: EdgeInsets.all(4),
-                  style: NeumorphicStyle(),
+                  style: NeumorphicStyle(color: Color(0xffE1E7EC)),
                   child: Row(
                     children: [
                       Text('03/12 (오늘)', style: Styles.cap2SemiBoldTextStyle()),
@@ -247,13 +247,13 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
         cellDetails.date.day == _controller.selectedDate?.day;
     if (IsSelected) {
       return NeumorphicButton(
-        minDistance: -5.0,
-        padding: EdgeInsets.all(10),
+        // minDistance: -5.0,
+        padding: EdgeInsets.all(8),
         style: NeumorphicStyle(
           color: Colors.white,
           depth: NeumorphicTheme.embossDepth(context),
-          shape: NeumorphicShape.flat,
-          shadowDarkColorEmboss: Colors.grey,
+          //shape: NeumorphicShape.convex,
+          //  shadowDarkColorEmboss: Colors.grey,
           boxShape: NeumorphicBoxShape.circle(),
         ),
         onPressed: () {},
@@ -401,10 +401,11 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
     return Neumorphic(
       margin: EdgeInsets.only(top: 8, bottom: 8),
       style: NeumorphicStyle(
+        color: Colors.transparent,
         depth: NeumorphicTheme.embossDepth(context),
       ),
       child: Container(
-        height: 1,
+        height: 1.2,
         width: DeviceUtils.getDeviceWidth(context),
         color: Color(0xffECF0F3),
       ),

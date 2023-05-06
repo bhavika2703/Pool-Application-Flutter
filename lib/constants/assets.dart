@@ -42,6 +42,9 @@ class Assets {
   static const String messageNavigationIconImg =
       "assets/images/message_navigation_icon.png";
 
+  static const String messageOnTapNavigationIconImg =
+      "assets/images/messageOnTapNavigationIconImg.png";
+
   static const String personNavigationIconImg =
       "assets/images/person_navigation_icon.png";
 

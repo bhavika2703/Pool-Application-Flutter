@@ -85,6 +85,7 @@ class _EditPersonalInfoState extends State<EditPersonalInfo> {
       padding: EdgeInsets.only(top: 18, bottom: 18),
       margin: EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 8),
       style: NeumorphicStyle(
+          color: Colors.transparent,
           depth: NeumorphicTheme.depth(context),
           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8))),
       child: child,
@@ -104,6 +105,7 @@ class _EditPersonalInfoState extends State<EditPersonalInfo> {
     return Neumorphic(
       margin: EdgeInsets.only(top: 14, bottom: 14),
       style: NeumorphicStyle(
+          color: Colors.transparent,
           depth: NeumorphicTheme.embossDepth(context),
           boxShape: NeumorphicBoxShape.rect()),
       child: Container(height: 2, width: DeviceUtils.getDeviceWidth(context)),

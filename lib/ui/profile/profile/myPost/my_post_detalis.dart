@@ -55,6 +55,7 @@ class _MyPostDetailsState extends State<MyPostDetails> {
                 Expanded(
                   child: Neumorphic(
                 style: NeumorphicStyle(
+                  color: Colors.transparent,
                   depth: 0,
                 ),
                 child: Column(
@@ -322,6 +323,7 @@ class _MyPostDetailsState extends State<MyPostDetails> {
       child: Neumorphic(
         padding: EdgeInsets.zero,
         style: NeumorphicStyle(
+            color: Colors.transparent,
             depth: NeumorphicTheme.depth(context),
             boxShape: NeumorphicBoxShape.rect()),
         child: Container(

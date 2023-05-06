@@ -1,7 +1,6 @@
 import 'package:boilerplate/constants/app_utils.dart';
 import 'package:boilerplate/constants/colors.dart';
 import 'package:boilerplate/constants/text_style.dart';
-import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/app_theme_button.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
 import 'package:boilerplate/widgets/textfield_button_widget_.dart';
@@ -41,6 +40,7 @@ class _ChangeEmailState extends State<ChangeEmail> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
           margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
           child: Column(
@@ -71,19 +71,19 @@ class _ChangeEmailState extends State<ChangeEmail> {
               Neumorphic(
                 padding: EdgeInsets.only(top: 16, bottom: 16,left: 10,right: 10),
                 margin:
-                    EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 8),
+                EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 8),
                 style: NeumorphicStyle(
-                    color: Color(0xFFECF0F3),
                     depth: NeumorphicTheme.depth(context),
+                    color: Colors.transparent,
                     boxShape:
                         NeumorphicBoxShape.roundRect(BorderRadius.circular(8))),
                 child: Container(child: Row(
                   children: [
                     Expanded(child: Text('dlskdj93@gmail.com',style: Styles.body2MediumTextStyle().copyWith(
-                      color: Color(0xFF8195A0)
+                        color: Color(0xFF8195A0)
                     ),),),
                     Icon(Icons.check,size: 20,color: Color(0xFF8195A0),)
-                    
+
                   ],
                 )),
               ),
@@ -112,9 +112,6 @@ class _ChangeEmailState extends State<ChangeEmail> {
                     ? AppColors.themeColor
                     : AppColors.themeColorTransparent,
                 onTap: () {
-                  Navigator.of(context).pushNamed(
-                    Routes.passwordReset,
-                  );
                 },
               ),
             ),

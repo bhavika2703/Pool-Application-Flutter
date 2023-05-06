@@ -67,7 +67,9 @@ class _CommunityState extends State<Community> {
                     child: Container(
                       padding: EdgeInsets.all(4),
                       child: Neumorphic(
-                        style: NeumorphicStyle(/*color: Colors.white*/),
+                        style: NeumorphicStyle(
+                          color: Colors.transparent,
+                        ),
                         child: Column(
                           children: [
                             buildListTileProfileView(

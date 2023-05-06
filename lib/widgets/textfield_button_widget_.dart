@@ -46,6 +46,7 @@ class _CommonTextFieldWithButtonState extends State<CommonTextFieldWithButton> {
         Neumorphic(
           margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
           style: NeumorphicStyle(
+            color: Colors.transparent,
             depth: NeumorphicTheme.embossDepth(context),
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
           ),

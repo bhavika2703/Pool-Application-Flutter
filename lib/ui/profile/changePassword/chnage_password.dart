@@ -56,7 +56,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                   onChanged: (value) {},
                   controller: confirmPasswordController,
                   validator: (value) {
-                    isValidatorOn.value = true;
                     if (confirmPasswordController.text ==
                         newPasswordController.text) {
                       isValidValue.value = true;
@@ -92,7 +91,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       required String validValueMsg}) {
     RegExp regex =
         RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-    isValidatorOn.value = true;
+
     if (!regex.hasMatch(value)) {
       isValidValue.value = false;
       return errorMsg;
@@ -127,83 +126,82 @@ class _ChangePasswordState extends State<ChangePassword> {
           child: Text(label, style: Styles.cap2MediumTextStyle()),
         ),
         ValueListenableBuilder<bool>(
-          valueListenable: isValidatorOn,
-          builder: (context, validatorOnValue, child) {
+          valueListenable: isValidValue,
+          builder: (context, validValue, child) {
             return Neumorphic(
               margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
-              padding: EdgeInsets.only(bottom: validatorOnValue ? 8 : 0),
-              style: validatorOnValue == true
-                  ? NeumorphicStyle(depth: 0)
+              padding: EdgeInsets.only(bottom: validValue ? 8 : 0),
+              style: validValue == true
+                  ? NeumorphicStyle(
+                      depth: 0,
+                      color: Colors.transparent,
+                    )
                   : NeumorphicStyle(
+                      color: Colors.transparent,
                       depth: NeumorphicTheme.embossDepth(context),
                       boxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(8)),
                     ),
               // padding: EdgeInsets.symmetric(vertical: 14, horizontal: 18),
-              child: ValueListenableBuilder<bool>(
-                valueListenable: isValidValue,
-                builder: (context, validValue, child) {
-                  return TextFormField(
-                    onChanged: onChanged,
-                    validator: (String? value) {
-                      return validator(value);
-                    },
-                    controller: controller,
-                    keyboardType: textInputType ?? TextInputType.text,
-                    cursorColor: Colors.black,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      errorStyle: validValue == true
-                          ? Styles.errorTextStyle()
-                              .copyWith(color: AppColors.themeColor)
-                          : Styles.errorTextStyle(),
-                      suffix: GestureDetector(
-                          onTap: () {
-                            _formKey.currentState!.reset();
-                            controller.clear();
-                            controller.text = '';
-                          },
-                          child: Image.asset(Assets.roundCloseIcon,
-                              height: 16, width: 16)),
-                      hintText: hintText,
-                      hintStyle: Styles.body2MediumTextStyle(),
-                      border: const OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: AppColors.themeColor,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: validValue == true
-                              ? AppColors.themeColor
-                              : Colors.red,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      disabledBorder: OutlineInputBorder(),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: validValue == true
-                              ? AppColors.themeColor
-                              : Colors.red,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  );
+              child: TextFormField(
+                onChanged: onChanged,
+                validator: (String? value) {
+                  return validator(value);
                 },
+                controller: controller,
+                keyboardType: textInputType ?? TextInputType.text,
+                cursorColor: Colors.black,
+                obscureText: true,
+                decoration: InputDecoration(
+                  errorStyle: validValue == true
+                      ? Styles.errorTextStyle()
+                          .copyWith(color: AppColors.themeColor)
+                      : Styles.errorTextStyle(),
+                  suffix: GestureDetector(
+                      onTap: () {
+                        _formKey.currentState!.reset();
+                        controller.clear();
+                        controller.text = '';
+                      },
+                      child: Image.asset(Assets.roundCloseIcon,
+                          height: 16, width: 16)),
+                  hintText: hintText,
+                  hintStyle: Styles.body2MediumTextStyle(),
+                  border: const OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: AppColors.themeColor,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 0,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: validValue == true
+                          ? AppColors.themeColor
+                          : Colors.red,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  disabledBorder: OutlineInputBorder(),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: validValue == true
+                          ? AppColors.themeColor
+                          : Colors.red,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
               ),
             );
           },

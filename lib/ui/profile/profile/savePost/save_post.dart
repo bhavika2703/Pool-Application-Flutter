@@ -40,6 +40,7 @@ class _SavePostState extends State<SavePost> {
         child: isDataEmpty
             ? EmptyListView(
                 title: '아직 저장한 게시글이 없어요.',
+                image: Assets.communityCopyPostIconImg,
               )
             : Column(
                 children: [
@@ -73,7 +74,9 @@ class _SavePostState extends State<SavePost> {
                           child: Container(
                             padding: EdgeInsets.all(4),
                             child: Neumorphic(
-                              style: NeumorphicStyle(/*color: Colors.white*/),
+                              style: NeumorphicStyle(
+                                color: Colors.transparent,
+                              ),
                               child: Column(
                                 children: [
                                   buildListTileProfileView(profileImage,

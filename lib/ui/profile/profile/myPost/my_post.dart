@@ -60,7 +60,8 @@ class _MyPostState extends State<MyPost> {
                                 child: Container(
                                   padding: EdgeInsets.all(8),
                                   child: Neumorphic(
-                                    style: NeumorphicStyle(),
+                                    style: NeumorphicStyle(
+                                        color: Colors.transparent),
                                     child: Column(
                                       children: [
                                         ListTile(
@@ -163,6 +164,7 @@ class _MyPostState extends State<MyPost> {
                     )
                   : EmptyListView(
                       title: '작성한 게시물이 없어요.',
+                      isNoPostView: true,
                     ),
             );
           },

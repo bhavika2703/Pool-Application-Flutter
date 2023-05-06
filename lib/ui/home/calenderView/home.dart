@@ -102,6 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Neumorphic(
         margin: EdgeInsets.only(left: 14, right: 14, top: 50, bottom: 4),
         style: NeumorphicStyle(
+            color: Color(0xffECF0F3),
             depth: NeumorphicTheme.embossDepth(context),
             boxShape: NeumorphicBoxShape.stadium()),
         child: GestureDetector(

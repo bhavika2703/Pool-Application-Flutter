@@ -228,7 +228,7 @@ Container buildLineView(
     margin: EdgeInsets.only(bottom: 8, top: 8),
     child: Neumorphic(
       style: NeumorphicStyle(
-          color: Colors.white,
+          color: Colors.transparent,
           depth: NeumorphicTheme.depth(context),
           boxShape: NeumorphicBoxShape.rect()),
       child: Container(
