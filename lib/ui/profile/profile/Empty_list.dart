@@ -80,6 +80,7 @@ class _EmptyListViewState extends State<EmptyListView> {
         SizedBox(height: 8),
         NeumorphicButton(
           style: NeumorphicStyle(
+            color: Colors.transparent,
             boxShape: NeumorphicBoxShape.stadium(),
           ),
           child: Row(

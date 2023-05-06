@@ -132,8 +132,12 @@ class _ChangePasswordState extends State<ChangePassword> {
               margin: EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 4),
               padding: EdgeInsets.only(bottom: validValue ? 8 : 0),
               style: validValue == true
-                  ? NeumorphicStyle(depth: 0)
+                  ? NeumorphicStyle(
+                      depth: 0,
+                      color: Colors.transparent,
+                    )
                   : NeumorphicStyle(
+                      color: Colors.transparent,
                       depth: NeumorphicTheme.embossDepth(context),
                       boxShape: NeumorphicBoxShape.roundRect(
                           BorderRadius.circular(8)),
@@ -151,43 +155,43 @@ class _ChangePasswordState extends State<ChangePassword> {
                 decoration: InputDecoration(
                   errorStyle: validValue == true
                       ? Styles.errorTextStyle()
-                              .copyWith(color: AppColors.themeColor)
-                          : Styles.errorTextStyle(),
-                      suffix: GestureDetector(
-                          onTap: () {
-                            _formKey.currentState!.reset();
-                            controller.clear();
-                            controller.text = '';
-                          },
-                          child: Image.asset(Assets.roundCloseIcon,
-                              height: 16, width: 16)),
-                      hintText: hintText,
-                      hintStyle: Styles.body2MediumTextStyle(),
-                      border: const OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: AppColors.themeColor,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: validValue == true
-                              ? AppColors.themeColor
-                              : Colors.red,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      disabledBorder: OutlineInputBorder(),
+                          .copyWith(color: AppColors.themeColor)
+                      : Styles.errorTextStyle(),
+                  suffix: GestureDetector(
+                      onTap: () {
+                        _formKey.currentState!.reset();
+                        controller.clear();
+                        controller.text = '';
+                      },
+                      child: Image.asset(Assets.roundCloseIcon,
+                          height: 16, width: 16)),
+                  hintText: hintText,
+                  hintStyle: Styles.body2MediumTextStyle(),
+                  border: const OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: AppColors.themeColor,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 0,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: validValue == true
+                          ? AppColors.themeColor
+                          : Colors.red,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  disabledBorder: OutlineInputBorder(),
                   focusedErrorBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: validValue == true

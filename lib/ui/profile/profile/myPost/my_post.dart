@@ -60,7 +60,8 @@ class _MyPostState extends State<MyPost> {
                                 child: Container(
                                   padding: EdgeInsets.all(8),
                                   child: Neumorphic(
-                                    style: NeumorphicStyle(),
+                                    style: NeumorphicStyle(
+                                        color: Colors.transparent),
                                     child: Column(
                                       children: [
                                         ListTile(

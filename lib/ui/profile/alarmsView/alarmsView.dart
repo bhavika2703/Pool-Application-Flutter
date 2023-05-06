@@ -141,8 +141,8 @@ class _AlarmViewState extends State<AlarmView> {
     return NeumorphicButton(
       padding: EdgeInsets.all(17),
       style: NeumorphicStyle(
-          color: Colors.white,
-          depth: NeumorphicTheme.depth(context),
+          color: Color(0xffECF0F3),
+          depth: NeumorphicTheme.embossDepth(context),
           boxShape: NeumorphicBoxShape.circle()),
       child: Image.asset(
           index % 2 == 0
@@ -158,7 +158,7 @@ class _AlarmViewState extends State<AlarmView> {
     return NeumorphicStyle(
       boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
       depth: 5,
-      color: const Color.fromRGBO(236, 240, 243, 0.6),
+      color: Colors.white,
     );
   }
 }

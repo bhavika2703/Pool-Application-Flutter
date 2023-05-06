@@ -46,7 +46,9 @@ class _SavePostDetailsState extends State<SavePostDetails> {
               child: Container(
                 padding: EdgeInsets.all(4),
                 child: Neumorphic(
-                  style: NeumorphicStyle(/*color: Colors.white*/),
+                  style: NeumorphicStyle(
+                    color: Colors.transparent,
+                  ),
                   child: Column(
                     children: [
                       buildListTileProfileView(

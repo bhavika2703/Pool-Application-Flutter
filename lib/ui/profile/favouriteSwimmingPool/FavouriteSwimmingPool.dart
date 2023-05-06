@@ -139,9 +139,9 @@ class _FavouriteSwimmingPoolState extends State<FavouriteSwimmingPool> {
 
   NeumorphicStyle cardViewStyle() {
     return NeumorphicStyle(
+      color: Colors.transparent,
       boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
       depth: 5,
-      color: const Color.fromRGBO(236, 240, 243, 0.6),
     );
   }
 }

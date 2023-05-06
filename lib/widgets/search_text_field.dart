@@ -43,6 +43,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
         Neumorphic(
           margin: EdgeInsets.only(left: 8, top: 2, bottom: 4, right: 8),
           style: NeumorphicStyle(
+              color: Color(0xffECF0F3),
               depth: NeumorphicTheme.embossDepth(context),
               boxShape: NeumorphicBoxShape.stadium()),
           padding: EdgeInsets.symmetric(vertical: 14, horizontal: 12),

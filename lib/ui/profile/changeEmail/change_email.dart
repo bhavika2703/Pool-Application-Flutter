@@ -74,8 +74,9 @@ class _ChangeEmailState extends State<ChangeEmail> {
                 EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 8),
                 style: NeumorphicStyle(
                     depth: NeumorphicTheme.depth(context),
+                    color: Colors.transparent,
                     boxShape:
-                    NeumorphicBoxShape.roundRect(BorderRadius.circular(8))),
+                        NeumorphicBoxShape.roundRect(BorderRadius.circular(8))),
                 child: Container(child: Row(
                   children: [
                     Expanded(child: Text('dlskdj93@gmail.com',style: Styles.body2MediumTextStyle().copyWith(

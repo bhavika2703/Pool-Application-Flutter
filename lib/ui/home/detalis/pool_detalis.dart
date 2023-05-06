@@ -85,7 +85,7 @@ class PoolDetalis extends StatelessWidget {
     return NeumorphicStyle(
       boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(14)),
       depth: 5,
-      color: const Color.fromRGBO(236, 240, 243, 0.6),
+      color: Colors.transparent,
     );
   }
 
@@ -105,6 +105,7 @@ class PoolDetalis extends StatelessWidget {
                 horizontal: 14,
               ),
               style: NeumorphicStyle(
+                color: Colors.transparent,
                 boxShape: NeumorphicBoxShape.roundRect(
                   BorderRadius.circular(22),
                 ),
@@ -170,6 +171,7 @@ class PoolDetalis extends StatelessWidget {
                 const EdgeInsets.only(top: 12, left: 8, bottom: 8, right: 6),
             padding: const EdgeInsets.all(12),
             style: const NeumorphicStyle(
+              color: Colors.transparent,
               boxShape: NeumorphicBoxShape.circle(),
               shape: NeumorphicShape.flat,
               depth: 12,
@@ -335,6 +337,7 @@ class PoolDetalis extends StatelessWidget {
       style: const NeumorphicStyle(
         boxShape: NeumorphicBoxShape.circle(),
         shape: NeumorphicShape.concave,
+        color: Color(0xffE1E7EC),
         depth: 12,
       ),
       child: buildBackIcon(context),
@@ -352,86 +355,5 @@ class PoolDetalis extends StatelessWidget {
           ? Colors.white70
           : const Color.fromRGBO(74, 82, 92, 1),
     );
-  }
-
-  Container buildFloatingButtonView() {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade300,
-            blurRadius: 10.0, // soften the shadow
-            spreadRadius: 4.0, //extend the shadow
-            offset: const Offset(
-              5.0, // Move to right 5  horizontally
-              5.0, // Move to bottom 5 Vertically
-            ),
-          )
-        ],
-        color: Colors.white,
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-      ),
-      height: 70,
-      width: double.infinity,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          NeumorphicButton(
-            onPressed: () {},
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              surfaceIntensity: 0.40,
-              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-              depth: 8,
-              lightSource: LightSource.topLeft,
-            ),
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset('assets/images/home.png', height: 27, width: 27),
-          ),
-          NeumorphicButton(
-            onPressed: () {},
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-              depth: 8,
-              lightSource: LightSource.topLeft,
-            ),
-            padding: const EdgeInsets.all(8.0),
-            child:
-                Image.asset('assets/images/message.png', height: 27, width: 27),
-          ),
-          NeumorphicButton(
-            onPressed: () {},
-            style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-              depth: 8,
-              lightSource: LightSource.topLeft,
-            ),
-            padding: const EdgeInsets.all(8.0),
-            child:
-                Image.asset('assets/images/person.png', height: 27, width: 27),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Color? _iconsColor(BuildContext context) {
-    final theme = NeumorphicTheme.of(context);
-    if (theme!.isUsingDark) {
-      return theme.current!.accentColor;
-    } else {
-      return null;
-    }
-  }
-
-  Color _textColor(BuildContext context) {
-    if (NeumorphicTheme.isUsingDark(context)) {
-      return Colors.white;
-    } else {
-      return Colors.black;
-    }
   }
 }
