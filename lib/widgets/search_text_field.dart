@@ -81,8 +81,6 @@ class _SearchTextFieldState extends State<SearchTextField> {
                                   widget.controller.text = '';
                                 },
                                 child: Container(
-                                  height: 45,
-                                  width: 45,
                                   child: Icon(widget.trailIcon),
                                 ),
                               )

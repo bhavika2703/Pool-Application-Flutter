@@ -91,7 +91,7 @@ class ResourceViewBuilderState extends State<ResourceViewBuilder> {
               timeIntervalWidth: 40,
               timelineAppointmentHeight: widget.isFullScreenView ? 40 : 24,
             ),
-            cellBorderColor: Colors.grey.shade100,
+            cellBorderColor: Color(0xffE1E7EC),
             showCurrentTimeIndicator: true,
             appointmentBuilder: (context, calendarAppointmentDetails) {
               return Container(
