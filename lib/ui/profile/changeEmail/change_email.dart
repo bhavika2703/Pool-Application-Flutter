@@ -1,7 +1,6 @@
 import 'package:boilerplate/constants/app_utils.dart';
 import 'package:boilerplate/constants/colors.dart';
 import 'package:boilerplate/constants/text_style.dart';
-import 'package:boilerplate/utils/routes/routes.dart';
 import 'package:boilerplate/widgets/app_theme_button.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
 import 'package:boilerplate/widgets/textfield_button_widget_.dart';
@@ -112,9 +111,6 @@ class _ChangeEmailState extends State<ChangeEmail> {
                     ? AppColors.themeColor
                     : AppColors.themeColorTransparent,
                 onTap: () {
-                  Navigator.of(context).pushNamed(
-                    Routes.passwordReset,
-                  );
                 },
               ),
             ),

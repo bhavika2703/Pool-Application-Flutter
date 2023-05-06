@@ -304,7 +304,7 @@ class _SavePostDetailsState extends State<SavePostDetails> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(selectedTab: 2),
+      bottomNavigationBar: BottomNavigation(selectedTab: 3),
     ));
   }
 

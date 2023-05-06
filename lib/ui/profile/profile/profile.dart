@@ -186,7 +186,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           buildColumnLineView(context),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushReplacementNamed(
+              Navigator.of(context).pushNamed(
                 Routes.savePost,
               );
             },
