@@ -40,6 +40,7 @@ class _SavePostState extends State<SavePost> {
         child: isDataEmpty
             ? EmptyListView(
                 title: '아직 저장한 게시글이 없어요.',
+                image: Assets.communityCopyPostIconImg,
               )
             : Column(
                 children: [

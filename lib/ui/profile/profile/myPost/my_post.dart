@@ -163,6 +163,7 @@ class _MyPostState extends State<MyPost> {
                     )
                   : EmptyListView(
                       title: '작성한 게시물이 없어요.',
+                      isNoPostView: true,
                     ),
             );
           },

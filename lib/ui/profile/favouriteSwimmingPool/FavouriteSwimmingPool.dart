@@ -1,6 +1,7 @@
 import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/colors.dart';
 import 'package:boilerplate/constants/text_style.dart';
+import 'package:boilerplate/ui/profile/profile/Empty_list.dart';
 import 'package:boilerplate/widgets/custom_app_bar_widget.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -32,32 +33,9 @@ class _FavouriteSwimmingPoolState extends State<FavouriteSwimmingPool> {
               ),
               isDataLoaded
                   ? _buildListView()
-                  : Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(top: 100),
-                        child: Column(
-                          children: [
-                            NeumorphicButton(
-                              style: NeumorphicStyle(
-                                  color: Color(0XFFE1E7EC),
-                                  depth: NeumorphicTheme.depth(context),
-                                  boxShape: NeumorphicBoxShape.circle()),
-                              child: IconButton(
-                                iconSize: 50,
-                                icon: Image.asset(Assets.wishlistIcon),
-                                color: NeumorphicTheme.isUsingDark(context)
-                                    ? Colors.white70
-                                    : const Color.fromRGBO(74, 82, 92, 1),
-                                onPressed: () {},
-                              ),
-                            ),
-                            Text(
-                              '찜한 수영장이 없어요.',
-                              style: Styles.subHeadSemiBoldTextStyle(),
-                            ),
-                          ],
-                        ),
-                      ),
+                  : EmptyListView(
+                      title: '찜한 수영장이 없어요.',
+                      image: Assets.wishlistIcon,
                     ),
             ],
           ),
@@ -105,7 +83,10 @@ class _FavouriteSwimmingPoolState extends State<FavouriteSwimmingPool> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(right: 5,bottom: 10,),
+                    margin: EdgeInsets.only(
+                      right: 5,
+                      bottom: 10,
+                    ),
                     child: _buildLikeButton(context),
                   )
                 ],
@@ -121,12 +102,11 @@ class _FavouriteSwimmingPoolState extends State<FavouriteSwimmingPool> {
     return Padding(
       padding: const EdgeInsets.only(right: 16),
       child: RoundedButtonWidget(
-        onPressed: () {
-        },
+        onPressed: () {},
         buttonColor: AppColors.whiteColor,
         isLoginScreen: true,
-        buttonChildView: Image.asset(Assets.wishlistIcon,
-            height: 18, width: 18),
+        buttonChildView:
+            Image.asset(Assets.wishlistIcon, height: 18, width: 18),
       ),
     );
   }
