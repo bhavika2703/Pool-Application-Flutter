@@ -2,6 +2,7 @@ import 'package:boilerplate/constants/assets.dart';
 import 'package:boilerplate/constants/colors.dart';
 import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/widgets/app_theme_button.dart';
+import 'package:boilerplate/widgets/custom_check_box.dart';
 import 'package:boilerplate/widgets/rounded_button_widget.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -18,6 +19,10 @@ class _TermsConditionsState extends State<TermsConditions> {
   ValueNotifier<bool> check3 = ValueNotifier<bool>(false);
   ValueNotifier<bool> check4 = ValueNotifier<bool>(false);
   ValueNotifier<bool> enableCheckButton = ValueNotifier<bool>(false);
+  ValueNotifier<int> isFirstCheckboxCalledDuringBuild = ValueNotifier<int>(0);
+  ValueNotifier<int> isSecondCheckboxCalledDuringBuild = ValueNotifier<int>(0);
+  ValueNotifier<int> isThirdCheckboxCalledDuringBuild = ValueNotifier<int>(0);
+  ValueNotifier<int> isFourthCheckboxCalledDuringBuild = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +76,27 @@ class _TermsConditionsState extends State<TermsConditions> {
                 ),
                 child: Row(
                   children: [
-                    checkboxView(check1),
+                    ValueListenableBuilder<int>(
+                      valueListenable: isFirstCheckboxCalledDuringBuild,
+                      builder: (context, int value, child) {
+                        return CustomCheckbox(
+                          value: value == 0 ? true : check1Value,
+                          onChanged: (value) {
+                            if (value != 0) {
+                              checkAllCheckBox();
+                            }
+                            print('CheckBoxValue check1 ${check1.value}');
+                            isFirstCheckboxCalledDuringBuild.value = 1;
+                            check1.value = value;
+
+                          },
+                          isEnabled: true,
+                          padding: EdgeInsets.all(2),
+                          margin: EdgeInsets.all(8),
+                          style: CustomCheckboxStyle(),
+                        );
+                      },
+                    ),
                     Container(
                         padding: EdgeInsets.only(
                             left: 6, right: 6, bottom: 17, top: 17),
@@ -90,7 +115,27 @@ class _TermsConditionsState extends State<TermsConditions> {
             builder: (context, check2Value, child) {
               return Row(
                 children: [
-                  checkboxView(check2),
+                  ValueListenableBuilder<int>(
+                    valueListenable: isSecondCheckboxCalledDuringBuild,
+                    builder: (context, int value, child) {
+                      return CustomCheckbox(
+                        value: value == 0 ? true : check2Value,
+                        onChanged: (value) {
+                          if (value != 0) {
+                            checkAllCheckBox();
+                          }
+                          print('CheckBoxValue check2${check2.value}');
+                          isSecondCheckboxCalledDuringBuild.value = 1;
+                          check2.value = value;
+
+                        },
+                        isEnabled: true,
+                        padding: EdgeInsets.all(2),
+                        margin: EdgeInsets.all(8),
+                        style: CustomCheckboxStyle(),
+                      );
+                    },
+                  ),
                   Expanded(child: checkBoxTextView(text: '서비스 이용약관 동의 (필수)')),
                   Image.asset(Assets.arrowIconImg, width: 12, height: 12),
                 ],
@@ -100,10 +145,30 @@ class _TermsConditionsState extends State<TermsConditions> {
           SizedBox(height: 12),
           ValueListenableBuilder<bool>(
             valueListenable: check3,
-            builder: (context, value, child) {
+            builder: (context, check3value, child) {
               return Row(
                 children: [
-                  checkboxView(check3),
+                  ValueListenableBuilder<int>(
+                    valueListenable: isThirdCheckboxCalledDuringBuild,
+                    builder: (context, int value, child) {
+                      return CustomCheckbox(
+                        value: value == 0 ? true : check3value,
+                        onChanged: (value) {
+                          if (value != 0) {
+                            checkAllCheckBox();
+                          }
+                          print('CheckBoxValue check3${check3.value}');
+                          isThirdCheckboxCalledDuringBuild.value = 1;
+                          check3.value = value;
+
+                        },
+                        isEnabled: true,
+                        padding: EdgeInsets.all(2),
+                        margin: EdgeInsets.all(8),
+                        style: CustomCheckboxStyle(),
+                      );
+                    },
+                  ),
                   Expanded(
                       child: checkBoxTextView(text: '개인정보 수집 및 이용 동의 (필수)')),
                   Image.asset(Assets.arrowIconImg, width: 12, height: 12),
@@ -114,10 +179,30 @@ class _TermsConditionsState extends State<TermsConditions> {
           SizedBox(height: 12),
           ValueListenableBuilder<bool>(
             valueListenable: check4,
-            builder: (context, value, child) {
+            builder: (context, check4value, child) {
               return Row(
                 children: [
-                  checkboxView(check4),
+                  ValueListenableBuilder<int>(
+                    valueListenable: isFourthCheckboxCalledDuringBuild,
+                    builder: (context, int value, child) {
+                      return CustomCheckbox(
+                        value: value == 0 ? true : check4value,
+                        onChanged: (value) {
+                          if (value != 0) {
+                            checkAllCheckBox();
+                          }
+                          print('CheckBoxValue check4 ${check4.value}');
+                          isFourthCheckboxCalledDuringBuild.value = 1;
+                          check4.value = value;
+
+                        },
+                        isEnabled: true,
+                        padding: EdgeInsets.all(2),
+                        margin: EdgeInsets.all(8),
+                        style: CustomCheckboxStyle(),
+                      );
+                    },
+                  ),
                   Expanded(child: checkBoxTextView(text: '마케팅 정보 수신 동의 (선택)')),
                   Image.asset(Assets.arrowIconImg, width: 12, height: 12),
                 ],
@@ -130,10 +215,10 @@ class _TermsConditionsState extends State<TermsConditions> {
   }
 
   bool checkAllCheckBox() {
-    if (check1.value == true &&
-        check2.value == true &&
-        check3.value == true &&
-        check4.value == true) {
+    if (check1.value == false &&
+        check2.value == false &&
+        check3.value == false &&
+        check4.value == false) {
       print('enableCheckButton${enableCheckButton.value}');
       return enableCheckButton.value = true;
     } else {
@@ -145,19 +230,6 @@ class _TermsConditionsState extends State<TermsConditions> {
     return Text(
       text,
       style: Styles.body2TextStyle(),
-    );
-  }
-
-  NeumorphicCheckbox checkboxView(checkBoxValue) {
-    return NeumorphicCheckbox(
-      value: checkBoxValue.value,
-      onChanged: (value) {
-        checkBoxValue.value = value;
-        checkAllCheckBox();
-      },
-      padding: EdgeInsets.all(2),
-      margin: EdgeInsets.all(8),
-      style: NeumorphicCheckboxStyle(),
     );
   }
 }
