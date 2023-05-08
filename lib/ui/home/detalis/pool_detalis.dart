@@ -1,6 +1,8 @@
+import 'package:boilerplate/constants/text_style.dart';
 import 'package:boilerplate/ui/bottom_navigation.dart';
 import 'package:boilerplate/ui/home/detalis/timeline2.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:sizer/sizer.dart';
 
 class PoolDetalis extends StatelessWidget {
   PoolDetalis({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class PoolDetalis extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Container(
                   margin:
-                      const EdgeInsets.only(left: 12, right: 12, bottom: 80),
+                  const EdgeInsets.only(left: 12, right: 12, bottom: 80),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
@@ -29,20 +31,20 @@ class PoolDetalis extends StatelessWidget {
                       ),
                       buildLikeWidgetView(),
                       Container(
-                        margin: const EdgeInsets.only(
-                          top: 8,
-                          left: 12,
-                          right: 12,
+                        margin: EdgeInsets.only(
+                          top: 8.h,
+                          left: 12.w,
+                          right: 12.w,
                         ),
                         child: buildGridView(),
                       ),
                       Container(
                           margin: const EdgeInsets.only(
                               top: 20, bottom: 8, left: 8),
-                          child: const Text(
+                          child: Text(
                             '요일별 자유시간 안내',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
+                                fontWeight: FontWeight.bold, fontSize: 16.sp),
                           )),
                       Neumorphic(
                         style: cardViewStyle(),
@@ -137,9 +139,9 @@ class PoolDetalis extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "역삼청소년수련관 수영장",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                style: Styles.heading2TextStyle(),
               ),
               const SizedBox(
                 height: 4,
@@ -168,7 +170,7 @@ class PoolDetalis extends StatelessWidget {
           ),
           NeumorphicButton(
             margin:
-                const EdgeInsets.only(top: 12, left: 8, bottom: 8, right: 6),
+            const EdgeInsets.only(top: 12, left: 8, bottom: 8, right: 6),
             padding: const EdgeInsets.all(12),
             style: const NeumorphicStyle(
               color: Colors.transparent,
@@ -187,10 +189,10 @@ class PoolDetalis extends StatelessWidget {
   GridView buildGridView() {
     return GridView(
       physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisExtent: 150,
-          mainAxisSpacing: 20,
+          mainAxisExtent: 20.h,
+          mainAxisSpacing: 5.h,
           crossAxisSpacing: 20),
       shrinkWrap: true,
       children: [

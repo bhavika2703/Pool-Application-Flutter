@@ -76,6 +76,7 @@ dependencies:
   syncfusion_flutter_datepicker: 21.1.41
   timelines: ^0.1.0
   expandable_bottom_sheet: ^1.1.1+1
+  sizer: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -134,7 +135,11 @@ flutter:
       weight: 700
   - family: Pretendard
     fonts:
-    - asset: assets/fonts/Pretendard-Regular.otf
+      - asset: assets/fonts/Pretendard-Regular.otf
+      - asset: assets/fonts/Pretendard-Bold.otf
+        weight: 700
+      - asset: assets/fonts/Pretendard-SemiBold.otf
+        weight: 600
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages

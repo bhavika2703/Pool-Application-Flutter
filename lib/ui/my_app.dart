@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -33,28 +34,32 @@ class MyApp extends StatelessWidget {
       child: Observer(
         name: 'global-observer',
         builder: (context) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: Strings.appName,
-            theme: _themeStore.darkMode
-                ? AppThemeData.darkThemeData
-                : AppThemeData.lightThemeData,
-            routes: Routes.routes,
-            locale: Locale('ko'),
-            supportedLocales: [
-              const Locale('ko'),
-              const Locale('hi'),
-              const Locale('en'),
-            ],
-            localizationsDelegates: [
-              // Built-in localization of basic text for Material widgets
-              GlobalMaterialLocalizations.delegate,
-              // Built-in localization for text direction LTR/RTL
-              GlobalWidgetsLocalizations.delegate,
-              // Built-in localization of basic text for Cupertino widgets
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            home: SafeArea(child: SplashScreen()),
+          return Sizer(
+            builder: (context, orientation, deviceType) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: Strings.appName,
+                theme: _themeStore.darkMode
+                    ? AppThemeData.darkThemeData
+                    : AppThemeData.lightThemeData,
+                routes: Routes.routes,
+                locale: Locale('ko'),
+                supportedLocales: [
+                  const Locale('ko'),
+                  const Locale('hi'),
+                  const Locale('en'),
+                ],
+                localizationsDelegates: [
+                  // Built-in localization of basic text for Material widgets
+                  GlobalMaterialLocalizations.delegate,
+                  // Built-in localization for text direction LTR/RTL
+                  GlobalWidgetsLocalizations.delegate,
+                  // Built-in localization of basic text for Cupertino widgets
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                home: SafeArea(child: SplashScreen()),
+              );
+            },
           );
         },
       ),
